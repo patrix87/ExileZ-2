@@ -63,11 +63,8 @@ Populate = {
 		this setCaptive true;	
 		this setbehaviour 'CARELESS';
 		this allowFleeing 0;
-		this setvariable ['lastpos', position this, false];
-		this setvariable ['destination', position this, false];
-		this setvariable ['moveretry', 0, false];
 		this setunitpos 'UP';
-		this addMPEventHandler ['MPKilled', {_this execvm 'exilez\init\MPKilled.sqf'}];
+		this addMPEventHandler ['MPKilled', {_this spawn ZMPKilled;}];
 		"
 	];
 };

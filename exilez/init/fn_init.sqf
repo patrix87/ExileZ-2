@@ -180,7 +180,7 @@ diag_log "\\\ --- Starting ExileZ 2.0 --- ///";
 //compile code
 CreateTriggers = compile preprocessFile "exilez\init\CreateTriggers.sqf";
 ZombieSpawner = compile preprocessFile "exilez\init\ZombieSpawner.sqf";
-
+ZMPKilled = compile preprocessFile "exilez\init\MPKilled.sqf";
 //Create Triggers
 {
 	nul = [_x] spawn CreateTriggers;
