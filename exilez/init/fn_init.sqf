@@ -93,6 +93,8 @@ UseHC 	= false;   				// set to true if running Headless Client
 //Custom map settings 								
 A2Buildings 		= false;    // set to true if using A2 Maps only looks for House_EP1 at this time
 
+// If nothing is spawning in A2 Maps try A2Buildings at false, some maps have been updated to Arma 3 
+
 //Townpositions, only one 2D coordinate is required per town.
 //Use block comment /* content to comment */ to disable and enable maps.
 //Altis
