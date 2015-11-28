@@ -75,7 +75,7 @@ SpawnDelay			= 15;		// Spawn time between each zombie spawn if the town was empt
 RespawnDelay		= 45;		// Respawn time between each zombies if they are killed
 DeleteDelay			= 45;		// Delay before deleting the zombies of a town if empty
 ZombieSide 			= EAST; 	// zombie team side east, west and Civilian can be used //Zombie themselves are always "CIV"
-ProtectSafezones	= true;		// if set to true a trigger will kill all unit of the same side as the ZombieSide within the SafeZonePositions defined below
+ProtectSafezones	= true;		// if set to true a trigger will kill all "CIV" units within the SafeZonePositions defined below
 
 //Killing zombies settings
 ZombieMoney				= 5;	// Money per zombie kill
