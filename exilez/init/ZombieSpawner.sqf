@@ -112,6 +112,12 @@ if !(_set) then
 	if (DynamicGroupSize) then{
 		_groupSize = round(_posCount / 100 * DynamicRatio);
 		
+		diag_log format["ExileZ 2.0: Dynamic Group Size %1.",_groupSize];
+		
+		if (_groupSize > GroupSize) then {
+			_groupSize = GroupSize;
+			diag_log format["ExileZ 2.0: Dynamic Group Size is higher than limit. %1",GroupSize];
+		};
 		diag_log format["ExileZ 2.0: Dynamic Group Size set to %1.",_groupSize];
 		
 	}
