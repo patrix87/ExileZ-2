@@ -1,28 +1,29 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
-diag_log "ExileZ 2.0: Creating Triggers";
+diag_log "ExileZ 2.0: Creating Safezones";
 
 if (hasInterface) exitwith {}; //exit if is a player
 
 //Variable declaration
 private [
 "_position",
-"_trigger"
+"_trigger",
+"_radius"
 ];
 
 
-//Current spawner position
-_position = _this select 0;
+_position = (_this select 0) select 0;
+_radius = (_this select 0) select 1;
 
 
-//Validate current spawner position
+//Validate current trigger position
 if (isnil "_position") exitwith { hint "EXILE-Z: empty position";};
 if (count _position < 1) exitwith { hint "EXILE-Z: required a position ARRAY";};
 if (surfaceiswater _position) exitwith { hint "EXILE-Z: position is in the water";};
 
 //Create trigger area
 _trigger = createTrigger["EmptyDetector", _position];
-_trigger setTriggerArea[TriggerRadius, TriggerRadius, 0, true]; 	//this is a sphere
-_trigger setTriggerActivation["GUER", "PRESENT", TRUE]; 			//Only Exile player can trigger
-_trigger setTriggerStatements["this", "nul = [thisTrigger] spawn ZombieSpawner;", ""];
+_trigger setTriggerArea[_radius, _radius, 0, true];
+_trigger setTriggerActivation["CIV", "PRESENT", TRUE]; //Apparently zombies are always CIV...
+_trigger setTriggerStatements["this", "{_x setdamage 1}foreach thislist;", ""];
 

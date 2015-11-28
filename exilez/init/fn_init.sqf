@@ -74,7 +74,8 @@ ActicationDelay		= 15;		// Time before the trigger start when activated
 SpawnDelay			= 15;		// Spawn time between each zombie spawn if the town was empty
 RespawnDelay		= 45;		// Respawn time between each zombies if they are killed
 DeleteDelay			= 45;		// Delay before deleting the zombies of a town if empty
-ZombieSide 			= east;  	// zombie team side east, west and Civilian can be used
+ZombieSide 			= EAST; 	// zombie team side east, west and Civilian can be used //Zombie themselves are always "CIV"
+ProtectSafezones	= true;		// if set to true a trigger will kill all unit of the same side as the ZombieSide within the SafeZonePositions defined below
 
 //Killing zombies settings
 ZombieMoney				= 5;	// Money per zombie kill
@@ -88,8 +89,15 @@ DistanceBonusDivider 	= 10;	// Distance divided by that number = respect E.G. 30
 
 // HeadlessClient settings
 UseHC 	= false;   				// set to true if running Headless Client
-								// Headless client must be properly setup in the mission.sqm, Name must be HC
-								
+// Headless client must be properly setup in the mission.sqm, Name must be HC
+
+//Default Altis SafeZones
+SafeZonePositions = [			//	[[Coordinates],[Radius]]  // You can Get the safezone information directly from your mission.sqm under class Markers
+	[[14599,16797],[175]],
+	[[23334,24188],[175]],
+	[[2998,18175],[175]]
+];					
+
 //Custom map settings 								
 A2Buildings 		= false;    // set to true if using A2 Maps or maps with A2 Buildings it looks for "House" instead of "House_F"
 
@@ -528,10 +536,19 @@ diag_log "\\\ --- Starting ExileZ 2.0 --- ///";
 CreateTriggers = compile preprocessFile "exilez\init\CreateTriggers.sqf";
 ZombieSpawner = compile preprocessFile "exilez\init\ZombieSpawner.sqf";
 ZMPKilled = compile preprocessFile "exilez\init\MPKilled.sqf";
+Safezone = compile preprocessFile "exilez\init\Safezone.sqf";
 //Create Triggers
 {
 	nul = [_x] spawn CreateTriggers;
 	sleep 0.01;
 }foreach TownPositions;	
 
+//Create Triggers for safezones
+if (ProtectSafezones) then {
+	{
+		nul = [_x] spawn Safezone;
+		sleep 0.01;
+	}foreach SafeZonePositions;	
+};
 
+publicVariable "ZombieSide";
