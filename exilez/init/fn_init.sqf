@@ -91,7 +91,7 @@ UseHC 	= false;   				// set to true if running Headless Client
 								// Headless client must be properly setup in the mission.sqm, Name must be HC
 								
 //Custom map settings 								
-A2Buildings 		= false;    // set to true if using A2 Maps only looks for House_EP1 at this time
+A2Buildings 		= false;    // set to true if using A2 Maps only looks for "House" at this time
 
 // If nothing is spawning in A2 Maps try A2Buildings at false, some maps have been updated to Arma 3 
 

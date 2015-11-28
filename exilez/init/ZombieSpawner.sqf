@@ -80,7 +80,7 @@ if !(_set) then
 	//Creates a array of all Houses within zTriggerDistance of the _triggerPosition
 	if (A2Buildings) then 
 	{
-		_buildings = nearestObjects[(getpos (_this select 0)),["House_EP1"], SpawnRadius];
+		_buildings = nearestObjects[(getpos (_this select 0)),["House"], SpawnRadius];
 	}
 	else
 	{
