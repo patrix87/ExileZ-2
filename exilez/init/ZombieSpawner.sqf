@@ -109,8 +109,6 @@ if !(_set) then
 	if (DynamicGroupSize) then{
 		_groupSize = round(_posCount / 100 * DynamicRatio);
 		
-		diag_log format["ExileZ 2.0: Dynamic Group Size %1.",_groupSize];
-		
 		if (_groupSize > GroupSize) then {
 			_groupSize = GroupSize;
 			diag_log format["ExileZ 2.0: Dynamic Group Size is higher than limit. %1",GroupSize];
@@ -162,7 +160,12 @@ while {triggeractivated (_this select 0)} do {
 
 //Trigger is no longer active, kill the zombies
 sleep DeleteDelay;									//Wait Delete delay
-{_x setdamage 1} foreach (units _Group);			//Kill all the units in the group *(Exile will do the cleanup)
-_this select 0 setvariable ["newAct", true, False];	//Set the activation state to new to enable fast spawn.
-_this select 0 setvariable ["active", false, False];//Set the script to inactive
-diag_log "ExileZ 2.0: Zombie Spawner Deactivated";
+if !(triggeractivated (_this select 0)) then {
+	{
+		_x setdamage 1;
+		deleteVehicle _x;
+	} foreach (units _Group);								//Kill all the units in the group and delete the zombies
+	_this select 0 setvariable ["newAct", true, False];		//Set the activation state to new to enable fast spawn.
+	diag_log "ExileZ 2.0: Deleting Zombies";
+};
+_this select 0 setvariable ["active", false, False];

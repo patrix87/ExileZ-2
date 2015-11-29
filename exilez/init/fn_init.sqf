@@ -65,17 +65,20 @@ zLoot = [
 	];
 
 //Main Settings
-TriggerRadius 		= 300;    	// Trigger radius is used to detect player
-SpawnRadius			= 250;		// Spawning radius around the trigger
-GroupSize 			= 15;       // Maximum number of zombies per trigger
-DynamicGroupSize	= true;		// Set to 1 to dynamically set the max number of zombies for a town *(this will not exceed the GroupSize)
-DynamicRatio		= 3;		// Percent of the available spawn position will be filled with a zombie. *(regular town as about 300 positions)
-ActicationDelay		= 15;		// Time before the trigger start when activated
-SpawnDelay			= 15;		// Spawn time between each zombie spawn if the town was empty
-RespawnDelay		= 45;		// Respawn time between each zombies if they are killed
-DeleteDelay			= 45;		// Delay before deleting the zombies of a town if empty
-ZombieSide 			= EAST; 	// zombie team side east, west and Civilian can be used //Zombie themselves are always "CIV"
-ProtectSafezones	= true;		// if set to true a trigger will kill all "CIV" units within the SafeZonePositions defined below
+TriggerRadius 		= 300;    		// Trigger radius is used to detect player
+SpawnRadius			= 250;			// Spawning radius around the trigger
+GroupSize 			= 15;       	// Maximum number of zombies per trigger
+DynamicGroupSize	= true;			// Set to 1 to dynamically set the max number of zombies for a town *(this will not exceed the GroupSize)
+DynamicRatio		= 3;			// Percent of the available spawn position will be filled with a zombie. *(regular town as about 300 positions)
+ActicationDelay		= 15;			// Time before the trigger start when activated
+SpawnDelay			= 10;			// Spawn time between each zombie spawn if the town was empty
+RespawnDelay		= 45;			// Respawn time between each zombies if they are killed
+DeleteDelay			= 45;			// Delay before deleting the zombies of a town if empty
+ZombieSide 			= EAST; 		// zombie team side east, west and Civilian can be used //Zombie themselves are always "CIV"
+ProtectSafezones	= true;			// if set to true a trigger will kill all "CIV" units within the SafeZonePositions defined below
+ShowTriggerOnMap	= true;			// Show infested zones on the map
+ZMarkerColor		= "ColorRed";	// Color of the zone
+ZMarkerAlpha		= 0.2;			// Alpha *(Transparency)of the zone
 
 //Killing zombies settings
 ZombieMoney				= 5;	// Money per zombie kill
@@ -92,10 +95,10 @@ UseHC 	= false;   				// set to true if running Headless Client
 // Headless client must be properly setup in the mission.sqm, Name must be HC
 
 //Default Altis SafeZones
-SafeZonePositions = [			//	[[Coordinates],[Radius]]  // You can Get the safezone information directly from your mission.sqm under class Markers
-	[[14599,16797],[175]],
-	[[23334,24188],[175]],
-	[[2998,18175],[175]]
+SafeZonePositions = [			//	[[Coordinates],Radius]  // You can Get the safezone information directly from your mission.sqm under class Markers
+	[[14599,16797],175],
+	[[23334,24188],175],
+	[[2998,18175],175]
 ];					
 
 //Custom map settings 								
@@ -107,6 +110,8 @@ A2Buildings 		= false;    // set to true if using A2 Maps or maps with A2 Buildi
 //Use block comment /* content to comment */ to disable and enable maps.
 //Altis
 TownPositions = [
+	[15110,17385], 	// Near Main Airfield
+	[14285,14286], 	// Near Main Airfield
 	[4549,21425],
 	[3861,17493],
 	[4226,16844],
@@ -550,5 +555,3 @@ if (ProtectSafezones) then {
 		sleep 0.01;
 	}foreach SafeZonePositions;	
 };
-
-publicVariable "ZombieSide";
