@@ -4,24 +4,24 @@
 
 
 //Global Settings
-ProtectSafezones	= true;			// if set to true a trigger will kill all "CIV" units within the SafeZonePositions defined below
-ZombieSide 			= EAST; 		// zombie team side east, west and Civilian can be used //Zombie themselves are always "CIV"
+ProtectSafezones		= true;			// if set to true a trigger will kill all "CIV" units within the SafeZonePositions defined below
+ZombieSide 				= EAST; 		// zombie team side east, west and Civilian can be used //Zombie themselves are always "CIV"
 
 //Main Spawner Settings
-UseSpawners			= true;
-TriggerRadius 		= 300;    		// Trigger radius is used to detect player
-SpawnRadius			= 250;			// Spawning radius around the trigger
-GroupSize 			= 15;       	// Maximum number of zombies per trigger
-DynamicGroupSize	= true;			// Set to 1 to dynamically set the max number of zombies for a town *(this will not exceed the GroupSize)
-DynamicRatio		= 3;			// Percent of the available spawn position will be filled with a zombie. *(regular town as about 300 positions)
-ActivationDelay		= 15;			// Time before the trigger start when activated
-SpawnDelay			= 10;			// Spawn time between each zombie spawn if the town was empty
-RespawnDelay		= 45;			// Respawn time between each zombies if they are killed
-DeleteDelay			= 45;			// Delay before deleting the zombies of a town if empty
-ShowTriggerOnMap	= true;			// Show infested zones on the map
-ZMarkerColor		= "ColorRed";	// Color of the zone
-ZMarkerAlpha		= 0.2;			// Alpha *(Transparency)of the zone
-UseBuildings		= true;			// Use the buildings to spawn the zombies instead of random locations
+UseSpawners				= true;
+TriggerRadius 			= 300;    		// Trigger radius is used to detect player
+SpawnRadius				= 250;			// Spawning radius around the trigger
+GroupSize 				= 15;       	// Maximum number of zombies per trigger
+DynamicGroupSize		= true;			// Set to 1 to dynamically set the max number of zombies for a town *(this will not exceed the GroupSize)
+DynamicRatio			= 3;			// Percent of the available spawn position will be filled with a zombie. *(regular town as about 300 positions)
+ActivationDelay			= 15;			// Time before the trigger start when activated
+SpawnDelay				= 10;			// Spawn time between each zombie spawn if the town was empty
+RespawnDelay			= 45;			// Respawn time between each zombies if they are killed
+DeleteDelay				= 45;			// Delay before deleting the zombies of a town if empty
+ShowTriggerOnMap		= true;			// Show infested zones on the map
+ZMarkerColor			= "ColorRed";	// Color of the zone
+ZMarkerAlpha			= 0.2;			// Alpha *(Transparency)of the zone
+UseBuildings			= true;			// Use the buildings to spawn the zombies instead of random locations
 
 //Secondary Spawner Setting
 UseSecSpawners			= true;
@@ -58,11 +58,11 @@ DistanceBonusDivider 	= 10;	// Distance divided by that number = respect E.G. 30
 
 
 // HeadlessClient settings *** Currently not supported
-UseHC 	= false;   				// set to true if running Headless Client
+UseHC 					= false;   				// set to true if running Headless Client
 // Headless client must be properly setup in the mission.sqm, Name must be HC
 
 //Custom map settings 								
-A2Buildings 		= false;    // set to true if using A2 Maps or maps with A2 Buildings it looks for "House" instead of "House_F"
+A2Buildings 			= false;    // set to true if using A2 Maps or maps with A2 Buildings it looks for "House" instead of "House_F"
 
 // If nothing is spawning in A2 Maps try A2Buildings at false, some maps have been updated to Arma 3
 // If still nothing is spawning set DynamicGroupSize to false

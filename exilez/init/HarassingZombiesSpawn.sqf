@@ -23,6 +23,8 @@ _xOffset = [_xOffset,(-_xOffset)] call BIS_fnc_selectRandom;
 _yOffset = [_yOffset,(-_yOffset)] call BIS_fnc_selectRandom;
 _zombieSpawnPosition = [round((_playerPosition select 0) + _xOffset),round((_playerPosition select 1) + _yOffset)];
 
+diag_log format["ExileZ 2.0: Spawning 1 Harassing Zombie at %1.",_zombieSpawnPosition];
+
 HZInitGroup = {
 	//Create a group for the zombies
 	_group = creategroup ZombieSide;

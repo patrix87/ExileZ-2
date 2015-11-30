@@ -2,6 +2,11 @@
 
 if (hasInterface) exitwith {}; //exit if is a player
 
+private [
+    "_nPlayer",
+	"_sTime"
+];
+
 
 sleep 120; //Wait 2 minutes for the server to boot
 //Inifite Harassing Loop
@@ -14,9 +19,25 @@ while {true} do {
 				nul = [_x] spawn HarassingZombiesSpawn;
 			};
 		};
-		sleep 1;	//pause between player to avoid load on server
+		//number of real player
+		_nPlayer = count (allPlayers - entities "HeadlessClient_F");
+		
+		diag_log format["ExileZ 2.0: %1 Player in game.",_nPlayer];
+		
+		//pause between spawn
+		if (_nPlayer < 1) then // to avoid division by 0
+		{
+			diag_log format["ExileZ 2.0: Waiting %1 seconds.",HZFrequency];
+			sleep HZFrequency;
+		}
+		else
+		{
+			_sTime = HZFrequency / _nPlayer;
+			diag_log format["ExileZ 2.0: Waiting %1 seconds.",_sTime];
+			sleep _sTime;
+		};
 	} forEach (allPlayers - entities "HeadlessClient_F");
-	sleep HZFrequency;	//pause between spawn
+	sleep 0.1;
 };
 
 
