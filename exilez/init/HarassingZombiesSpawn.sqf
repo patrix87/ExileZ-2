@@ -69,7 +69,7 @@ else
 	_cnt = {alive _x} count units _group; 		//count number of zombie alive in the group
 	if (_cnt < HZGroupsSize) then 
 	{
-		nul = call HPopulate; 					//Spawn 1 zombie
+		nul = call HZPopulate; 					//Spawn 1 zombie
 	};
 };
 
