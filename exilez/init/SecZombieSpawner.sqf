@@ -9,7 +9,7 @@ if (_this select 0 getvariable ["active", False]) exitwith {};
 //Set the script as active
 _this select 0 setvariable ["active", true, False];
 
-diag_log "ExileZ 2.0: Secondary Zombie Spawner Activated";
+diag_log "ExileZ 2.0: Zombie Sec Spawner Activated";
 
 private [
     "_set",
@@ -38,7 +38,7 @@ _newAct = _this select 0 getvariable ["newAct", True];
 
 // FUNCTIONS ----------------------------------------------------
 //Create and Empty group
-InitGroup = {
+SecInitGroup = {
 	//Create a group for the zombies
 	_group = creategroup ZombieSide;
 	_group setcombatmode "RED";
@@ -51,13 +51,13 @@ InitGroup = {
 };
 
 //Populate the group
-Populate = {
-	if !(UseBuildings) then 
+SecPopulate = {
+	if !(SecUseBuildings) then 
 	{
 		//randomize spawn location
 		_position = (getpos (_this select 0));
-		_xOffset = floor random (SpawnRadius);
-		_yOffset = floor random (SpawnRadius);
+		_xOffset = floor random (SecSpawnRadius);
+		_yOffset = floor random (SecSpawnRadius);
 		_xOffset = [_xOffset,(-_xOffset)] call BIS_fnc_selectRandom;
 		_yOffset = [_yOffset,(-_yOffset)] call BIS_fnc_selectRandom;
 		_position = [((_position select 0) + _xOffset),((_position select 1) + _yOffset)];
@@ -66,13 +66,13 @@ Populate = {
 	{
 		_position = _positions call BIS_fnc_selectRandom;
 	};
-	(ZombieClasses call BIS_fnc_selectRandom) createUnit 
+	(SecZombieClasses call BIS_fnc_selectRandom) createUnit 
 	[
 		_position,
 		_group,
 		"
-		this addVest (zVest call BIS_fnc_selectRandom);
-		this addItemToVest (zLoot call BIS_fnc_selectRandom);
+		this addVest (SeczVest call BIS_fnc_selectRandom);
+		this addItemToVest (SeczLoot call BIS_fnc_selectRandom);
 		this disableAI 'FSM';
 		this disableAI 'AUTOTARGET';
 		this disableAI 'TARGET';
@@ -86,20 +86,20 @@ Populate = {
 	];
 };
 
+
 // END of FUNCTIONS ----------------------------------------------------
 
 //if _set is false then set the spawn positions and dynamic group size
 if !(_set) then
 {
 	//Creates a array of all Houses within zTriggerDistance of the _triggerPosition
-
 	if (A2Buildings) then 
 	{
-		_buildings = nearestObjects[(getpos (_this select 0)),["House"], SpawnRadius];
+		_buildings = nearestObjects[(getpos (_this select 0)),["House"], SecSpawnRadius];
 	}
 	else
 	{
-		_buildings = nearestObjects[(getpos (_this select 0)),["House_F"], SpawnRadius]; 
+		_buildings = nearestObjects[(getpos (_this select 0)),["House_F"], SecSpawnRadius]; 
 	};
 
 
@@ -118,22 +118,22 @@ if !(_set) then
 	_posCount = count _positions;
 	
 	diag_log format["ExileZ 2.0: %1 buildings found.",Count _buildings];
-	diag_log format["ExileZ 2.0: %1 spawn positions found.",_posCount];
+	diag_log format["ExileZ 2.0: %1 spawn position found.",_posCount];
 	
 	//set GroupSize
-	if (DynamicGroupSize) then{
-		_groupSize = round(_posCount / 100 * DynamicRatio);
+	if (SecDynamicGroupSize) then{
+		_groupSize = round(_posCount / 100 * SecDynamicRatio);
 		
-		if (_groupSize > GroupSize) then {
-			_groupSize = GroupSize;
-			diag_log format["ExileZ 2.0: Dynamic Group Size is higher than the limit of %1.",GroupSize];
+		if (_groupSize > SecGroupSize) then {
+			_groupSize = SecGroupSize;
+			diag_log format["ExileZ 2.0: Dynamic Group Size is higher than limit. %1",SecGroupSize];
 		};
 		diag_log format["ExileZ 2.0: Dynamic Group Size set to %1.",_groupSize];
 		
 	}
 	else
 	{
-		_groupSize = GroupSize;
+		_groupSize = SecGroupSize;
 	};
 	
 
@@ -146,41 +146,41 @@ if !(_set) then
 //Active loop
 while {triggeractivated (_this select 0)} do {
 	if (isNull _group) then { 						//the zombie group is empty or all dead
-		nul = call InitGroup; 						//Create Group
+		nul = call SecInitGroup; 						//Create Group
 		if (_newAct) then { 						//if newAct is true The zombies were deleted not killed
 			for "_x" from 1 to _groupSize do {					//populate the group "rapidly"
 				if (triggeractivated (_this select 0)) then {	//player check
-					nul = call Populate;						//Create 1 zombie
+					nul = call SecPopulate;						//Create 1 zombie
 				};
-				sleep SpawnDelay;					//spawn delay
+				sleep SecSpawnDelay;					//spawn delay
 			};
 			_newAct = false;
 		} 
 		else 										//player probably killed all the zombies without leaving the zone
 		{
-			nul = call Populate; 					//spawn 1 zombie
-			sleep RespawnDelay; 					//Wait respawn time
+			nul = call SecPopulate; 					//spawn 1 zombie
+			sleep SecRespawnDelay; 					//Wait respawn time
 		};
 	}
 	else //group is not empty
 	{
 		_cnt = {alive _x} count units _group; 		//count number of zombie alive in the group
 		if (_cnt < _groupSize) then {
-			nul = call Populate; 					//Spawn 1 zombie
+			nul = call SecPopulate; 					//Spawn 1 zombie
 		};
-		sleep RespawnDelay; 						//Wait respawn time
+		sleep SecRespawnDelay; 						//Wait respawn time
 	};
 };
 
 
 //Trigger is no longer active, kill the zombies
-sleep DeleteDelay;									//Wait Delete delay
+sleep SecDeleteDelay;									//Wait Delete delay
 if !(triggeractivated (_this select 0)) then {
 	{
 		_x setdamage 1;
 		deleteVehicle _x;
 	} foreach (units _Group);								//Kill all the units in the group and delete the zombies
 	_this select 0 setvariable ["newAct", true, False];		//Set the activation state to new to enable fast spawn.
-	diag_log "ExileZ 2.0: Deleting Zombies";
+	diag_log "ExileZ 2.0: Deleting Sec Zombies";
 };
 _this select 0 setvariable ["active", false, False];

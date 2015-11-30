@@ -1,6 +1,7 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
 //Zombie Types - This can spawn any mod type it's not limited to Ryan mod just edit skins. All here are walkers and one boss
+
 ZombieClasses = [
 	"RyanZombieC_man_polo_2_Fslow", 
 	"RyanZombieC_man_polo_4_Fslow", 
@@ -26,14 +27,34 @@ ZombieClasses = [
 	"RyanZombieB_Soldier_lite_Fslow", 
 	"RyanZombieB_Soldier_lite_F_1slow", 
 	"RyanZombieB_RangeMaster_Fmedium", 
-	//"RyanZombieboss1",
+	//"RyanZombieboss1", //NOT COOL
 	"RyanZombieCrawler1",
 	"RyanZombieSpider1"
 	]; 
+//Secondary spawner classes
+SecZombieClasses = [
+	"RyanZombieB_RangeMaster_Fmedium", 
+	"RyanZombieboss1", //NOT COOL
+	"RyanZombieCrawler1",
+	"RyanZombieSpider1"
+	]; 
+	
+//Harassing zombie classes
+HZombieClasses = [
+	"RyanZombieC_man_polo_2_Fslow", 
+	"RyanZombieC_man_polo_4_Fslow", 
+	"RyanZombieC_man_polo_5_Fslow", 
+	"RyanZombieC_man_polo_6_Fslow", 
+	"RyanZombieC_man_p_fugitive_Fslow", 
+	"RyanZombieC_man_w_worker_Fslow", 
+	"RyanZombieC_scientist_Fslow", 
+	"RyanZombieC_man_hunter_1_Fslow", 
+	"RyanZombieC_man_pilot_Fslow", 
+	"RyanZombieC_journalist_Fslow", 
+	"RyanZombieC_Orestesslow", 
+	"RyanZombieC_Nikosslow"
+	];
 
-
-
-//Zombie Loot settings
 //Vests
 zVest = [
 	"V_HarnessOGL_brn",
@@ -53,6 +74,11 @@ zVest = [
 	"V_Rangemaster_belt"
 	];
 
+//Secondary spawner Vests
+SeczVest = [
+	"V_Rangemaster_belt"
+	];
+
 //Items
 zLoot = [
 	"Exile_Item_InstaDoc",
@@ -63,22 +89,55 @@ zLoot = [
 	"Exile_Item_CookingPot",
 	"16Rnd_9x21_Mag"
 	];
+	
+//Secondary spawner loot
+SeczLoot = [
+	"16Rnd_9x21_Mag"
+	];
 
-//Main Settings
+
+//Global Settings
+ProtectSafezones	= true;			// if set to true a trigger will kill all "CIV" units within the SafeZonePositions defined below
+ZombieSide 			= EAST; 		// zombie team side east, west and Civilian can be used //Zombie themselves are always "CIV"
+
+//Main Spawner Settings
 TriggerRadius 		= 300;    		// Trigger radius is used to detect player
 SpawnRadius			= 250;			// Spawning radius around the trigger
 GroupSize 			= 15;       	// Maximum number of zombies per trigger
 DynamicGroupSize	= true;			// Set to 1 to dynamically set the max number of zombies for a town *(this will not exceed the GroupSize)
 DynamicRatio		= 3;			// Percent of the available spawn position will be filled with a zombie. *(regular town as about 300 positions)
-ActicationDelay		= 15;			// Time before the trigger start when activated
+ActivationDelay		= 15;			// Time before the trigger start when activated
 SpawnDelay			= 10;			// Spawn time between each zombie spawn if the town was empty
 RespawnDelay		= 45;			// Respawn time between each zombies if they are killed
 DeleteDelay			= 45;			// Delay before deleting the zombies of a town if empty
-ZombieSide 			= EAST; 		// zombie team side east, west and Civilian can be used //Zombie themselves are always "CIV"
-ProtectSafezones	= true;			// if set to true a trigger will kill all "CIV" units within the SafeZonePositions defined below
 ShowTriggerOnMap	= true;			// Show infested zones on the map
 ZMarkerColor		= "ColorRed";	// Color of the zone
 ZMarkerAlpha		= 0.2;			// Alpha *(Transparency)of the zone
+UseBuildings		= true;			// Use the buildings to spawn the zombies instead of random locations
+
+//Secondary Spawner Setting
+UseSecSpawners			= true;
+SecTriggerRadius 		= 250;    		// Trigger radius is used to detect player
+SecSpawnRadius			= 150;			// Spawning radius around the trigger
+SecGroupSize 			= 15;       	// Maximum number of zombies per trigger
+SecDynamicGroupSize		= false;		// Set to 1 to dynamically set the max number of zombies for a town *(this will not exceed the GroupSize)
+SecDynamicRatio			= 3;			// Percent of the available spawn position will be filled with a zombie. *(regular town as about 300 positions)
+SecActivationDelay		= 15;			// Time before the trigger start when activated
+SecSpawnDelay			= 10;			// Spawn time between each zombie spawn if the town was empty
+SecRespawnDelay			= 35;			// Respawn time between each zombies if they are killed
+SecDeleteDelay			= 45;			// Delay before deleting the zombies of a town if empty
+SecShowTriggerOnMap		= true;			// Show infested zones on the map
+SecZMarkerColor			= "ColorGreen";	// Color of the zone
+SecZMarkerAlpha			= 0.2;			// Alpha *(Transparency)of the zone
+SecUseBuildings			= false;		// Use the buildings to spawn the zombies instead of random locations
+
+//Harassing zombies - with this you're never safe, zombies will spawn near you ALL THE TIME. *Can be ressource heavy.
+UseHarassingZombies		= true;
+HZGroupsSize			= 3;			// maximum number of zombies around a player
+HZFrequency				= 90;			// time in seconds between each new zombie.
+HZMaxDistance			= 150;			// maximum distance from the player before the zombie is deleted.
+HZMaxSpawnDistance		= 75;			// maximum spawn distance from the player.
+HZMinSpawnDistance		= 20;			// minimum spawn distance from the player. (don't set 0)
 
 //Killing zombies settings
 ZombieMoney				= 5;	// Money per zombie kill
@@ -90,9 +149,10 @@ CqbBonus				= 40;	// Respect for close quarter bonus at 1 meter
 DistanceBonusDivider 	= 10;	// Distance divided by that number = respect E.G. 300m / [20] = 15 Respect
 
 
-// HeadlessClient settings
+// HeadlessClient settings *** Currently not supported
 UseHC 	= false;   				// set to true if running Headless Client
 // Headless client must be properly setup in the mission.sqm, Name must be HC
+
 
 //Default Altis SafeZones
 SafeZonePositions = [			//	[[Coordinates],Radius]  // You can Get the safezone information directly from your mission.sqm under class Markers
@@ -101,17 +161,26 @@ SafeZonePositions = [			//	[[Coordinates],Radius]  // You can Get the safezone i
 	[[2998,18175],175]
 ];					
 
+SecTownPositions = [
+	[15110,17385], 	// Near Main Airfield
+	[14285,16286]	// Near Main Airfield
+];
+
 //Custom map settings 								
 A2Buildings 		= false;    // set to true if using A2 Maps or maps with A2 Buildings it looks for "House" instead of "House_F"
 
-// If nothing is spawning in A2 Maps try A2Buildings at false, some maps have been updated to Arma 3 
+// If nothing is spawning in A2 Maps try A2Buildings at false, some maps have been updated to Arma 3
+// If still nothing is spawning set DynamicGroupSize to false
+// If still nothing is spawning set UseBuildings to false
+// If still nothing is spawning verify that your trigger are being created.
+// If still nothing is spawning ... well write on the forum :P
 
 //Townpositions, only one 2D coordinate is required per town.
 //Use block comment /* content to comment */ to disable and enable maps.
 //Altis
 TownPositions = [
-	[15110,17385], 	// Near Main Airfield
-	[14285,14286], 	// Near Main Airfield
+	//[15110,17385], 	// Near Main Airfield
+	//[14285,14286], 	// Near Main Airfield
 	[4549,21425],
 	[3861,17493],
 	[4226,16844],
@@ -258,7 +327,7 @@ TownPositions = [
 */
 
 /*
-//Taviana 3.0  //May contain duplicated locations
+//Taviana  //May contain duplicated locations
 TownPositions = [
 	[1071,17743],
 	[1292,18091],
@@ -542,16 +611,31 @@ CreateTriggers = compile preprocessFile "exilez\init\CreateTriggers.sqf";
 ZombieSpawner = compile preprocessFile "exilez\init\ZombieSpawner.sqf";
 ZMPKilled = compile preprocessFile "exilez\init\MPKilled.sqf";
 Safezone = compile preprocessFile "exilez\init\Safezone.sqf";
+SecCreateTriggers = compile preprocessFile "exilez\init\SecCreateTriggers.sqf";
+SecZombieSpawner = compile preprocessFile "exilez\init\SecZombieSpawner.sqf";
+HarassingZombies = compile preprocessFile "exilez\init\HarassingZombies.sqf";
+HarassingZombiesSpawn = compile preprocessFile "exilez\init\HarassingZombiesSpawn.sqf";
 //Create Triggers
-{
-	nul = [_x] spawn CreateTriggers;
+{	nul = [_x] spawn CreateTriggers;
 	sleep 0.01;
 }foreach TownPositions;	
 
 //Create Triggers for safezones
-if (ProtectSafezones) then {
-	{
-		nul = [_x] spawn Safezone;
+if (ProtectSafezones) then 
+{
+	{	nul = [_x] spawn Safezone;
 		sleep 0.01;
 	}foreach SafeZonePositions;	
+};
+
+//enable secondary spawners
+if (UseSecSpawners) then 
+{
+	{	nul = [_x] spawn SecCreateTriggers;
+		sleep 0.01;
+	}foreach SecTownPositions;
+};
+//Enable the HarassingZombies
+if (UseHarassingZombies) then {
+	nul = [] spawn HarassingZombies;
 };
