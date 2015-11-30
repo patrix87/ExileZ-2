@@ -9,7 +9,7 @@ if (_this select 0 getvariable ["active", False]) exitwith {};
 //Set the script as active
 _this select 0 setvariable ["active", true, False];
 
-diag_log "ExileZ 2.0: Zombie Sec Spawner Activated";
+diag_log "ExileZ 2.0: Secondary Zombie Spawner Activated";
 
 private [
     "_set",
