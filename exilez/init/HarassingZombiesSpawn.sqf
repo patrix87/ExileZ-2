@@ -39,30 +39,29 @@ HZInitGroup = {
 
 //Populate the group
 HZPopulate = {
-	(HZombieClasses call BIS_fnc_selectRandom) createUnit 
-	[
-		_zombieSpawnPosition,
-		_group,
-		"
-		this addVest (zVest call BIS_fnc_selectRandom);
-		this addItemToVest (zLoot call BIS_fnc_selectRandom);
-		this disableAI 'FSM';
-		this disableAI 'AUTOTARGET';
-		this disableAI 'TARGET';
-		this disableConversation true;
-		this setCaptive true;	
-		this setbehaviour 'CARELESS';
-		this allowFleeing 0;
-		this setunitpos 'UP';
-		this addMPEventHandler ['MPKilled', {_this spawn ZMPKilled;}];
-		"
-	];
+	if !([_zombieSpawnPosition] Call ExileClient_util_world_IsInTerritory) then
+	{
+		(HZombieClasses call BIS_fnc_selectRandom) createUnit 
+		[
+			_zombieSpawnPosition,
+			_group,
+			"
+			this addVest (zVest call BIS_fnc_selectRandom);
+			this addItemToVest (zLoot call BIS_fnc_selectRandom);
+			this disableConversation true;
+			this setbehaviour 'CARELESS';
+			this allowFleeing 0;
+			this setunitpos 'UP';
+			this addMPEventHandler ['MPKilled', {_this spawn ZMPKilled;}];
+			"
+		];
+	};
 };
 
 //Spawning
 if (isNull _group) then 
 { 	//the zombie group is empty or all dead
-	nul = call HZInitGroup; 						//Create Group
+	nul = call HZInitGroup; 					//Create Group
 	sleep 3;
 	nul = call HZPopulate; 						//Spawn 1 zombie
 } 

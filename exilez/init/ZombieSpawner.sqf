@@ -73,11 +73,7 @@ Populate = {
 		"
 		this addVest (zVest call BIS_fnc_selectRandom);
 		this addItemToVest (zLoot call BIS_fnc_selectRandom);
-		this disableAI 'FSM';
-		this disableAI 'AUTOTARGET';
-		this disableAI 'TARGET';
 		this disableConversation true;
-		this setCaptive true;	
 		this setbehaviour 'CARELESS';
 		this allowFleeing 0;
 		this setunitpos 'UP';
@@ -85,6 +81,13 @@ Populate = {
 		"
 	];
 };
+
+/*
+		this disableAI 'FSM';
+		this disableAI 'AUTOTARGET';
+		this disableAI 'TARGET';
+		this setCaptive true;	
+*/
 
 // END of FUNCTIONS ----------------------------------------------------
 
