@@ -23,5 +23,5 @@ if (surfaceiswater _position) exitwith { hint "EXILE-Z: position is in the water
 //Create trigger area
 _trigger = createTrigger["EmptyDetector", _position];
 _trigger setTriggerArea[_radius, _radius, 0, true];
-_trigger setTriggerActivation["CIV", "PRESENT", TRUE]; //Apparently zombies are always CIV...
+_trigger setTriggerActivation[ZombieSideString, "PRESENT", TRUE];
 _trigger setTriggerStatements["this && {vehicle _x isKindOf 'Man'} count thislist > 0", "{if (_x isKindOf 'Man') then {_x setdamage 1; deleteVehicle _x;}; }foreach thislist;", ""];
