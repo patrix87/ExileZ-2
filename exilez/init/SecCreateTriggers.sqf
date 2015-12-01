@@ -17,8 +17,6 @@ private [
 //Current spawner position
 _position = _this select 0;
 
-diag_log format["ExileZ 2.0: Creating Secondary Trigger at %1 for radius of %2 m.",_position,SecTriggerRadius];
-
 //Validate current spawner position
 if (isnil "_position") exitwith { hint "EXILE-Z: empty position";};
 if (count _position < 1) exitwith { hint "EXILE-Z: required a position ARRAY";};
@@ -39,7 +37,7 @@ if (SecShowTriggerOnMap) then {
 	_marker setMarkerColor SecZMarkerColor;
 };
 
-if (PreGenaratePos && SecUseBuildings) then
+if (PregeneratePos && SecUseBuildings) then
 {
 	_positions = [];
 	
@@ -91,10 +89,10 @@ if (PreGenaratePos && SecUseBuildings) then
 	_trigger setvariable ["set", True, False];
 	_trigger setvariable ["groupSize", _groupSize, False];
 	
-	diag_log format["ExileZ 2.0: Creating Trigger : %1	|	radius : %2m	|	GroupSize : %3	|	Buildings : %4	|	Spawn Positions : %5.",_position,SecTriggerRadius,_groupSize,Count _buildings,_posCount];
+	diag_log format["ExileZ 2.0: Creating Secondary Trigger : %1	|	radius : %2m	|	GroupSize : %3	|	Buildings : %4	|	Spawn Positions : %5	",_position,SecTriggerRadius,_groupSize,Count _buildings,_posCount];
 	
 }
 else
 {
-	diag_log format["ExileZ 2.0: Creating Trigger at %1 with a radius of %2m.",_position,SecTriggerRadius];
+	diag_log format["ExileZ 2.0: Creating Secondary Trigger at %1 with a radius of %2m.",_position,SecTriggerRadius];
 };

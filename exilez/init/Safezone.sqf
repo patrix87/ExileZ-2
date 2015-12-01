@@ -13,7 +13,7 @@ private [
 _position = (_this select 0) select 0;
 _radius = (_this select 0) select 1;
 
-diag_log format["ExileZ 2.0: Creating Safezone at %1 for radius of %2 m.",_position,_radius];
+diag_log format["ExileZ 2.0: Creating Safezone at %1 with a radius of %2m.",_position,_radius];
 
 //Validate current trigger position
 if (isnil "_position") exitwith { hint "EXILE-Z: empty position";};

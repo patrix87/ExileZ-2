@@ -6,7 +6,7 @@
 //Global Settings
 ProtectSafezones		= true;			// if set to true a trigger will kill all "CIV" units within the SafeZonePositions defined below
 ZombieSide 				= EAST; 		// zombie team side east, west and Civilian can be used //Zombie themselves are always "CIV"
-PreGenaratePos			= true;			// slow the server start time but prevent lag spikes.
+PregeneratePos			= true;			// slow the server start time but prevent lag spikes.
 
 //Main Spawner Settings
 UseSpawners				= true;

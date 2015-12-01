@@ -9,21 +9,43 @@ private [
 	"_xOffset",
 	"_yOffset",
 	"_zombieSpawnPosition",
-	"_playerPosition"
+	"_playerPosition",
+	"_result",
+	"_maxRange",
+	"_flags",
+	"_distance",
+	"_radius"
 ];
 
 _group = (_this select 0) getvariable ["group", objNull];
 
 _playerPosition = getpos (_this select 0);
 
-//randomize spawn location
-_xOffset = floor ((random (HZMaxSpawnDistance-HZMinSpawnDistance))+HZMinSpawnDistance);
-_yOffset = floor ((random (HZMaxSpawnDistance-HZMinSpawnDistance))+HZMinSpawnDistance);
-_xOffset = [_xOffset,(-_xOffset)] call BIS_fnc_selectRandom;
-_yOffset = [_yOffset,(-_yOffset)] call BIS_fnc_selectRandom;
-_zombieSpawnPosition = [round((_playerPosition select 0) + _xOffset),round((_playerPosition select 1) + _yOffset)];
 
-diag_log format["ExileZ 2.0: Spawning 1 Harassing Zombie at %1.",_zombieSpawnPosition];
+//check if coordinate is in safezone try 5 then abort.
+_badLocation = false;
+_maxRange = getNumber (missionConfigFile >> "CfgTerritories" >> "maximumRadius");
+
+for "_i" from 1 to 5 do {
+	//randomize spawn location
+	_xOffset = floor ((random (HZMaxSpawnDistance-HZMinSpawnDistance))+HZMinSpawnDistance);
+	_yOffset = floor ((random (HZMaxSpawnDistance-HZMinSpawnDistance))+HZMinSpawnDistance);
+	_xOffset = [_xOffset,(-_xOffset)] call BIS_fnc_selectRandom;
+	_yOffset = [_yOffset,(-_yOffset)] call BIS_fnc_selectRandom;
+	_zombieSpawnPosition = [round((_playerPosition select 0) + _xOffset),round((_playerPosition select 1) + _yOffset)];
+	//fetch flags around the spawn position
+	_flags = _zombieSpawnPosition nearObjects ["Exile_Construction_Flag_Static", _maxRange];
+	{
+		_distance = (getPosATL _x) distance _zombieSpawnPosition;
+		_radius = _x getVariable ["ExileTerritorySize", 0];
+		if (_distance <= _radius) exitWith {_badLocation = true}; //if the tested spawn is inside a territory, exit the foreach loop.
+		sleep 0.05;
+	}forEach _flags;
+	if !(_badLocation) exitWith {};	//if the previous spawn position was outside the limit of a territory, exit the loop and use the position.
+	sleep 0.05;
+};
+
+
 
 HZInitGroup = {
 	//Create a group for the zombies
@@ -39,8 +61,13 @@ HZInitGroup = {
 
 //Populate the group
 HZPopulate = {
-	if !([_zombieSpawnPosition] Call ExileClient_util_world_IsInTerritory) then
+	if (_badlocation) then
 	{
+		diag_log format["ExileZ 2.0: No suitable spawn location found for a Harassing Zombie near %1", _playerPosition];
+	}
+	else
+	{	
+		diag_log format["ExileZ 2.0: Spawning 1 Harassing Zombie at %1.",_zombieSpawnPosition];
 		(HZombieClasses call BIS_fnc_selectRandom) createUnit 
 		[
 			_zombieSpawnPosition,
@@ -53,6 +80,7 @@ HZPopulate = {
 			this allowFleeing 0;
 			this setunitpos 'UP';
 			this addMPEventHandler ['MPKilled', {_this spawn ZMPKilled;}];
+			doStop this;
 			"
 		];
 	};

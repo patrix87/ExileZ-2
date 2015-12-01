@@ -78,6 +78,7 @@ Populate = {
 		this allowFleeing 0;
 		this setunitpos 'UP';
 		this addMPEventHandler ['MPKilled', {_this spawn ZMPKilled;}];
+		doStop this;
 		"
 	];
 };

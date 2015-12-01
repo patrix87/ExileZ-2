@@ -36,7 +36,7 @@ if (ShowTriggerOnMap) then {
 	_marker setMarkerColor ZMarkerColor;
 };
 
-if (PreGenaratePos && UseBuildings) then
+if (PregeneratePos && UseBuildings) then
 {
 	_positions = [];
 	
@@ -88,7 +88,7 @@ if (PreGenaratePos && UseBuildings) then
 	_trigger setvariable ["set", True, False];
 	_trigger setvariable ["groupSize", _groupSize, False];
 	
-	diag_log format["ExileZ 2.0: Creating Trigger : %1	|	radius : %2m	|	GroupSize : %3	|	Buildings : %4	|	Spawn Positions : %5.",_position,TriggerRadius,_groupSize,Count _buildings,_posCount];
+	diag_log format["ExileZ 2.0: Creating Trigger : %1	|	radius : %2m	|	GroupSize : %3	|	Buildings : %4	|	Spawn Positions : %5	",_position,TriggerRadius,_groupSize,Count _buildings,_posCount];
 	
 }
 else
