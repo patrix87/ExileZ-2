@@ -32,7 +32,7 @@ while {true} do {
 		}
 		else
 		{
-			_sTime = HZFrequency / _nPlayer;
+			_sTime = round (HZFrequency / _nPlayer);
 			diag_log format["ExileZ 2.0: Waiting %1 seconds.",_sTime];
 			sleep _sTime;
 		};

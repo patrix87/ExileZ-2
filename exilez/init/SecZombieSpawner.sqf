@@ -128,6 +128,12 @@ if !(_set) then
 			_groupSize = SecGroupSize;
 			diag_log format["ExileZ 2.0: Dynamic Group Size is higher than limit. %1",SecGroupSize];
 		};
+				
+		if (_groupSize < SecMinGroupSize) then {
+			_groupSize = SecMinGroupSize;
+			diag_log format["ExileZ 2.0: Dynamic Group Size is lower than the limit of %1.",SecMinGroupSize];
+		};
+		
 		diag_log format["ExileZ 2.0: Dynamic Group Size set to %1.",_groupSize];
 		
 	}
