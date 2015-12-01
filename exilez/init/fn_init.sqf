@@ -11,14 +11,14 @@ ZombieSide 				= EAST; 		// zombie team side east, west and Civilian can be used
 UseSpawners				= true;
 TriggerRadius 			= 300;    		// Trigger radius is used to detect player
 SpawnRadius				= 250;			// Spawning radius around the trigger
-GroupSize 				= 15;       	// Maximum number of zombies per trigger
+GroupSize 				= 12;       	// Maximum number of zombies per trigger
 MinGroupSize			= 5;			// Used only with DynamicGroupSize.
 DynamicGroupSize		= true;			// Set to 1 to dynamically set the max number of zombies for a town *(this will not exceed the GroupSize)
 DynamicRatio			= 3;			// Percent of the available spawn position will be filled with a zombie. *(regular town as about 300 positions)
 ActivationDelay			= 15;			// Time before the trigger start when activated
-SpawnDelay				= 10;			// Spawn time between each zombie spawn if the town was empty
-RespawnDelay			= 45;			// Respawn time between each zombies if they are killed
-DeleteDelay				= 45;			// Delay before deleting the zombies of a town if empty
+SpawnDelay				= 15;			// Spawn time between each zombie spawn if the town was empty
+RespawnDelay			= 60;			// Respawn time between each zombies if they are killed
+DeleteDelay				= 60;			// Delay before deleting the zombies of a town if empty
 ShowTriggerOnMap		= true;			// Show infested zones on the map
 ZMarkerColor			= "ColorRed";	// Color of the zone
 ZMarkerAlpha			= 0.2;			// Alpha *(Transparency)of the zone
@@ -163,6 +163,7 @@ zLoot = [
 	
 //Secondary spawner loot
 SeczLoot = [
+	"Exile_Item_InstaDoc",
 	"16Rnd_9x21_Mag"
 	];
 
