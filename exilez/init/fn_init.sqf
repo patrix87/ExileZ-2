@@ -9,6 +9,14 @@ ZombieSide 				= EAST; 		// zombie team side east, west and Civilian can be used
 ZombieSideString		= "EAST";		// Same thing but in a string.
 PregeneratePos			= true;			// slow the server start time but prevent lag spikes.
 
+//Explosive zombies
+ExplosiveZombies		= true;				// randomly boobie trapped zombies exploding a few seconds after dying.
+ExplosiveZombiesRatio	= 5;					// percentage of explosive zombies
+ExplosiveZombieWarning	= "IT'S A TRAP !!!";	// Message that will display a few seconds before the explosion of a zombie.
+ExplosionDelay			= 0.1;					// self-explanatory
+ExplosiveType			= "Grenade" ;			// "mini_Grenade" for small almost non-lethal explision or "Grenade" Big and dangerous explosion.
+ExplosiveRespect		= 100;					// Bonus respect for Exploding zombies
+
 //Main Spawner Settings
 UseSpawners				= true;
 TriggerRadius 			= 300;    		// Trigger radius is used to detect player
@@ -74,7 +82,7 @@ A2Buildings 			= false;    // set to true if using A2 Maps or maps with A2 Build
 // If still nothing is spawning verify that your trigger are being created.
 // If still nothing is spawning ... well write on the forum :P
 
-
+//Primary spawner classes
 ZombieClasses = [
 	"RyanZombieC_man_polo_2_Fslow", 
 	"RyanZombieC_man_polo_4_Fslow", 
@@ -104,6 +112,7 @@ ZombieClasses = [
 	"RyanZombieCrawler1",
 	"RyanZombieSpider1"
 	]; 
+	
 //Secondary spawner classes
 SecZombieClasses = [
 	"RyanZombieB_RangeMaster_Fmedium", 
@@ -149,6 +158,15 @@ zVest = [
 
 //Secondary spawner Vests
 SeczVest = [
+	"V_HarnessOGL_brn",
+	"V_HarnessOGL_gry",
+	"V_HarnessO_brn",
+	"V_HarnessO_gry",
+	"V_HarnessOSpec_brn",
+	"V_HarnessOSpec_gry"
+	];
+//Harassing zombie Vests
+HZzVest = [
 	"V_Rangemaster_belt"
 	];
 
@@ -167,6 +185,11 @@ zLoot = [
 SeczLoot = [
 	"Exile_Item_InstaDoc",
 	"16Rnd_9x21_Mag"
+	];
+	
+//Harassing zombie loot
+HZzLoot = [
+	"Exile_Item_PlasticBottleEmpty"
 	];
 
 

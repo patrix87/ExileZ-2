@@ -73,8 +73,8 @@ HZPopulate = {
 			_zombieSpawnPosition,
 			_group,
 			"
-			this addVest (zVest call BIS_fnc_selectRandom);
-			this addItemToVest (zLoot call BIS_fnc_selectRandom);
+			this addVest (HZzVest call BIS_fnc_selectRandom);
+			this addItemToVest (HZzLoot call BIS_fnc_selectRandom);
 			this disableConversation true;
 			this setbehaviour 'CARELESS';
 			this allowFleeing 0;

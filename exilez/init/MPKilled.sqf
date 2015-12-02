@@ -20,7 +20,9 @@ private [
 "_cqbDistance",
 "_cqbBonus",
 "_distance",
-"_killerRespectPoints"
+"_killerRespectPoints",
+"_safetoblow",
+"_explode"
 ];
 
 _unit           		= _this select 0;
@@ -29,6 +31,8 @@ _playerObj      		= objNull;
 _roadKilled    			= false;
 _respectChange  		= 0;
 _killerRespectPoints 	= [];
+_safetoblow				= true;
+_explode				= false;
 
 //Parameters
 _zombieMoney			= ZombieMoney;				//default = 5;	// Money per zombie kill
@@ -42,6 +46,16 @@ _distanceBonusDivider 	= DistanceBonusDivider;		//default = 10;	// Distance divi
 
 _killMsg = ["ZOMBIE WACKED","ZOMBIE CLIPPED","ZOMBIE DISABLED","ZOMBIE DISQUALIFIED","ZOMBIE WIPED","ZOMBIE WIPED","ZOMBIE ERASED","ZOMBIE LYNCHED","ZOMBIE WRECKED","ZOMBIE NEUTRALIZED","ZOMBIE SNUFFED","ZOMBIE WASTED","ZOMBIE ZAPPED"] call BIS_fnc_selectRandom;
 _killMsgRoad = ["ZOMBIE ROADKILL","ZOMBIE SMASHED","ERMAHGERD ROADKILL"] call BIS_fnc_selectRandom;
+
+if(ExplosiveZombies) then 
+{
+	if (ExplosiveZombiesRatio > random 100) then
+	{	
+		_killerRespectPoints pushBack [(format ["%1",ExplosiveZombieWarning]), ExplosiveRespect];
+		_explode = true;
+	};
+};
+
 
 //Roadkill or not
 if (isPlayer _killer) then
@@ -111,4 +125,16 @@ if ((!isNull _playerObj) && {((getPlayerUID _playerObj) != "") && {_playerObj is
 	
 	// Update client database entry
 	format["setAccountMoneyAndRespect:%1:%2:%3", _money, _respect, (getPlayerUID _playerObj)] call ExileServer_system_database_query_fireAndForget;
+};
+
+if(_explode) then 
+{
+	{
+		if (((_x select 0) distance (position _unit)) < (_x select 1)) exitwith {_safetoblow = false};
+	}Foreach SafeZonePositions;
+	if (_safetoblow) then 
+	{
+		sleep ExplosionDelay;
+		ExplosiveType createvehicle position _unit;
+	};
 };
