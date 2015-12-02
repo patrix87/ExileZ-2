@@ -13,7 +13,7 @@ PregeneratePos			= true;			// slow the server start time but prevent lag spikes.
 ExplosiveZombies		= true;				// randomly boobie trapped zombies exploding a few seconds after dying.
 ExplosiveZombiesRatio	= 5;					// percentage of explosive zombies
 ExplosiveZombieWarning	= "IT'S A TRAP !!!";	// Message that will display a few seconds before the explosion of a zombie.
-ExplosionDelay			= 0.1;					// self-explanatory
+ExplosionDelay			= 3;					// self-explanatory
 ExplosiveType			= "Grenade" ;			// "mini_Grenade" for small almost non-lethal explision or "Grenade" Big and dangerous explosion.
 ExplosiveRespect		= 100;					// Bonus respect for Exploding zombies
 
