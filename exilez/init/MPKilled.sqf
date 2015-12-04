@@ -138,3 +138,5 @@ if(_explode) then
 		ExplosiveType createvehicle position _unit;
 	};
 };
+sleep CorpseDeleteDelay;
+deleteVehicle _unit;

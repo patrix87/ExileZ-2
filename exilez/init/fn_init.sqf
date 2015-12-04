@@ -8,9 +8,10 @@ ProtectSafezones		= true;			// if set to true a trigger will kill all "CIV" unit
 ZombieSide 				= EAST; 		// zombie team side east, west and Civilian can be used
 ZombieSideString		= "EAST";		// Same thing but in a string.
 PregeneratePos			= true;			// slow the server start time but prevent lag spikes.
+CorpseDeleteDelay		= 60;			// delay before a zombie corpse is deleted.
 
 //Explosive zombies
-ExplosiveZombies		= true;				// randomly boobie trapped zombies exploding a few seconds after dying.
+ExplosiveZombies		= true;					// randomly boobie trapped zombies exploding a few seconds after dying.
 ExplosiveZombiesRatio	= 2;					// percentage of explosive zombies
 ExplosiveZombieWarning	= "IT'S A TRAP !!!";	// Message that will display a few seconds before the explosion of a zombie.
 ExplosionDelay			= 3;					// self-explanatory
