@@ -9,7 +9,7 @@ private [
 
 
 sleep 120; //Wait 2 minutes for the server to boot
-//Inifite Harassing Loop
+//Infinite Harassing Loop
 while {true} do {
 	{
 		if (isPlayer _x) then 
