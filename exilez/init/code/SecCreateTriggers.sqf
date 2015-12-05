@@ -10,17 +10,18 @@ private [
     "_positions",
     "_posCount",
     "_index",
+	"_nearestLocation",
 	"_groupSize"
 ];
 
-
 //Current spawner position
 _position = _this select 0;
+_nearestLocation = text nearestLocation [_position, ""];
 
 //Validate current spawner position
-if (isnil "_position") exitwith { hint "EXILE-Z: empty position";};
-if (count _position < 1) exitwith { hint "EXILE-Z: required a position ARRAY";};
-if (surfaceiswater _position) exitwith { hint "EXILE-Z: position is in the water";};
+if (isnil "_position") exitwith { Diag_log "ExileZ 2.0:: Empty position";};
+if (count _position < 1) exitwith { Diag_log "ExileZ 2.0: Require a position ARRAY";};
+if (surfaceiswater _position) exitwith { Diag_log "ExileZ 2.0: Position is in the water";};
 
 //Create trigger area
 _trigger = createTrigger["EmptyDetector", _position];
@@ -41,7 +42,7 @@ if (PregeneratePos && SecUseBuildings) then
 {
 	_positions = [];
 	
-	//Creates a array of all Houses within zTriggerDistance of the trigger position
+	//Creates a array of all Houses within TriggerDistance of the trigger position
 
 	if (A2Buildings) then 
 	{
@@ -88,11 +89,13 @@ if (PregeneratePos && SecUseBuildings) then
 	_trigger setvariable ["positions", _positions, False];
 	_trigger setvariable ["set", True, False];
 	_trigger setvariable ["groupSize", _groupSize, False];
-	
-	diag_log format["ExileZ 2.0: Creating Secondary Trigger : %1	|	radius : %2m	|	GroupSize : %3	|	Buildings : %4	|	Spawn Positions : %5	",_position,SecTriggerRadius,_groupSize,Count _buildings,_posCount];
-	
+	if (Debug) then {
+		diag_log format["ExileZ 2.0: Creating Secondary Trigger	|	Position : %1	|	Radius : %2m	|	GroupSize : %3	|	Buildings : %4	|	Spawn Positions : %5	|	Near : %6 ",_position,SecTriggerRadius,_groupSize,Count _buildings,_posCount,_nearestLocation];
+	};
 }
 else
-{
-	diag_log format["ExileZ 2.0: Creating Secondary Trigger at %1 with a radius of %2m.",_position,SecTriggerRadius];
+{	
+	if (Debug) then {
+		diag_log format["ExileZ 2.0: Creating Secondary Trigger	|	Position : %1	|	Radius : %2m	|	Near : %3 ",_position,SecTriggerRadius,_nearestLocation];
+	};
 };

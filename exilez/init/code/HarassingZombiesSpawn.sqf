@@ -14,7 +14,8 @@ private [
 	"_maxRange",
 	"_flags",
 	"_distance",
-	"_radius"
+	"_radius",
+	"_zClass"
 ];
 
 _group = (_this select 0) getvariable ["group", objNull];
@@ -63,18 +64,23 @@ HZInitGroup = {
 HZPopulate = {
 	if (_badlocation) then
 	{
-		diag_log format["ExileZ 2.0: No suitable spawn location found for a Harassing Zombie near %1", _playerPosition];
+		if (Debug) then {
+			diag_log format["ExileZ 2.0: No suitable spawn location found for a Harassing Zombie near %1 ",name (_this select 0)];
+		};
 	}
 	else
 	{	
-		diag_log format["ExileZ 2.0: Spawning 1 Harassing Zombie at %1.",_zombieSpawnPosition];
-		(HZombieClasses call BIS_fnc_selectRandom) createUnit 
+		_zClass = call HarassingClasses;
+		if (Debug) then {
+			diag_log format["ExileZ 2.0: Spawning 1 Harassing Zombie	|	Position : %1	|	Class : %2	|	For Player : %3 ",_zombieSpawnPosition,_zClass,name (_this select 0)];
+		};
+		_zClass createUnit
 		[
 			_zombieSpawnPosition,
 			_group,
 			"
-			this addVest (HZzVest call BIS_fnc_selectRandom);
-			this addItemToVest (HZzLoot call BIS_fnc_selectRandom);
+			if !(Call HarassingVest=='') then {this addVest Call HarassingVest};
+			if !(Call HarassingLoot=='' && Call HarassingVest=='') then {this addItemToVest Call HarassingLoot};
 			this disableConversation true;
 			this setbehaviour 'CARELESS';
 			this allowFleeing 0;
@@ -88,13 +94,13 @@ HZPopulate = {
 
 //Spawning
 if (isNull _group) then 
-{ 	//the zombie group is empty or all dead
+{ 												//the zombie group is empty or all dead
 	nul = call HZInitGroup; 					//Create Group
 	sleep 3;
 	nul = call HZPopulate; 						//Spawn 1 zombie
 } 
 else 
-{	//group is not empty or all dead
+{												//group is not empty or all dead
 	_cnt = {alive _x} count units _group; 		//count number of zombie alive in the group
 	if (_cnt < HZGroupsSize) then 
 	{
@@ -107,5 +113,9 @@ else
 	if ((_x distance (_this select 0)) > HZMaxDistance) then {
 		_x setdamage 1;
 		deleteVehicle _x;
+		if (Debug) then {
+			diag_log format["ExileZ 2.0: Deleting 1 Harassing Zombie	|	Position : %1	|	Class : %2	|	From Player : %3 ",Position _x,typeOf _x,name (_this select 0)];
+		};
 	};
 } foreach (units _Group);
+
