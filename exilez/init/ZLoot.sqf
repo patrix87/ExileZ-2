@@ -43,19 +43,19 @@ HarassingLoot =
 /*
 PrimaryLoot =
 {
-	_return = [""];
+	_return = "";
 	_return;
 };
 
 SeccondaryLoot =
 {
-	_return = [""];
+	_return = "";
 	_return;
 };
 
 HarassingLoot = 
 {
-	_return = [""];
+	_return = "";
 	_return;
 };
 /*

@@ -41,11 +41,7 @@ SeccondaryVest =
 };
 	
 //Harassing zombies Vests
-HarassingVest = 
-{
-	_return = [""];
-	_return;
-};
+
 /*
 HarassingVest = 
 {
@@ -58,23 +54,30 @@ HarassingVest =
 };
 */
 
+HarassingVest = 
+{
+	_return = "";
+	_return;
+};
+
+
 // No Vest config, replace the whole function with those lines. Loot won't spawn if vest is empty.
 /*
 PrimaryVest =
 {
-	_return = [""];
+	_return = "";
 	_return;
 };
 
 SeccondaryVest =
 {
-	_return = [""];
+	_return = "";
 	_return;
 };
 
 HarassingVest = 
 {
-	_return = [""];
+	_return = "";
 	_return;
 };
 /*
