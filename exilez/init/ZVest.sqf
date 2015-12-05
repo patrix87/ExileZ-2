@@ -43,6 +43,12 @@ SeccondaryVest =
 //Harassing zombies Vests
 HarassingVest = 
 {
+	_return = [""];
+	_return;
+};
+/*
+HarassingVest = 
+{
 	_return = [
 	
 	"V_Rangemaster_belt"
@@ -50,10 +56,25 @@ HarassingVest =
 	] call BIS_fnc_selectRandom;
 	_return;
 };
-	
+*/
+
 // No Vest config, replace the whole function with those lines. Loot won't spawn if vest is empty.
 /*
-PrimaryVest = "";
-SeccondaryVest = "";
-HarassingVest = "";
+PrimaryVest =
+{
+	_return = [""];
+	_return;
+};
+
+SeccondaryVest =
+{
+	_return = [""];
+	_return;
+};
+
+HarassingVest = 
+{
+	_return = [""];
+	_return;
+};
 /*

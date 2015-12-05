@@ -41,7 +41,21 @@ HarassingLoot =
 	
 // No loot config, replace the whole function with those lines. Loot won't spawn if vest is empty.
 /*
-PrimaryLoot = "";
-SeccondaryLoot = "";
-HarassingLoot = "";
+PrimaryLoot =
+{
+	_return = [""];
+	_return;
+};
+
+SeccondaryLoot =
+{
+	_return = [""];
+	_return;
+};
+
+HarassingLoot = 
+{
+	_return = [""];
+	_return;
+};
 /*
