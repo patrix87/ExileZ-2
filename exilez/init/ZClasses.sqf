@@ -42,7 +42,7 @@ SecondaryClasses =
 	_return = [
 	
 	"RyanZombieB_RangeMaster_Fmedium", 
-	"RyanZombieboss1", //NOT COOL
+	//"RyanZombieboss1", //NOT COOL
 	"RyanZombieCrawler1",
 	"RyanZombieSpider1"
 	

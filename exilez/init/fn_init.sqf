@@ -52,8 +52,8 @@ SecUseBuildings			= false;		// Use the buildings to spawn the zombies instead of
 
 //Harassing zombies - with this you're never safe, zombies will spawn near you ALL THE TIME. *Can be ressource heavy.
 UseHarassingZombies		= true;
-HZGroupsSize			= 3;			// maximum number of zombies around a player
-HZFrequency				= 90;			// time in seconds between each new zombie.
+HZGroupsSize			= 2;			// maximum number of zombies around a player
+HZFrequency				= 180;			// time in seconds between each new zombie.
 HZMaxDistance			= 150;			// maximum distance from the player before the zombie is deleted.
 HZMaxSpawnDistance		= 75;			// maximum spawn distance from the player.
 HZMinSpawnDistance		= 20;			// minimum spawn distance from the player. (don't set 0)
