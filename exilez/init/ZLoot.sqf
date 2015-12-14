@@ -16,7 +16,7 @@ PrimaryLoot =
 };
 	
 //Secondary spawner loot
-SeccondaryLoot = 
+SecondaryLoot = 
 {
 	_return = [
 	
