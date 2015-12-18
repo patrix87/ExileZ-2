@@ -70,7 +70,7 @@ HZPopulate = {
 	}
 	else
 	{	
-		_zClass = call HarassingClasses;
+		_zClass = HarassingGroup call GetZombie;
 		if (Debug) then {
 			diag_log format["ExileZ 2.0: Spawning 1 Harassing Zombie	|	Position : %1	|	Class : %2	|	For Player : %3 ",_zombieSpawnPosition,_zClass,name (_this select 0)];
 		};

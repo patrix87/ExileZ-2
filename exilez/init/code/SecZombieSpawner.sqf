@@ -66,7 +66,7 @@ SecPopulate = {
 	{
 		_position = _positions call BIS_fnc_selectRandom;
 	};
-	_zClass = call SecondaryClasses;
+	_zClass = SecondaryGroup call GetZombie;
 	if (Debug) then {
 		diag_log format["ExileZ 2.0: Spawning 1 Secondary Zombie	|	Position : %1	|	Class : %2 ",_position,_zClass];
 	};

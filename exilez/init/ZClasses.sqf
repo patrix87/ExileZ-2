@@ -1,73 +1,79 @@
-// Can't be empty
+// Chances for each group to spawn relative to the other groups.
+
+//Do not set value to 0, comment out the line and adjust the commas instead.
+
 //Primary spawner classes
-PrimaryClasses = 
-{
-	_return = [
-	
-	"RyanZombieC_man_polo_2_Fslow", 
-	"RyanZombieC_man_polo_4_Fslow", 
-	"RyanZombieC_man_polo_5_Fslow", 
-	"RyanZombieC_man_polo_6_Fslow", 
-	"RyanZombieC_man_p_fugitive_Fslow", 
-	"RyanZombieC_man_w_worker_Fslow", 
-	"RyanZombieC_scientist_Fslow", 
-	"RyanZombieC_man_hunter_1_Fslow", 
-	"RyanZombieC_man_pilot_Fslow", 
-	"RyanZombieC_journalist_Fslow", 
-	"RyanZombieC_Orestesslow", 
-	"RyanZombieC_Nikosslow", 
-	"RyanZombieB_Soldier_02_fslow", 
-	"RyanZombieB_Soldier_02_f_1slow", 
-	"RyanZombieB_Soldier_02_f_1_1slow", 
-	"RyanZombieB_Soldier_03_fslow", 
-	"RyanZombieB_Soldier_03_f_1slow", 
-	"RyanZombieB_Soldier_03_f_1_1slow", 
-	"RyanZombieB_Soldier_04_fslow", 
-	"RyanZombieB_Soldier_04_f_1slow", 
-	"RyanZombieB_Soldier_04_f_1_1slow", 
-	"RyanZombieB_Soldier_lite_Fslow", 
-	"RyanZombieB_Soldier_lite_F_1slow", 
-	"RyanZombieB_RangeMaster_Fmedium", 
-	//"RyanZombieboss1", //NOT COOL
-	"RyanZombieCrawler1",
-	"RyanZombieSpider1"
-	
-	] call BIS_fnc_selectRandom;
-	_return;
-};
-	
+PrimaryGroup = [
+[slowCivilians,		200],
+[slowSoldiers,		100],
+[mediumCivilians,	20],
+[mediumSoldiers,	10],
+[fastCivilians,		10],
+[fastSoldiers,		5],
+[crawlers,			40],
+[spiders,			25],
+[boss,				1]
+];
+
+
 //Secondary spawner classes
-SecondaryClasses = 
-{
-	_return = [
-	
-	"RyanZombieB_RangeMaster_Fmedium", 
-	//"RyanZombieboss1", //NOT COOL
-	"RyanZombieCrawler1",
-	"RyanZombieSpider1"
-	
-	] call BIS_fnc_selectRandom;
-	_return;
-}; 
-	
+SecondaryGroup = [
+//[slowCivilians,	200],
+//[slowSoldiers,	100],
+[mediumCivilians,	20],
+[mediumSoldiers,	15],
+[fastCivilians,		10],
+[fastSoldiers,		5],
+[crawlers,			10],
+[spiders,			15],
+[boss,				1]
+];
+
 //Harassing zombies classes
-HarassingClasses = 
+HarassingGroup = [
+[slowCivilians,		2],
+[slowSoldiers,		1]
+//[mediumCivilians,	1],
+//[mediumSoldiers,	1],
+//[fastCivilians,	1],
+//[fastSoldiers,	1],
+//[crawlers,		1],
+//[spiders,			1],
+//[boss,			1]
+];
+
+/* DON'T EDIT BELOW ADVANCED USERS ONLY */
+//////////////////////////////////////////
+
+_count = 0;
 {
-	_return = [
-	
-	"RyanZombieC_man_polo_2_Fslow", 
-	"RyanZombieC_man_polo_4_Fslow", 
-	"RyanZombieC_man_polo_5_Fslow", 
-	"RyanZombieC_man_polo_6_Fslow", 
-	"RyanZombieC_man_p_fugitive_Fslow", 
-	"RyanZombieC_man_w_worker_Fslow", 
-	"RyanZombieC_scientist_Fslow", 
-	"RyanZombieC_man_hunter_1_Fslow", 
-	"RyanZombieC_man_pilot_Fslow", 
-	"RyanZombieC_journalist_Fslow", 
-	"RyanZombieC_Orestesslow", 
-	"RyanZombieC_Nikosslow"
-	
-	] call BIS_fnc_selectRandom;
+	_count = _count + (_x select 1);
+	(PrimaryGroup select _forEachIndex) set [1,_count];
+}foreach PrimaryGroup;
+
+_count = 0;
+{
+	_count = _count + (_x select 1);
+	(SecondaryGroup select _forEachIndex) set [1,_count];
+}foreach SecondaryGroup;
+
+_count = 0;
+{
+	_count = _count + (_x select 1);
+	(HarassingGroup select _forEachIndex) set [1,_count];
+}foreach HarassingGroup;
+
+GetZombie = {
+	_return = 0;
+	_result = ceil random ((_this select ((count _this) - 1)) select 1);
+
+	diag_log _result;
+
+	{
+		if((_x select 1) >= _result) exitwith
+		{
+			_return = ((_x select 0) call BIS_fnc_selectRandom) select 0;
+		};
+	}foreach _this;
 	_return;
 };

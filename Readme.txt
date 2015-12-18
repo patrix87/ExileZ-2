@@ -6,7 +6,7 @@ Forked from Original project named EXILE-Z created by SAM, Otto and CaptionJack 
 
 Concept :
 
-ExileZ 2.0 is an addon create for ExileServer and RyanZombies
+ExileZ 2.0 is an add-on created for ExileServer and RyanZombies
 
 It creates multiple triggers on the map and spawn zombies when those triggers are activated.
 

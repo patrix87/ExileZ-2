@@ -100,8 +100,9 @@ UseHC           = false;       // set to true if running Headless Client
 sleep 1;
 diag_log "\\\ --- Starting ExileZ 2.0 --- ///";
 
-private["_return"];
+private["_return","_result","_count"];
 
+#include "ZClassesList.sqf";
 #include "ZLoot.sqf";
 #include "ZVest.sqf";
 #include "ZClasses.sqf";
@@ -145,4 +146,5 @@ if (UseHarassingZombies) then {
   nul = [] spawn HarassingZombies;
 };
 sleep 1;
+
 diag_log "/// --- ExileZ 2.0 Started --- \\\";
