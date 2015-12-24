@@ -66,9 +66,6 @@ _count = 0;
 GetZombie = {
 	_return = 0;
 	_result = ceil random ((_this select ((count _this) - 1)) select 1);
-
-	diag_log _result;
-
 	{
 		if((_x select 1) >= _result) exitwith
 		{
