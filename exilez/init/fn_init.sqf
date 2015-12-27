@@ -20,8 +20,8 @@ ExplosiveRespect         = 100;                 // Bonus respect for Exploding z
 UseSpawners              = true;
 TriggerRadius            = 300;         // Trigger radius is used to detect player
 SpawnRadius              = 250;         // Spawning radius around the trigger
-GroupSize                = 12;          // Maximum number of zombies per trigger
-MinGroupSize             = 5;           // Used only with DynamicGroupSize.
+GroupSize                = 15;          // Maximum number of zombies per trigger
+MinGroupSize             = 3;           // Used only with DynamicGroupSize.
 DynamicGroupSize         = true;        // Set to 1 to dynamically set the max number of zombies for a town *(this will not exceed the GroupSize)
 DynamicRatio             = 3;           // Percent of the available spawn position will be filled with a zombie. *(regular town as about 300 positions)
 ActivationDelay          = 15;          // Time before the trigger start when activated
@@ -37,7 +37,7 @@ UseBuildings             = true;        // Use the buildings to spawn the zombie
 UseSecSpawners           = true;
 SecTriggerRadius         = 250;               // Trigger radius is used to detect player
 SecSpawnRadius           = 150;               // Spawning radius around the trigger
-SecGroupSize             = 5;                 // Maximum number of zombies per trigger
+SecGroupSize             = 8;                 // Maximum number of zombies per trigger
 SecMinGroupSize          = 3;                 // Used only with DynamicGroupSize.
 SecDynamicGroupSize      = false;             // Set to 1 to dynamically set the max number of zombies for a town *(this will not exceed the GroupSize)
 SecDynamicRatio          = 3;                 // Percent of the available spawn position will be filled with a zombie. *(regular town as about 300 positions)
@@ -66,6 +66,29 @@ MinDistance              = 50;      // Minimal distance for range bonus
 CqbDistance              = 10;      // Minimal ditance for close quarter bonus
 CqbBonus                 = 40;      // Respect for close quarter bonus at 1 meter
 DistanceBonusDivider     = 10;      // Distance divided by that number = respect E.G. 300m / [20] = 15 Respect
+
+//Zombie settings
+Ryanzombieshealth					= 0.75; 	//Health, *(initial damage level 0 is no damage 1 is dead)
+Ryanzombieshealthdemon 				= 0.7;		//Health, *(initial damage level 0 is no damage 1 is dead)
+Ryanzombiesattackspeed 				= 1.5;		//Attack speed, *(Time is seconds between attacks)
+Ryanzombiesattackdistance 			= 2.0;		//Attack distance, *(in meters)
+Ryanzombiesattackstrenth 			= 2;		//Attack strength *(not sure what this does but more is more)
+Ryanzombiesdamage 					= 0.07;		//Attack damage *(% of players life per hit, 1 is 100%)
+Ryanzombiesdamagecar 				= 0.1;		//Attack damage to car *(% of car health per hit, 1 is 100%)
+Ryanzombiesdamageair 				= 0.025;	//Attack damage to air *(% of car health per hit, 1 is 100%)
+Ryanzombiesdamagetank 				= 0.01;		//Attack damage to tank *(% of car health per hit, 1 is 100%)
+Ryanzombiesdamagecarstrenth 		= 2;		//Car attack strength *(Not sure what this does I think it related to the power of the throw when throw is enabled)
+Ryanzombiesdamageairstrenth 		= 1.5;		//Air attack strength *(Not sure what this does I think it related to the power of the throw when throw is enabled)
+Ryanzombiesdamagetankstrenth 		= 0.5;		//Tank attack strength *(Not sure what this does I think it related to the power of the throw when throw is enabled)
+
+//Comment these out to disable them
+//Ryanzombiescanthrow 				= 1;		//Enable or disable Throwing for zombies
+Ryanzombiescanthrowdemon 			= 1;		//Enable or disable Throwing for demons
+//Ryanzombiescanthrowtank 			= 1;		//Enable or disable Throwing tank for zombies
+//Ryanzombiescanthrowtankdemon 		= 1;		//Enable or disable Throwing tank for demons
+
+Ryanzombiescanthrowdistance			= 50;		//Max throw distance
+Ryanzombiescanthrowdistancedemon 	= 100;		//Max throw distance demon
 
 //Custom map settings
 A2Buildings              = false;      // set to true if using A2 Maps or maps with A2 Buildings it looks for "House" instead of "House_F"
@@ -106,6 +129,26 @@ private["_return","_result","_count"];
 #include "ZLoot.sqf";
 #include "ZVest.sqf";
 #include "ZClasses.sqf";
+
+//Set Ryanzombies public variables
+publicVariable "Ryanzombieshealth";
+publicVariable "Ryanzombieshealthdemon";
+publicVariable "Ryanzombiesattackspeed";
+publicVariable "Ryanzombiesattackdistance";
+publicVariable "Ryanzombiesattackstrenth";
+publicVariable "Ryanzombiesdamage";
+publicVariable "Ryanzombiesdamagecar";
+publicVariable "Ryanzombiesdamageair";
+publicVariable "Ryanzombiesdamagetank";
+publicVariable "Ryanzombiesdamagecarstrenth";
+publicVariable "Ryanzombiesdamageairstrenth";
+publicVariable "Ryanzombiesdamagetankstrenth";
+publicVariable "Ryanzombiescanthrow";
+publicVariable "Ryanzombiescanthrowdemon";
+publicVariable "Ryanzombiescanthrowtank";
+publicVariable "Ryanzombiescanthrowtankdemon";
+publicVariable "Ryanzombiescanthrowdistance";
+publicVariable "Ryanzombiescanthrowdistancedemon";
 
 //compile code
 CreateTriggers = compile preprocessFile "exilez\init\code\CreateTriggers.sqf";
