@@ -1,6 +1,6 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
-private ["_nPlayer","_sTime","_group","_count","_groupSize","_frequency","_maxDistance","_minSpawnDistance","_maxSpawnDistance","_vestGroup","_lootGroup","_zombieGroup","_avoidTerritory","_playerObj","_playerName","_playerPosition"];
+private ["_nPlayer","_group","_groupSize","_maxDistance","_minSpawnDistance","_maxSpawnDistance","_vestGroup","_lootGroup","_zombieGroup","_avoidTerritory","_playerObj","_playerName","_playerPosition","_position","_validLocation","_zombie","_playerObjs","_sleepTime","_minFrequency","_maxFrequency"];
 
 
 _groupSize =         _this select 0;
@@ -20,7 +20,7 @@ sleep 120; //Wait 2 minutes for the server to boot
 while {true} do 
 {
 	//wait sleep time
-	_sleepTime = (_minFrequency + (ceil random (_maxFrequency - _minFrequency)))*60
+	_sleepTime = (_minFrequency + (ceil random (_maxFrequency - _minFrequency)))*60;
 	if (Debug) then {
 		diag_log format["ExileZ 2.0: Horde waiting %1 seconds.",_sleeptime];
 	};
@@ -43,6 +43,7 @@ while {true} do
 			{
 				for "_i" from 1 to 5 do 
 				{
+                      _playerPosition = getPos _playerObj;
 					_position = [_playerPosition,_minSpawnDistance,_maxSpawnDistance] call GetRandomLocation;
 					//Validate location
 					_validLocation = [_position,_avoidTerritory] call VerifyLocation;
@@ -59,7 +60,6 @@ while {true} do
 		if !(isnull _playerObj) then 
 		{ 
 			_playerName = name _playerObj;
-			_playerPosition = getPos _playerObj;
 			
 			//get group from player
 			_group = _playerObj getvariable ["group", objNull];
@@ -75,7 +75,7 @@ while {true} do
 
 			if (Debug) then 
 			{
-				diag_log format["ExileZ 2.0: Spawning Horde near %1.",_playerObjName];
+				diag_log format["ExileZ 2.0: Spawning Horde near %1.",_playerName];
 			};
 			for "_i" from 1 to _groupSize do 
 			{
