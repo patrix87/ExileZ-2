@@ -3,18 +3,19 @@
 private ["_nPlayer","_group","_groupSize","_maxDistance","_minSpawnDistance","_maxSpawnDistance","_vestGroup","_lootGroup","_zombieGroup","_avoidTerritory","_playerObj","_playerName","_playerPosition","_position","_validLocation","_zombie","_playerObjs","_sleepTime","_minFrequency","_maxFrequency"];
 
 
-_groupSize =         _this select 0;
-_minFrequency =      _this select 1;
-_maxFrequency =      _this select 2;
-_maxDistance =       _this select 3;
-_minSpawnDistance =  _this select 4;
-_maxSpawnDistance =  _this select 5;
-_vestGroup =         _this select 6;
-_lootGroup =         _this select 7;
-_zombieGroup =       _this select 8;
-_avoidTerritory =    _this select 9;
+_groupSize =         (_this select 0) select 0;
+_minFrequency =      (_this select 0) select 1;
+_maxFrequency =      (_this select 0) select 2;
+_maxDistance =       (_this select 0) select 3;
+_minSpawnDistance =  (_this select 0) select 4;
+_maxSpawnDistance =  (_this select 0) select 5;
+_vestGroup =         (_this select 0) select 6;
+_lootGroup =         (_this select 0) select 7;
+_zombieGroup =       (_this select 0) select 8;
+_avoidTerritory =    (_this select 0) select 9;
+_hordeDensity =      (_this select 0) select 10;
 
-sleep 120; //Wait 2 minutes for the server to boot
+sleep 125; //Wait 2 minutes for the server to boot
 
 //Horde Loop
 while {true} do 
@@ -22,7 +23,7 @@ while {true} do
 	//wait sleep time
 	_sleepTime = (_minFrequency + (ceil random (_maxFrequency - _minFrequency)))*60;
 	if (Debug) then {
-		diag_log format["ExileZ 2.0: Horde waiting %1 seconds.",_sleeptime];
+		diag_log format["ExileZ 2.0: Horde waiting %1 minutes.",_sleeptime/60];
 	};
 	sleep _sleeptime;
 	
@@ -37,7 +38,7 @@ while {true} do
 		//try to pick a lucky winner with a possible valid location
 		for "_i" from 1 to _nPlayer do 
 		{
-			_playerObj = _playerObjs BIS_fnc_selectRandom;
+			_playerObj = _playerObjs call BIS_fnc_selectRandom;
 			//if player is valid try to find a valid location 5 times
 			if (isPlayer _playerObj && alive _playerObj) then 
 			{
@@ -79,7 +80,7 @@ while {true} do
 			};
 			for "_i" from 1 to _groupSize do 
 			{
-				_zombie = [_group,_position,_minSpawnDistance,_maxSpawnDistance,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory,nil] spawn SpawnZombie;
+				_zombie = [_group,_position,0,_hordeDensity,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory,nil] spawn SpawnZombie;
 				nul = [_zombie,_maxDistance] spawn HordeZombieDeleter;
 				sleep 1;
 			};

@@ -17,7 +17,7 @@ private[
 	"_result"
 	
 ];
-
+_positions = [];
 _group =             _this select 0;
 _triggerPosition =   _this select 1;
 _minSpawnDistance =  _this select 2;
@@ -30,7 +30,7 @@ _positions =         _this select 8;
 
 // Try 5 times to get a valid position
 for "_i" from 1 to 5 do {
-	if !(isNull _positions) then
+	if !(_positions == []) then
 	{
 		_position = _positions call BIS_fnc_selectRandom;
 	}

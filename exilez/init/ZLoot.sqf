@@ -1,6 +1,5 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
-
 Loot_1 = 
 {
 	_return = [

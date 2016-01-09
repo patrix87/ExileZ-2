@@ -1,5 +1,5 @@
 //Bornholm
-TownPositions = [
+TriggerPositions_1 = [
 	[17346,5073],
 	[4292,19927],
 	[3454,19378],

@@ -74,8 +74,11 @@ if (_showTriggerOnMap) then {
 	_marker setMarkerSize [_triggerRadius, _triggerRadius];
 	_marker setMarkerAlpha _zMarkerAlpha;
 	_marker setMarkerColor _zMarkerColor;
+	_marker setMarkerType "mil_dot";
 	_marker setMarkerText _zMarkerText;
 };
+
+
 
 if (_UseBuildings) then
 {
@@ -122,10 +125,6 @@ if (_UseBuildings) then
 		_groupSize = _maxGroupSize;
 	};
 	
-
-	//store the variables in the trigger
-	_trigger setvariable ["positions", _positions, False];
-	
 	if (Debug) then {
 		diag_log format["ExileZ 2.0: Creating Trigger	|	Position : %1 	|	Radius : %2m	|	GroupSize : %3	|	Buildings : %4	|	Spawn Positions : %5	|	Near : %6 ",
 		_triggerPosition,_triggerRadius,_groupSize,Count _buildings,_posCount,_nearestLocation];
@@ -134,12 +133,14 @@ if (_UseBuildings) then
 else
 {	
 	if (Debug) then {
+		_groupSize = _maxGroupSize;
 		diag_log format["ExileZ 2.0: Creating Trigger	|	Position : %1 	|	Radius : %2m	|	Near : %3 ",
 		_triggerPosition,_triggerRadius,_nearestLocation];
 	};
 };
 
 // Store Variables in the trigger.
+
 _trigger setvariable ["groupSize", _groupSize, False];
 _trigger setvariable ["avoidTerritory",_avoidTerritory, False];
 _trigger setvariable ["spawnRadius",_spawnRadius, False];

@@ -1,5 +1,5 @@
 //Chernarus
-TownPositions = [
+TriggerPositions_1 = [
 	[2478,2501],
 	[4996,2401],
 	[1645,3882],

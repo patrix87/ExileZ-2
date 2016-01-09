@@ -3,15 +3,15 @@
 private ["_nPlayer","_sTime","_group","_count","_groupSize","_frequency","_maxDistance","_minSpawnDistance","_maxSpawnDistance","_vestGroup","_lootGroup","_zombieGroup","_avoidTerritory","_playerObj","_playerName","_playerPosition"];
 
 
-_groupSize =         _this select 0;
-_frequency =         _this select 1;
-_maxDistance =       _this select 2;
-_minSpawnDistance =  _this select 3;
-_maxSpawnDistance =  _this select 4;
-_vestGroup =         _this select 5;
-_lootGroup =         _this select 6;
-_zombieGroup =       _this select 7;
-_avoidTerritory =    _this select 8;
+_groupSize =         (_this select 0) select 0;
+_frequency =         (_this select 0) select 1;
+_maxDistance =       (_this select 0) select 2;
+_minSpawnDistance =  (_this select 0) select 3;
+_maxSpawnDistance =  (_this select 0) select 4;
+_vestGroup =         (_this select 0) select 5;
+_lootGroup =         (_this select 0) select 6;
+_zombieGroup =       (_this select 0) select 7;
+_avoidTerritory =    (_this select 0) select 8;
 
 sleep 120; //Wait 2 minutes for the server to boot
 

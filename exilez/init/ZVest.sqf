@@ -1,6 +1,5 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
-
 Vest_1 =
 {
 	_return = [
@@ -26,6 +25,7 @@ Vest_1 =
 };
 
 Vest_2 = 
+{
 	_return = [
 
 	"V_HarnessOGL_brn",

@@ -232,21 +232,12 @@ _items =[
 "Laserdesignator_03"
 ];
 
-//big ass boxes
+
 _cargoBox = [
 
-	"Land_Cargo40_blue_F",
-	"Land_Cargo40_brick_red_F",
-	"Land_Cargo40_cyan_F",
-	"Land_Cargo40_grey_F",
-	"Land_Cargo40_light_blue_F",
-	"Land_Cargo40_light_green_F",
-	"Land_Cargo40_military_green_F",
-	"Land_Cargo40_orange_F",
-	"Land_Cargo40_red_F",
-	"Land_Cargo40_sand_F",
-	"Land_Cargo40_white_F",
-	"Land_Cargo40_yellow_F"
+"B_CargoNet_01_ammo_F",
+"O_CargoNet_01_ammo_F",
+"I_CargoNet_01_ammo_F"
 	
 ] call BIS_fnc_selectRandom;
 	

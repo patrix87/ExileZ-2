@@ -1,5 +1,10 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
-private ["_return","_result","_count","_forEachIndex","_currentTrigger"];
+#include "code\pre_init.sqf";
+#include "ZClassesList.sqf";
+#include "ZLoot.sqf";
+#include "ZVest.sqf";
+#include "ZClasses.sqf";
+// EDIT BELOW
 
 //Global Settings
 ZombieSide                   = EAST;             // zombie team side east, west and Civilian can be used
@@ -58,7 +63,7 @@ A2Buildings                  = false;            // set to true if using A2 Maps
 // If still nothing is spawning ... well write on the forum :P
 
 //Change that to point to your trigger location file
-#include "TownPositions_Altis.sqf";
+#include "TriggerPositions.sqf";
 
 //Default Altis SafeZones
 SafeZonePositions =
@@ -94,26 +99,20 @@ HordeSet = [
 /* 1 Min Frequency */          30,                 // min time in minutes between each new zombie horde.
 /* 2 Max Frequency */          90,                 // max time in minutes between each new zombie horde.
 /* 3 Max Distance */           150,                // maximum distance from the player before the zombies are deleted.
-/* 4 Min Spawn Distance */     20,                 // minimum spawn distance from the player. (don't set 0)
+/* 4 Min Spawn Distance */     30,                 // minimum spawn distance from the player. (don't set 0)
 /* 5 Max Spawn Distance */     75,                 // maximum spawn distance from the player.
 /* 6 Vest group */             Vest_1,             // Vest function defined in ZVest.sqf
 /* 7 Loot group */             Loot_3,             // Loot function defined in ZLoot.sqf
 /* 8 Zombie group */           Group_1,            // Group function defined in ZClasses.sqf
 /* 9 Avoid Territory */        true,               // Zombies won't spawn in Territories if true
-/* 10 Horde density */         25                  // Radius in which the zombies will spawn
+/* 10 Horde density */         25                  // Radius in which the zombies will spawn should be lower than Min Spawn Distance.
 ];
-
-
 
 UseTriggers                  = true;
 
 //place loot boxes and mission script here
 trigger3mission = compile preprocessFile "exilez\init\zmission.sqf";
 trigger3lootbox = compile preprocessFile "exilez\init\zmissionloot.sqf";
-
-
-// List all the trigger group to use here.
-Triggers = [Trigger_1,Trigger_2,Trigger_3];
 
 Trigger_1 = [				 //Mission Trigger
 /* 0  Use this trigger */    True,
@@ -193,92 +192,9 @@ Trigger_3 = [				 //Mission Trigger
 /* 22 Loot Box */            trigger3lootbox
 ];
 
+// List all the trigger group to use here.
+Triggers = [Trigger_1,Trigger_2,Trigger_3];
 
-/* DON'T EDIT BELOW ADVANCED USERS ONLY */
-//////////////////////////////////////////
-sleep 1;
+// DON'T EDIT BELOW
 
-diag_log "\\\ --- Starting ExileZ 2.0 --- ///";
-
-#include "ZClassesList.sqf";
-#include "ZLoot.sqf";
-#include "ZVest.sqf";
-#include "ZClasses.sqf";
-
-//Set Ryanzombies public variables
-publicVariable "Ryanzombieshealth";
-publicVariable "Ryanzombieshealthdemon";
-publicVariable "Ryanzombiesattackspeed";
-publicVariable "Ryanzombiesattackdistance";
-publicVariable "Ryanzombiesattackstrenth";
-publicVariable "Ryanzombiesdamage";
-publicVariable "Ryanzombiesdamagecar";
-publicVariable "Ryanzombiesdamageair";
-publicVariable "Ryanzombiesdamagetank";
-publicVariable "Ryanzombiesdamagecarstrenth";
-publicVariable "Ryanzombiesdamageairstrenth";
-publicVariable "Ryanzombiesdamagetankstrenth";
-publicVariable "Ryanzombiescanthrow";
-publicVariable "Ryanzombiescanthrowdemon";
-publicVariable "Ryanzombiescanthrowtank";
-publicVariable "Ryanzombiescanthrowtankdemon";
-publicVariable "Ryanzombiescanthrowdistance";
-publicVariable "Ryanzombiescanthrowdistancedemon";
-
-//compile code
-CreateTriggers = compile preprocessFile "exilez\init\code\CreateTriggers.sqf";
-TriggerLoop = compile preprocessFile "exilez\init\code\TriggerLoop.sqf";
-HarassingZombiesLoop = compile preprocessFile "exilez\init\code\HarassingZombiesLoop.sqf";
-InitGroup = compile preprocessFile "exilez\init\code\InitGroup.sqf";
-SpawnZombie = compile preprocessFile "exilez\init\code\SpawnZombie.sqf";
-ZMPKilled = compile preprocessFile "exilez\init\code\MPKilled.sqf";
-Safezone = compile preprocessFile "exilez\init\code\Safezone.sqf";
-GetRandomLocation = compile preprocessFile "exilez\init\code\GetRandomLocation.sqf";
-SpawnZombie = compile preprocessFile "exilez\init\code\SpawnZombie.sqf";
-VerifyLocation = compile preprocessFile "exilez\init\code\VerifyLocation.sqf";
-HordeLoop = compile preprocessFile "exilez\init\code\HordeLoop.sqf";
-HordeZombieDeleter = compile preprocessFile "exilez\init\code\HordeZombieDeleter.sqf";
-
-//Create Triggers
-if (UseTriggers) then
-{
-	{
-		if (_x select 0) then {
-			//Weight Zombie Group
-			_currentTrigger = _x;
-			_count = 0;
-			{
-				_count = _count + (_x select 1);
-				(_x select _forEachIndex) set [1,_count];
-			}foreach (_currentTrigger select 19);
-			
-			//Create triggers
-			{nul = [_x,_CurrentTrigger] spawn CreateTriggers;
-				sleep 0.01;
-			}foreach (_x select 0);
-		};
-	}foreach Triggers;
-};
-
-//Create Triggers for safezones
-{nul = [_x] spawn Safezone;
-	sleep 0.01;
-}foreach SafeZonePositions;
-
-
-//Enable the HarassingZombies
-if (UseHarassingZombies) then {
-	nul = [HSet] spawn HarassingZombiesLoop;
-};
-
-
-//Enable the Horde
-if (UseHorde) then {
-	nul = [HordeSet] spawn HordeLoop;
-};
-
-
-
-sleep 1;
-
-diag_log "/// --- ExileZ 2.0 Started --- \\\";
+#include "code\post_init.sqf";

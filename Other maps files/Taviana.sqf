@@ -1,5 +1,5 @@
 //Taviana  //May contain duplicated locations
-TownPositions = [
+TriggerPositions_1 = [
 	[1071,17743],
 	[1292,18091],
 	[1453,17412],

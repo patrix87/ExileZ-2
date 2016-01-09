@@ -1,5 +1,5 @@
 //Esseker
-TownPositions = [
+TriggerPositions_1 = [
 	[10278,1152],
 	[1974,7804],
 	[3123,6048],
