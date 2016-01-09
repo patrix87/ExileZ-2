@@ -1,6 +1,7 @@
+// ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
-//Primary spawner Vests
-PrimaryVest =
+
+Vest_1 =
 {
 	_return = [
 
@@ -24,9 +25,7 @@ PrimaryVest =
 	_return;
 };
 
-//Secondary spawner Vests
-SecondaryVest = 
-{
+Vest_2 = 
 	_return = [
 
 	"V_HarnessOGL_brn",
@@ -40,44 +39,10 @@ SecondaryVest =
 	_return;
 };
 
-//Harassing zombies Vests
-
-/*
-HarassingVest =
-{
-	_return = [
-
-	"V_Rangemaster_belt"
-
-	] call BIS_fnc_selectRandom;
-	_return;
-};
-*/
-
-HarassingVest =
+Vest_3 =
 {
 	_return = "";
 	_return;
 };
 
 
-// No Vest config, replace the whole function with those lines. Loot won't spawn if vest is empty.
-/*
-PrimaryVest =
-{
-	_return = "";
-	_return;
-};
-
-SeccondaryVest =
-{
-	_return = "";
-	_return;
-};
-
-HarassingVest =
-{
-	_return = "";
-	_return;
-};
-/*

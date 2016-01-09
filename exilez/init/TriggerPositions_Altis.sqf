@@ -1,5 +1,5 @@
 //Altis					// Names can be wrong.
-TownPositions = [
+TriggerPositions_1 = [
 	//[15110,17385], 	// Near Main Airfield
 	//[14285,16286], 	// Near Main Airfield
 	[4549,21425], 		// Oreokastro 
@@ -68,4 +68,13 @@ TownPositions = [
 	[21804,20963], 		// Iraklia Resort
 	[26733,21213], 		// Gatolia 
 	[27002,23215]		// Molos 
+];
+
+TriggerPositions_2 = [
+	[15110,17385], 		// Near Main Airfield
+	[14285,16286]		// Near Main Airfield
+];
+
+TriggerPositions_3 = [
+	[11205,8706] 		// NOWHERE aka mission
 ];

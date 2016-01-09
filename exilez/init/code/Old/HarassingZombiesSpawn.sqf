@@ -3,6 +3,7 @@
 if (hasInterface) exitwith {}; //exit if is a player
 
 private [
+	"_playerObj",
     "_group",
 	"_cnt",
 	"_localityChanged",
@@ -18,9 +19,11 @@ private [
 	"_zClass"
 ];
 
-_group = (_this select 0) getvariable ["group", objNull];
+_playerObj = _this select 0
 
-_playerPosition = getpos (_this select 0);
+_group = _playerObj getvariable ["group", objNull];
+
+_playerPosition = getpos _playerObj;
 
 
 //check if coordinate is in safezone try 5 then abort.
