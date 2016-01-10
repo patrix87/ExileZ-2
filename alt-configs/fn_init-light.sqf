@@ -96,7 +96,7 @@ HSet = [
 UseHorde          = true;
 
 HordeSet = [
-/* 0 Groups Size  */           20,                 // maximum number of zombies around a player
+/* 0 Groups Size  */           15,                 // maximum number of zombies around a player
 /* 1 Min Frequency */          20,                  // min time in minutes between each new zombie horde.
 /* 2 Max Frequency */          80,                  // max time in minutes between each new zombie horde.
 /* 3 Min Spawn Distance */     30,                 // minimum spawn distance from the player. (don't set 0)
@@ -115,7 +115,7 @@ trigger3mission = compile preprocessFile "exilez\init\zmission.sqf";
 trigger3lootbox = compile preprocessFile "exilez\init\zmissionloot.sqf";
 
 Trigger_1 = [				 //Towns
-/* 0  Use this trigger */    True,
+/* 0  Use this trigger */    false,
 /* 1  Trigger Positions */   TriggerPositions_1,
 /* 2  Trigger Radius */      300,
 /* 3  Spawn Radius */        250,
@@ -140,7 +140,7 @@ Trigger_1 = [				 //Towns
 ];
 
 Trigger_2 = [				 //Anti-Camping
-/* 0  Use this trigger */    True,
+/* 0  Use this trigger */    False,
 /* 1  Trigger Positions */   TriggerPositions_2,
 /* 2  Trigger Radius */      300,
 /* 3  Spawn Radius */        250,

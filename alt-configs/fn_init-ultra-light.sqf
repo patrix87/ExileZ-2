@@ -83,8 +83,8 @@ UseHC                        = false;            // set to true if running Headl
 UseHarassingZombies          = true;
 
 HSet = [
-/* 0 Groups Size  */           2,                  // maximum number of zombies around a player
-/* 1 Frequency */              180,                // time in seconds between each new zombie.
+/* 0 Groups Size  */           1,                  // maximum number of zombies around a player
+/* 1 Frequency */              240,                // time in seconds between each new zombie.
 /* 2 Min Spawn Distance */     20,                 // minimum spawn distance from the player. (don't set 0)
 /* 3 Max Spawn Distance */     75,                 // maximum spawn distance from the player.
 /* 4 Vest group */             Vest_3,             // Vest function defined in ZVest.sqf
@@ -96,8 +96,8 @@ HSet = [
 UseHorde          = true;
 
 HordeSet = [
-/* 0 Groups Size  */           20,                 // maximum number of zombies around a player
-/* 1 Min Frequency */          20,                  // min time in minutes between each new zombie horde.
+/* 0 Groups Size  */           5,                 // maximum number of zombies around a player
+/* 1 Min Frequency */          10,                  // min time in minutes between each new zombie horde.
 /* 2 Max Frequency */          80,                  // max time in minutes between each new zombie horde.
 /* 3 Min Spawn Distance */     30,                 // minimum spawn distance from the player. (don't set 0)
 /* 4 Max Spawn Distance */     75,                 // maximum spawn distance from the player.
@@ -108,7 +108,7 @@ HordeSet = [
 /* 9 Horde density */          25                  // Radius in which the zombies will spawn should be lower than Min Spawn Distance.
 ];
 
-UseTriggers                  = true;
+UseTriggers                  = False;
 
 //place loot boxes and mission script here
 trigger3mission = compile preprocessFile "exilez\init\zmission.sqf";
@@ -169,7 +169,7 @@ Trigger_3 = [				 //Mission Trigger
 /* 1  Trigger Positions */   TriggerPositions_3,
 /* 2  Trigger Radius */      500,
 /* 3  Spawn Radius */        120,
-/* 4  Max Group Size */      15,
+/* 4  Max Group Size */      25,
 /* 5  Min Group Size */      3,
 /* 6  Dynamic Group Size */  false,
 /* 7  Dynamic Ratio */       3,

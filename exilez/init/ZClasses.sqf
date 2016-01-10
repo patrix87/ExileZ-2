@@ -24,7 +24,7 @@ Group_2 = [
 [mediumSoldiers,	15],
 [fastCivilians,		10],
 [fastSoldiers,		5],
-[crawlers,			10],
+[crawlers,			5],
 [spiders,			15]
 //[boss,			1]
 ];
@@ -42,13 +42,13 @@ Group_3 = [
 ];
 
 Group_4 = [
-[crawlers,		    2],
-[slowCivilians,		2],
-[slowSoldiers,		2],
-[mediumCivilians,	3],
-[mediumSoldiers,	3],
-[fastCivilians,	    5],
-[fastSoldiers,	    5],
-[spiders,			5]
+//[slowCivilians,		2],
+//[slowSoldiers,		2],
+[mediumCivilians,	10],
+[mediumSoldiers,	10],
+[fastCivilians,	    15],
+[fastSoldiers,	    15],
+[crawlers,		    1],
+[spiders,			3]
 //[boss,			2]
 ];
