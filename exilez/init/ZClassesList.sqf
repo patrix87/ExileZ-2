@@ -11,8 +11,7 @@ slowCivilians=[
 ["RyanZombieC_man_hunter_1_Fslow"],
 ["RyanZombieC_man_pilot_Fslow"],
 ["RyanZombieC_journalist_Fslow"],
-["RyanZombieC_Orestesslow"],
-["RyanZombieC_Nikosslow"]
+["RyanZombieC_Orestesslow"]
 ];
 
 slowSoldiers=[
@@ -44,7 +43,6 @@ mediumCivilians=[
 ["RyanZombieC_man_pilot_Fmedium"],
 ["RyanZombieC_journalist_Fmedium"],
 ["RyanZombieC_Orestesmedium"],
-["RyanZombieC_Nikosmedium"],
 ["RyanZombieB_RangeMaster_Fmedium"]
 ];
 
@@ -77,7 +75,6 @@ fastCivilians=[
 ["RyanZombieC_man_pilot_F"],
 ["RyanZombieC_journalist_F"],
 ["RyanZombieC_Orestes"],
-["RyanZombieC_Nikos"],
 ["RyanZombieB_RangeMaster_F"]
 ];
 

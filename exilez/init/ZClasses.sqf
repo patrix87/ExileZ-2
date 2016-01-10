@@ -4,21 +4,19 @@
 
 //Do not set value to 0, comment out the line and adjust the commas instead.
 
-//Primary spawner classes
 Group_1 = [
 [slowCivilians,		200],
 [slowSoldiers,		100],
-[mediumCivilians,	20],
+[mediumCivilians,	10],
 [mediumSoldiers,	10],
 [fastCivilians,		10],
 [fastSoldiers,		5],
-[crawlers,			40],
-[spiders,			25]
-//[boss,				1]
+[crawlers,			20],
+[spiders,			10]
+//[boss,			1]
 ];
 
 
-//Secondary spawner classes
 Group_2 = [
 //[slowCivilians,	200],
 //[slowSoldiers,	100],
@@ -28,10 +26,9 @@ Group_2 = [
 [fastSoldiers,		5],
 [crawlers,			10],
 [spiders,			15]
-//[boss,				1]
+//[boss,			1]
 ];
 
-//Harassing zombies classes
 Group_3 = [
 [slowCivilians,		2],
 [slowSoldiers,		1]
@@ -53,5 +50,5 @@ Group_4 = [
 [fastCivilians,	    5],
 [fastSoldiers,	    5],
 [spiders,			5]
-//[boss,			    2]
+//[boss,			2]
 ];

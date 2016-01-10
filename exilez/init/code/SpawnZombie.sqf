@@ -30,7 +30,7 @@ _positions =         _this select 8;
 
 // Try 5 times to get a valid position
 for "_i" from 1 to 5 do {
-	if !(_positions == []) then
+	if ((count _positions) >= 1) then
 	{
 		_position = _positions call BIS_fnc_selectRandom;
 	}
@@ -83,7 +83,8 @@ else
 		this setunitpos 'UP';
 		this addMPEventHandler ['MPKilled', {_this spawn ZMPKilled;}];
 		doStop this;
+		nul = [this] spawn ZombieDeleter;
 		"
 	];
 };
-_zClass;
+

@@ -1,7 +1,5 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
-if (hasInterface) exitwith {}; //exit if is a player
-
 //Variable declaration
 private [
 	"_position",
@@ -14,11 +12,6 @@ private [
 _position = (_this select 0) select 0;
 _radius = (_this select 0) select 1;
 _nearestLocation = text nearestLocation [_position, ""];
-
-//Validate current trigger position
-if (isnil "_position") exitwith { Diag_log "ExileZ 2.0:: Empty position";};
-if (count _position < 1) exitwith { Diag_log "ExileZ 2.0: Require a position ARRAY";};
-if (surfaceiswater _position) exitwith { Diag_log "ExileZ 2.0: Position is in the water";};
 
 //Create trigger area
 _trigger = createTrigger["EmptyDetector", _position];

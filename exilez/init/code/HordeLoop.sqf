@@ -1,21 +1,20 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
-private ["_nPlayer","_group","_groupSize","_maxDistance","_minSpawnDistance","_maxSpawnDistance","_vestGroup","_lootGroup","_zombieGroup","_avoidTerritory","_playerObj","_playerName","_playerPosition","_position","_validLocation","_zombie","_playerObjs","_sleepTime","_minFrequency","_maxFrequency"];
+private ["_nPlayer","_group","_groupSize","_minSpawnDistance","_maxSpawnDistance","_vestGroup","_lootGroup","_zombieGroup","_avoidTerritory","_playerObj","_playerName","_playerPosition","_position","_validLocation","_zombie","_playerObjs","_sleepTime","_minFrequency","_maxFrequency"];
 
 
 _groupSize =         (_this select 0) select 0;
 _minFrequency =      (_this select 0) select 1;
 _maxFrequency =      (_this select 0) select 2;
-_maxDistance =       (_this select 0) select 3;
-_minSpawnDistance =  (_this select 0) select 4;
-_maxSpawnDistance =  (_this select 0) select 5;
-_vestGroup =         (_this select 0) select 6;
-_lootGroup =         (_this select 0) select 7;
-_zombieGroup =       (_this select 0) select 8;
-_avoidTerritory =    (_this select 0) select 9;
-_hordeDensity =      (_this select 0) select 10;
+_minSpawnDistance =  (_this select 0) select 3;
+_maxSpawnDistance =  (_this select 0) select 4;
+_vestGroup =         (_this select 0) select 5;
+_lootGroup =         (_this select 0) select 6;
+_zombieGroup =       (_this select 0) select 7;
+_avoidTerritory =    (_this select 0) select 8;
+_hordeDensity =      (_this select 0) select 9;
 
-sleep 125; //Wait 2 minutes for the server to boot
+sleep 10; //Wait 2 minutes for the server to boot
 
 //Horde Loop
 while {true} do 
@@ -44,16 +43,16 @@ while {true} do
 			{
 				for "_i" from 1 to 5 do 
 				{
-                      _playerPosition = getPos _playerObj;
+                    _playerPosition = getPos _playerObj;
 					_position = [_playerPosition,_minSpawnDistance,_maxSpawnDistance] call GetRandomLocation;
 					//Validate location
 					_validLocation = [_position,_avoidTerritory] call VerifyLocation;
 					if (_validLocation) exitWith {_validLocation};
 					sleep 0.05;
 				};
-			if (_validLocation) exitWith {_playerObj};
 			};
-			_playerObj = nil;
+			if (_validLocation) exitWith {_playerObj};
+			_playerObj = ObjNull;
 			sleep 0.05;
 		};
 		
@@ -80,8 +79,7 @@ while {true} do
 			};
 			for "_i" from 1 to _groupSize do 
 			{
-				_zombie = [_group,_position,0,_hordeDensity,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory,nil] spawn SpawnZombie;
-				nul = [_zombie,_maxDistance] spawn HordeZombieDeleter;
+				_zombie = [_group,_position,0,_hordeDensity,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory,[]] spawn SpawnZombie;
 				sleep 1;
 			};
 		}

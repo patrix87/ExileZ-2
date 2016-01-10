@@ -35,7 +35,7 @@ GetRandomLocation = compile preprocessFile "exilez\init\code\GetRandomLocation.s
 SpawnZombie = compile preprocessFile "exilez\init\code\SpawnZombie.sqf";
 VerifyLocation = compile preprocessFile "exilez\init\code\VerifyLocation.sqf";
 HordeLoop = compile preprocessFile "exilez\init\code\HordeLoop.sqf";
-HordeZombieDeleter = compile preprocessFile "exilez\init\code\HordeZombieDeleter.sqf";
+ZombieDeleter = compile preprocessFile "exilez\init\code\ZombieDeleter.sqf";
 
 //Create Triggers
 if (UseTriggers) then
@@ -47,7 +47,7 @@ if (UseTriggers) then
 		
 			//Weight Zombie Group
 			_currentTrigger = _x;
-			_zgroup = _currentTrigger select 19;
+			_zgroup = _currentTrigger select 18;
 			_count = 0;
 			{
 				_count = _count + (_x select 1);

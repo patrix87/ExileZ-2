@@ -19,7 +19,6 @@ private [
 "_activationDelay",
 "_spawnDelay",
 "_respawnDelay",
-"_deleteDelay",
 "_showTriggerOnMap",
 "_zMarkerColor",
 "_zMarkerAlpha",
@@ -47,18 +46,17 @@ _dynamicRatio 			= (_this select 1) Select 7;
 _activationDelay 		= (_this select 1) Select 8;
 _spawnDelay 			= (_this select 1) Select 9;
 _respawnDelay 			= (_this select 1) Select 10;
-_deleteDelay 			= (_this select 1) Select 11;
-_showTriggerOnMap 		= (_this select 1) Select 12;
-_zMarkerColor 			= (_this select 1) Select 13;
-_zMarkerAlpha 			= (_this select 1) Select 14;
-_zMarkerText 			= (_this select 1) Select 15;
-_useBuildings 			= (_this select 1) Select 16;
-_vestGroup 				= (_this select 1) Select 17;
-_lootGroup 				= (_this select 1) Select 18;
-_zombieGroup 			= (_this select 1) Select 19;
-_avoidTerritory			= (_this select 1) Select 20;
-_mission                = (_this select 1) Select 21;
-_lootBox                = (_this select 1) Select 22;
+_showTriggerOnMap 		= (_this select 1) Select 11;
+_zMarkerColor 			= (_this select 1) Select 12;
+_zMarkerAlpha 			= (_this select 1) Select 13;
+_zMarkerText 			= (_this select 1) Select 14;
+_useBuildings 			= (_this select 1) Select 15;
+_vestGroup 				= (_this select 1) Select 16;
+_lootGroup 				= (_this select 1) Select 17;
+_zombieGroup 			= (_this select 1) Select 18;
+_avoidTerritory			= (_this select 1) Select 19;
+_mission                = (_this select 1) Select 20;
+_lootBox                = (_this select 1) Select 21;
 _nearestLocation 		= text nearestLocation [_triggerPosition, ""];
 
 //Create trigger area
@@ -69,13 +67,20 @@ _trigger setTriggerActivation["GUER", "PRESENT", TRUE]; 			//Only Exile player c
 _trigger setTriggerStatements["this && {isplayer vehicle _x}count thislist > 0", "nul = [thisTrigger] spawn TriggerLoop;", ""];
 
 if (_showTriggerOnMap) then {
+	//circle
 	_marker = createmarker [format["Zombies-pos-%1,%2",(_triggerPosition select 0),(_triggerPosition select 1)], _triggerPosition];
 	_marker setMarkerShape "ELLIPSE";
 	_marker setMarkerSize [_triggerRadius, _triggerRadius];
 	_marker setMarkerAlpha _zMarkerAlpha;
 	_marker setMarkerColor _zMarkerColor;
-	_marker setMarkerType "mil_dot";
-	_marker setMarkerText _zMarkerText;
+	//dot and text
+	if !(_zMarkerText == "") then 
+	{
+		_marker2 = createmarker [format["Zombies-pos-%1,%2-2",(_triggerPosition select 0),(_triggerPosition select 1)], _triggerPosition];
+		_marker2 setMarkerShape "ICON";
+		_marker2 setMarkerType "mil_dot";
+		_marker2 setMarkerText _zMarkerText;
+	};
 };
 
 
@@ -151,7 +156,6 @@ _trigger setvariable ["zombieGroup",_zombieGroup, False];
 
 _trigger setvariable ["spawnDelay",_spawnDelay, False];
 _trigger setvariable ["respawnDelay",_respawnDelay, False];
-_trigger setvariable ["deleteDelay",_deleteDelay, False];
 
 
 

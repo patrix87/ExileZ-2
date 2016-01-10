@@ -2,7 +2,7 @@
 
 //exit if script is already running
 
-private ["_triggerObj","_group","_positions","_groupSize","_triggerPosition","_nearestLocation","_newAct","_SpawnRadius","_VestGroup","_LootGroup","_ZombieGroup","_avoidTerritory","_del","_SpawnDelay","_RespawnDelay","_cnt","_DeleteDelay"];
+private ["_triggerObj","_group","_positions","_groupSize","_triggerPosition","_nearestLocation","_newAct","_SpawnRadius","_VestGroup","_LootGroup","_ZombieGroup","_avoidTerritory","_SpawnDelay","_RespawnDelay","_cnt"];
 
 if (_this select 0 getvariable ["active", False]) exitwith {};
 
@@ -25,9 +25,8 @@ _zombieGroup = _triggerObj getvariable ["zombieGroup", nil];
 
 _spawnDelay = _triggerObj getvariable ["spawnDelay", 15];
 _respawnDelay = _triggerObj getvariable ["respawnDelay",45];
-_deleteDelay = _triggerObj getvariable ["deleteDelay",60];
 
-_newAct = _triggerObj getvariable ["newAct", true];
+_newAct = true;
 _triggerPosition = (getpos (_triggerObj));
 _nearestLocation = text nearestLocation [_triggerPosition, ""];
 
@@ -41,7 +40,7 @@ while {triggeractivated (_this select 0)} do
 {
 	if (isNull _group) then 
 	{ 															//the zombie group is empty or all dead
-		_group = [_triggerObj] call InitGroup;									//Create Group
+		_group = [_triggerObj] call InitGroup;					//Create Group
 		if (_newAct) then 
 		{ 														//if newAct is true The zombies were deleted not killed
 			for "_x" from 1 to _groupSize do 
@@ -58,7 +57,6 @@ while {triggeractivated (_this select 0)} do
 				sleep _SpawnDelay;								//spawn delay
 			};
 			_newAct = false;
-			_triggerObj setvariable ["newAct", false, False];
 		} 
 		else 													//player probably killed all the zombies without leaving the zone
 		{
@@ -76,19 +74,6 @@ while {triggeractivated (_this select 0)} do
 		sleep _RespawnDelay; 									//Wait respawn time
 	};
 };
-
-
-//Trigger is no longer active, kill the zombies
-sleep _DeleteDelay;												//Wait Delete delay
-if !(triggeractivated (_this select 0)) then {
-	_del = count (units _Group);
-	{
-		_x setdamage 1;
-		deleteVehicle _x;
-	} foreach (units _Group);									//Kill all the units in the group and delete the zombies
-	_triggerObj setvariable ["newAct", true, False];			//Set the activation state to new to enable fast spawn.
-	if (Debug) then {
-		diag_log format["ExileZ 2.0: Deactivating Trigger	|	Position : %1	|	Spawn Radius : %2m	|	GroupSize : %3	|	%4	Zombie Deleted	|	Near : %5 ",_triggerPosition,_SpawnRadius,_groupSize,_del,_nearestLocation];
-	};
-};
+//Reboot the trigger
+diag_log format["ExileZ 2.0: Deactivating Trigger	|	Position : %1	|	Spawn Radius : %2m	|	GroupSize : %3	|	Near : %5 ",_triggerPosition,_SpawnRadius,_groupSize,_nearestLocation];
 _this select 0 setvariable ["active", false, False];
