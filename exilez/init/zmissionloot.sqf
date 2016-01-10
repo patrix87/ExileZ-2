@@ -7,7 +7,8 @@ Private [
 "_items",
 "_item",
 "_cargoBox",
-"_lootBox"
+"_lootBox",
+"_antiflag"
 ];
 
 _lootqte = 45;
@@ -150,6 +151,7 @@ _cargoBox = [
 
 
 _lootBox = _cargoBox createvehicle _triggerPosition;
+_antiflag = "Exile_Construction_Flag_Static" createvehicle _triggerPosition;
 
 clearMagazineCargoGlobal _lootBox;
 clearWeaponCargoGlobal _lootBox;
