@@ -36,9 +36,8 @@ if (_validLocation) then
 // Check for flags
 if (_validLocation) then 
 {
-	_maxRange = getNumber (missionConfigFile >> "CfgTerritories" >> "maximumRadius");
 	if (_avoidTerritory) then {
-		_flags = _position nearObjects ["Exile_Construction_Flag_Static", _maxRange];
+		_flags = _position nearObjects ["Exile_Construction_Flag_Static", MaxTerritoryRange];
 		{
 			_distance = (getPosATL _x) distance _position;
 			_radius = _x getVariable ["ExileTerritorySize", 0];

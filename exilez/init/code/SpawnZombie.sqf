@@ -83,7 +83,7 @@ else
 		this setunitpos 'UP';
 		this addMPEventHandler ['MPKilled', {_this spawn ZMPKilled;}];
 		doStop this;
-		nul = [this] spawn ZombieDeleter;
+		nul = [this,_avoidTerritory] spawn ZombieDeleter;
 		"
 	];
 };

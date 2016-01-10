@@ -37,6 +37,9 @@ VerifyLocation = compile preprocessFile "exilez\init\code\VerifyLocation.sqf";
 HordeLoop = compile preprocessFile "exilez\init\code\HordeLoop.sqf";
 ZombieDeleter = compile preprocessFile "exilez\init\code\ZombieDeleter.sqf";
 
+//Exile vars
+MaxTerritoryRange = getNumber (missionConfigFile >> "CfgTerritories" >> "maximumRadius");
+
 //Create Triggers
 if (UseTriggers) then
 {
