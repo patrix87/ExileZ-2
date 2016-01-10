@@ -11,8 +11,8 @@ Private [
 "_antiflag"
 ];
 
-_lootqte = 45;
-_maxOfEach = 3;
+_lootqte = 50;
+_maxOfEach = 2;
 _triggerPosition = _this select 0;
 
 _items =[

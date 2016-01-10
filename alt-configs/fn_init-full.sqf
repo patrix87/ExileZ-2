@@ -14,7 +14,7 @@ Debug                        = true;             // debug messages.
 MinSpawnDistance             = 10;               // Closest distance from any player to spawn a zombie.
 MaxDistance			         = 200;              // Max distance to player before delete.
 MaxTime                      = 60;               // Max time away from a player before delete.
-RemoveZfromTerritory         = true              // Will kill zombies when they get too close to a flag. *(the check is done every MaxTime)
+RemoveZfromTerritory         = true;             // Will kill zombies when they get too close to a flag. *(the check is done every MaxTime) will only work with zombies that are configured to avoid territories
                          
 //Explosive zombies          
 ExplosiveZombies             = true;             // randomly boobie trapped zombies exploding a few seconds after dying.
