@@ -80,114 +80,115 @@ SafeZonePositions =
 UseHC                        = false;            // set to true if running Headless Client
 // Headless client must be properly setup in the mission.sqm, Name must be HC
 
-//Harassing zombies - with this you're never safe, zombies will spawn near you ALL THE TIME. *(they do not spawn in safezone and Territory)
-UseHarassingZombies          = true;
+
+UseHarassingZombies          = true;             //
 
 HSet = [
-/* 0 Groups Size  */           2,                  // maximum number of zombies around a player
-/* 1 Frequency */              180,                // time in seconds between each new zombie.
-/* 2 Min Spawn Distance */     20,                 // minimum spawn distance from the player. (don't set 0)
-/* 3 Max Spawn Distance */     75,                 // maximum spawn distance from the player.
-/* 4 Vest group */             Vest_3,             // Vest function defined in ZVest.sqf
-/* 5 Loot group */             Loot_4,             // Loot function defined in ZLoot.sqf
-/* 6 Zombie group */           Group_3,            // Group function defined in ZClasses.sqf
-/* 7 Avoid Territory */        true                // Zombies won't spawn in Territories if true
+/* 0 Groups Size  */         2,                  // maximum number of zombies around a player
+/* 1 Frequency */            180,                // time in seconds between each new zombie.
+/* 2 Min Spawn Distance */   20,                 // minimum spawn distance from the player. (don't set 0)
+/* 3 Max Spawn Distance */   75,                 // maximum spawn distance from the player.
+/* 4 Vest group */           Vest_3,             // Vest function defined in ZVest.sqf
+/* 5 Loot group */           Loot_4,             // Loot function defined in ZLoot.sqf
+/* 6 Zombie group */         Group_3,            // Group function defined in ZClasses.sqf
+/* 7 Avoid Territory */      true                // Zombie will not spawn in territories and will die in them if RemoveZfromTerritory is true
 ];
 
-UseHorde          = true;
+UseHorde                     = true;             // Use the horde spawner             
 
 HordeSet = [
-/* 0 Groups Size  */           20,                 // maximum number of zombies around a player
-/* 1 Min Frequency */          20,                  // min time in minutes between each new zombie horde.
-/* 2 Max Frequency */          80,                  // max time in minutes between each new zombie horde.
-/* 3 Min Spawn Distance */     30,                 // minimum spawn distance from the player. (don't set 0)
-/* 4 Max Spawn Distance */     75,                 // maximum spawn distance from the player.
-/* 5 Vest group */             Vest_1,             // Vest function defined in ZVest.sqf
-/* 6 Loot group */             Loot_3,             // Loot function defined in ZLoot.sqf
-/* 7 Zombie group */           Group_1,            // Group function defined in ZClasses.sqf
-/* 8 Avoid Territory */        true,               // Zombies won't spawn in Territories if true
-/* 9 Horde density */          25                  // Radius in which the zombies will spawn should be lower than Min Spawn Distance.
+/* 0 Groups Size  */         20,                 // maximum number of zombies around a player
+/* 1 Min Frequency */        20,                 // min time in minutes between each new zombie horde.
+/* 2 Max Frequency */        80,                 // max time in minutes between each new zombie horde.
+/* 3 Min Spawn Distance */   30,                 // minimum spawn distance from the player. (don't set 0)
+/* 4 Max Spawn Distance */   75,                 // maximum spawn distance from the player.
+/* 5 Vest group */           Vest_1,             // Vest function defined in ZVest.sqf
+/* 6 Loot group */           Loot_3,             // Loot function defined in ZLoot.sqf
+/* 7 Zombie group */         Group_1,            // Group function defined in ZClasses.sqf
+/* 8 Avoid Territory */      true,               // Zombie will not spawn in territories and will die in them if RemoveZfromTerritory is true
+/* 9 Horde density */        25                  // Radius in which the zombies will spawn should be lower than Min Spawn Distance.
 ];
 
-UseTriggers                  = true;
+UseTriggers                  = true;             //use the trigger system.
 
 //place loot boxes and mission script here
 trigger3mission = compile preprocessFile "exilez\init\zmission.sqf";
 trigger3lootbox = compile preprocessFile "exilez\init\zmissionloot.sqf";
 
+
 Trigger_1 = [				 //Towns
-/* 0  Use this trigger */    True,
-/* 1  Trigger Positions */   TriggerPositions_1,
-/* 2  Trigger Radius */      300,
-/* 3  Spawn Radius */        250,
-/* 4  Max Group Size */      15,
-/* 5  Min Group Size */      3,
-/* 6  Dynamic Group Size */  true,
-/* 7  Dynamic Ratio */       3,
-/* 8  Activation Delay */    15,
-/* 9  Spawn Delay */         15,
-/* 10 Respawn Delay */       60,
-/* 11 Show Trigger On Map */ true,
-/* 12 Marker Color */        "ColorRed",
-/* 13 Marker Alpha */        0.2,
-/* 14 Marker Text */         "",
-/* 15 Use Buildings */       true,
-/* 16 Vest group */          Vest_1,
-/* 17 Loot group */          Loot_1,
-/* 18 Zombie group */        Group_1,
-/* 19 Avoid Territory */     false,
-/* 20 Mission SQF */         nil,
-/* 21 Loot Box */            nil
+/* 0  Use this trigger */    True,               // Self - explanatory
+/* 1  Trigger Positions */   TriggerPositions_1, // The name of the array used to list all trigger position in the TriggerPositions.sqf file
+/* 2  Trigger Radius */      300,                // The activation radius of the trigger
+/* 3  Spawn Radius */        250,                // The zombie spawning radius of the trigger
+/* 4  Max Group Size */      15,                 // The maximum number of zombies for that trigger *if DynamicGroupSize if False, this number is used
+/* 5  Min Group Size */      3,                  // The minimum number of zombies for that trigger
+/* 6  Dynamic Group Size */  true,               // Enable the dynamic group size features *(the more spawn positions available in the town, the more zombies) *require UseBuildings True.
+/* 7  Dynamic Ratio */       3,                  // The ratio of zombies per 100 spawn positions.
+/* 8  Activation Delay */    15,                 // The delay before the activation of the trigger.
+/* 9  Spawn Delay */         15,                 // The delay between each zombie spawn right after the activation until the Max group size is reached.
+/* 10 Respawn Delay */       60,                 // The respawn delay after the max group size was reached
+/* 11 Show Trigger On Map */ true,               // Put a marker at the location and radius of the trigger on the map
+/* 12 Marker Color */        "ColorRed",         // Color of the trigger
+/* 13 Marker Alpha */        0.2,                // Alpha of the trigger *(0 is invisible 1 is opaque)
+/* 14 Marker Text */         "",                 // The text on the trigger
+/* 15 Use Buildings */       true,               // Use the buildings to spawn the zombies
+/* 16 Vest group */          Vest_1,             // The name of the Array used to list all the possible vest for that trigger. ZVest.sqf
+/* 17 Loot group */          Loot_1,             // The name of the Array used to list all the possible loot for that trigger. ZLoot.sqf
+/* 18 Zombie group */        Group_1,            // The name of the Group used to list the zombies possible for that trigger.  ZClasses.sqf
+/* 19 Avoid Territory */     false,              // Zombie will not spawn in territories and will die in them if RemoveZfromTerritory is true
+/* 20 Mission SQF */         nil,                // The location of the Mission file related to that trigger *(use M3Editor to create the file.)
+/* 21 Loot Box */            nil                 // The location of the Missionloot file related to that trigger *(See example file zmissionloot.sqf)
 ];
 
 Trigger_2 = [				 //Anti-Camping
-/* 0  Use this trigger */    True,
-/* 1  Trigger Positions */   TriggerPositions_2,
-/* 2  Trigger Radius */      300,
-/* 3  Spawn Radius */        250,
-/* 4  Max Group Size */      10,
-/* 5  Min Group Size */      3,
-/* 6  Dynamic Group Size */  false,
-/* 7  Dynamic Ratio */       3,
-/* 8  Activation Delay */    15,
-/* 9  Spawn Delay */         15,
-/* 10 Respawn Delay */       20,
-/* 11 Show Trigger On Map */ true,
-/* 12 Marker Color */        "ColorBlack",
-/* 13 Marker Alpha */        0.5,
-/* 14 Marker Text */         "No camping",
-/* 15 Use Buildings */       false,
-/* 16 Vest group */          Vest_2,
-/* 17 Loot group */          Loot_2,
-/* 18 Zombie group */        Group_2,
-/* 19 Avoid Territory */     false,
-/* 20 Mission SQF */         nil,
-/* 21 Loot Box */            nil
+/* 0  Use this trigger */    True,               // Self - explanatory
+/* 1  Trigger Positions */   TriggerPositions_2, // The name of the array used to list all trigger position in the TriggerPositions.sqf file
+/* 2  Trigger Radius */      300,                // The activation radius of the trigger
+/* 3  Spawn Radius */        250,                // The zombie spawning radius of the trigger
+/* 4  Max Group Size */      10,                 // The maximum number of zombies for that trigger *if DynamicGroupSize if False, this number is used
+/* 5  Min Group Size */      3,                  // The minimum number of zombies for that trigger
+/* 6  Dynamic Group Size */  false,              // Enable the dynamic group size features *(the more spawn positions available in the town, the more zombies) *require UseBuildings True.
+/* 7  Dynamic Ratio */       3,                  // The ratio of zombies per 100 spawn positions.
+/* 8  Activation Delay */    15,                 // The delay before the activation of the trigger.
+/* 9  Spawn Delay */         15,                 // The delay between each zombie spawn right after the activation until the Max group size is reached.
+/* 10 Respawn Delay */       20,                 // The respawn delay after the max group size was reached
+/* 11 Show Trigger On Map */ true,               // Put a marker at the location and radius of the trigger on the map
+/* 12 Marker Color */        "ColorBlack",       // Color of the trigger
+/* 13 Marker Alpha */        0.5,                // Alpha of the trigger *(0 is invisible 1 is opaque)
+/* 14 Marker Text */         "No camping",       // The text on the trigger
+/* 15 Use Buildings */       false,              // Use the buildings to spawn the zombies
+/* 16 Vest group */          Vest_2,             // The name of the Array used to list all the possible vest for that trigger. ZVest.sqf
+/* 17 Loot group */          Loot_2,             // The name of the Array used to list all the possible loot for that trigger. ZLoot.sqf
+/* 18 Zombie group */        Group_2,            // The name of the Group used to list the zombies possible for that trigger.  ZClasses.sqf
+/* 19 Avoid Territory */     false,              // Zombie will not spawn in territories and will die in them if RemoveZfromTerritory is true
+/* 20 Mission SQF */         nil,                // The location of the Mission file related to that trigger *(use M3Editor to create the file.)
+/* 21 Loot Box */            nil                 // The location of the Missionloot file related to that trigger *(See example file zmissionloot.sqf)
 ];
 
 Trigger_3 = [				 //Mission Trigger
-/* 0  Use this trigger */    True,
-/* 1  Trigger Positions */   TriggerPositions_3,
-/* 2  Trigger Radius */      500,
-/* 3  Spawn Radius */        120,
-/* 4  Max Group Size */      15,
-/* 5  Min Group Size */      3,
-/* 6  Dynamic Group Size */  false,
-/* 7  Dynamic Ratio */       3,
-/* 8  Activation Delay */    5,
-/* 9  Spawn Delay */         5,
-/* 10 Respawn Delay */       5,
-/* 11 Show Trigger On Map */ true,
-/* 12 Marker Color */        "ColorYellow",
-/* 13 Marker Alpha */        0.5,
-/* 14 Marker Text */         "LOOT AND DEATH",
-/* 15 Use Buildings */       false,
-/* 16 Vest group */          Vest_1,
-/* 17 Loot group */          Loot_3,
-/* 18 Zombie group */        Group_4,
-/* 19 Avoid Territory */     false,
-/* 20 Mission SQF */         trigger3mission,
-/* 21 Loot Box */            trigger3lootbox
+/* 0  Use this trigger */    True,               // Self - explanatory
+/* 1  Trigger Positions */   TriggerPositions_3, // The name of the array used to list all trigger position in the TriggerPositions.sqf file
+/* 2  Trigger Radius */      500,                // The activation radius of the trigger
+/* 3  Spawn Radius */        120,                // The zombie spawning radius of the trigger
+/* 4  Max Group Size */      15,                 // The maximum number of zombies for that trigger *if DynamicGroupSize if False, this number is used
+/* 5  Min Group Size */      3,                  // The minimum number of zombies for that trigger
+/* 6  Dynamic Group Size */  false,              // Enable the dynamic group size features *(the more spawn positions available in the town, the more zombies) *require UseBuildings True.
+/* 7  Dynamic Ratio */       3,                  // The ratio of zombies per 100 spawn positions.
+/* 8  Activation Delay */    5,                  // The delay before the activation of the trigger.
+/* 9  Spawn Delay */         5,                  // The delay between each zombie spawn right after the activation until the Max group size is reached.
+/* 10 Respawn Delay */       5,                  // The respawn delay after the max group size was reached
+/* 11 Show Trigger On Map */ true,               // Put a marker at the location and radius of the trigger on the map
+/* 12 Marker Color */        "ColorYellow",      // Color of the trigger
+/* 13 Marker Alpha */        0.5,                // Alpha of the trigger *(0 is invisible 1 is opaque)
+/* 14 Marker Text */         "LOOT AND DEATH",   // The text on the trigger
+/* 15 Use Buildings */       false,              // Use the buildings to spawn the zombies
+/* 16 Vest group */          Vest_1,             // The name of the Array used to list all the possible vest for that trigger. ZVest.sqf
+/* 17 Loot group */          Loot_3,             // The name of the Array used to list all the possible loot for that trigger. ZLoot.sqf
+/* 18 Zombie group */        Group_4,            // The name of the Group used to list the zombies possible for that trigger.  ZClasses.sqf
+/* 19 Avoid Territory */     false,              // Zombie will not spawn in territories and will die in them if RemoveZfromTerritory is true
+/* 20 Mission SQF */         trigger3mission,    // The location of the Mission file related to that trigger *(use M3Editor to create the file.)
+/* 21 Loot Box */            trigger3lootbox     // The location of the Missionloot file related to that trigger *(See example file zmissionloot.sqf)
 ];
 
 // List all the trigger group to use here.
