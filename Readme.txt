@@ -31,6 +31,7 @@ Alternative, light and Ultra-light configs for larger servers.
 Known Issues :
 
 Zombie animations are not quite working,
+
 Requirement
 
 Zombies & Demons 3.3 by ryandombrowsky,
@@ -39,7 +40,7 @@ https://forums.bistudio.com/topic/182412-zombies-demons-33/
 
 Download 
 
-https://github.com/patrix87/ExileZ-2.0
+https://github.com/patrix87/ExileZ-2
 
 Installation
 
@@ -80,7 +81,7 @@ Dizzturbed for making me think about harassing zombies.
 
 And to all of you for your feedback, it is greatly appreciated.
 
- 
+
 
 Donations
 
