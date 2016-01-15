@@ -10,19 +10,25 @@ private[
 	"_center",
 	"_position",
 	"_maxDistance",
-	"_minDistance"
+	"_minDistance",
+	"_radius",
+	"_angle"
 	];
 
 
 _center = _this select 0;
 _minDistance = _this select 1;
 _maxDistance = _this select 2;
-
+_angle = 0;
+_radius = 0;
 // randomize location
-_xOffset = floor ((random (_maxDistance-_minDistance))+_minDistance);
-_yOffset = floor ((random (_maxDistance-_minDistance))+_minDistance);
-_xOffset = [_xOffset,(-_xOffset)] call BIS_fnc_selectRandom;
-_yOffset = [_yOffset,(-_yOffset)] call BIS_fnc_selectRandom;
+
+_radius = floor ((random (_maxDistance-_minDistance))+_minDistance);
+_angle = floor (random 360);
+
+_xOffset = _radius * (cos _angle);
+_yOffset = _radius * (sin _angle);
+
 _position = [round((_center select 0) + _xOffset),round((_center select 1) + _yOffset)];
 
 // clear walls and floors
