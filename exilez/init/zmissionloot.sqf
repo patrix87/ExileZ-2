@@ -3,7 +3,7 @@
 Private [
 "_lootqte",
 "_maxOfEach",
-"_triggerPosition",
+"_position",
 "_items",
 "_item",
 "_cargoBox",
@@ -13,7 +13,7 @@ Private [
 
 _lootqte = 50;
 _maxOfEach = 2;
-_triggerPosition = _this select 0;
+_position = _this select 0;
 
 _items =[
 "B_Carryall_cbr",
@@ -150,8 +150,8 @@ _cargoBox = [
 //////////////////////////////////////////
 
 
-_lootBox = _cargoBox createvehicle _triggerPosition;
-_antiflag = "Exile_Construction_Flag_Static" createvehicle _triggerPosition;
+_lootBox = _cargoBox createvehicle _position;
+_antiflag = "Exile_Construction_Flag_Static" createvehicle _position;
 
 clearMagazineCargoGlobal _lootBox;
 clearWeaponCargoGlobal _lootBox;

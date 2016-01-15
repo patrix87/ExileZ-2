@@ -13,8 +13,5 @@ _group setcombatmode "RED";
 _group allowfleeing 0;
 _group setspeedmode "limited";
 _obj setvariable ["group", _group, False];
-if (UseHC) then {
-	//_localityChanged = _group setGroupOwner (owner HC); //transfer group to HC
-};
 
 _group;

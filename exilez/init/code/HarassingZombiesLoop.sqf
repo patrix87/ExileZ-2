@@ -1,16 +1,14 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
-private ["_nPlayer","_sTime","_group","_count","_groupSize","_frequency","_minSpawnDistance","_maxSpawnDistance","_vestGroup","_lootGroup","_zombieGroup","_avoidTerritory","_playerObj","_playerName","_playerPosition"];
+private ["_nPlayer","_sTime","_group","_count","_groupSize","_frequency","_vestGroup","_lootGroup","_zombieGroup","_avoidTerritory","_playerObj","_playerName","_playerPosition"];
 
 
 _groupSize =         (_this select 0) select 0;
 _frequency =         (_this select 0) select 1;
-_minSpawnDistance =  (_this select 0) select 2;
-_maxSpawnDistance =  (_this select 0) select 3;
-_vestGroup =         (_this select 0) select 4;
-_lootGroup =         (_this select 0) select 5;
-_zombieGroup =       (_this select 0) select 6;
-_avoidTerritory =    (_this select 0) select 7;
+_vestGroup =         (_this select 0) select 2;
+_lootGroup =         (_this select 0) select 3;
+_zombieGroup =       (_this select 0) select 4;
+_avoidTerritory =    (_this select 0) select 5;
 
 sleep 120; //Wait 2 minutes for the server to boot
 
@@ -42,7 +40,7 @@ while {true} do
 				//Spawn 1 zombie if count is low enough
 				if (_count < _groupSize) then 
 				{
-					nul = [_group,_playerPosition,_minSpawnDistance,_maxSpawnDistance,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory,[]] spawn SpawnZombie;
+					nul = [_group,_playerPosition,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory] spawn SpawnZombie;
 					if (Debug) then {
 						diag_log format["ExileZ 2.0: Spawning 1 Zombie for %1.",_playerName];
 					};
@@ -77,10 +75,3 @@ while {true} do
 	
 	sleep 0.1;
 };
-
-
-
-
-
-
-

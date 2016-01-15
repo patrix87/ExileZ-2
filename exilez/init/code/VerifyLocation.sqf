@@ -1,19 +1,20 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
 // Verify validity of spawning location
+
+//_validLocation = [_triggerPosition,_avoidTerritory,false] call VerifyLocation;
+
 // Return True if valid
-private[
-	"_flags",
-	"_avoidTerritory",
-	"_validLocation",
-	"_maxRange",
-	"_distance",
-	"_radius",
-	"_position"
-];
+private ["_flags","_avoidTerritory","_validLocation","_distance","_radius","_position","_ignorePlayer"];
+
+_ignorePlayer = false;
 
 _position = _this select 0;
 _avoidTerritory = _this select 1;
+if (count _this == 3) then {
+	_ignorePlayer = _this select 2;
+};
+
 _validLocation = true;
 
 // Check if empty
@@ -46,11 +47,18 @@ if (_validLocation) then
 	};
 };
 
-// Check for players
-if (_validLocation) then 
+// Check for players too close
+if (_validLocation && !_ignorePlayer) then 
 {
-	if (count (nearestObjects [_position, ["Exile_Unit_Player"],MinSpawnDistance]) >= 1) then {_validLocation = false};
+	if ({isplayer _x} count (_position nearEntities MinSpawnDistance) == 1) then {_validLocation = false};
 };
+
+// Check for absence of players near
+if (_validLocation && !_ignorePlayer) then 
+{
+	if ({isplayer _x} count (_position nearEntities MaxSpawnDistance) == 0) then {_validLocation = false};
+};
+
 
 // return
 _validLocation;

@@ -1,18 +1,16 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
-private ["_nPlayer","_group","_groupSize","_minSpawnDistance","_maxSpawnDistance","_vestGroup","_lootGroup","_zombieGroup","_avoidTerritory","_playerObj","_playerName","_playerPosition","_position","_validLocation","_zombie","_playerObjs","_sleepTime","_minFrequency","_maxFrequency"];
+private ["_nPlayer","_group","_groupSize","_vestGroup","_lootGroup","_zombieGroup","_avoidTerritory","_playerObj","_playerName","_playerPosition","_position","_validLocation","_playerObjs","_sleepTime","_minFrequency","_maxFrequency","_hordeDensity"];
 
 
 _groupSize =         (_this select 0) select 0;
 _minFrequency =      (_this select 0) select 1;
 _maxFrequency =      (_this select 0) select 2;
-_minSpawnDistance =  (_this select 0) select 3;
-_maxSpawnDistance =  (_this select 0) select 4;
-_vestGroup =         (_this select 0) select 5;
-_lootGroup =         (_this select 0) select 6;
-_zombieGroup =       (_this select 0) select 7;
-_avoidTerritory =    (_this select 0) select 8;
-_hordeDensity =      (_this select 0) select 9;
+_vestGroup =         (_this select 0) select 3;
+_lootGroup =         (_this select 0) select 4;
+_zombieGroup =       (_this select 0) select 5;
+_avoidTerritory =    (_this select 0) select 6;
+_hordeDensity =      (_this select 0) select 7;
 
 sleep 10; //Wait 2 minutes for the server to boot
 
@@ -22,7 +20,7 @@ while {true} do
 	//wait sleep time
 	_sleepTime = (_minFrequency + (ceil random (_maxFrequency - _minFrequency)))*60;
 	if (Debug) then {
-		diag_log format["ExileZ 2.0: Horde waiting %1 minutes.",_sleeptime/60];
+		diag_log format["ExileZ 2.0: Next Horde in %1 minutes.",_sleeptime/60];
 	};
 	sleep _sleeptime;
 	
@@ -38,13 +36,16 @@ while {true} do
 		for "_i" from 1 to _nPlayer do 
 		{
 			_playerObj = _playerObjs call BIS_fnc_selectRandom;
+			//Check if player is in a valid location
+			_playerPosition = getPos _playerObj;
+			_validLocation = [_playerPosition,_avoidTerritory] call VerifyLocation;
 			//if player is valid try to find a valid location 5 times
-			if (isPlayer _playerObj && alive _playerObj) then 
+			if (isPlayer _playerObj && alive _playerObj && _validLocation) then 
 			{
 				for "_i" from 1 to 5 do 
 				{
                     _playerPosition = getPos _playerObj;
-					_position = [_playerPosition,_minSpawnDistance,_maxSpawnDistance] call GetRandomLocation;
+					_position = [_playerPosition,(MinSpawnDistance+_hordeDensity),(MaxSpawnDistance+_hordeDensity)] call GetRandomLocation;
 					//Validate location
 					_validLocation = [_position,_avoidTerritory] call VerifyLocation;
 					if (_validLocation) exitWith {_validLocation};
@@ -79,7 +80,7 @@ while {true} do
 			};
 			for "_i" from 1 to _groupSize do 
 			{
-				_zombie = [_group,_position,0,_hordeDensity,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory,[]] spawn SpawnZombie;
+				nul = [_group,_position,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory,_hordeDensity] spawn SpawnZombie;
 				sleep 1;
 			};
 		}
@@ -91,10 +92,3 @@ while {true} do
 		};
 	};
 };
-
-
-
-
-
-
-

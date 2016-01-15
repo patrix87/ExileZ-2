@@ -1,42 +1,32 @@
-// Populate the group with 1 zombie
+// Populate a group with 1 zombie at a random location near the given position.
 
-private[
-	"_group",
-	"_triggerPosition",
-	"_spawnRadius",
-	"_vestGroup",
-	"_lootGroup",
-	"_zombieGroup",
-	"_minSpawnDistance",
-	"_positions",
-	"_position",
-	"_validLocation",
-	"_zClass",
-	"_avoidTerritory",
-	"_return",
-	"_result"
-	
-];
-_positions = [];
+// _validLocation = [_group,_position,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory] call SpawnZombie;
+// _return true or false
+
+private ["_group","_position","_vestGroup","_lootGroup","_zombieGroup","_validLocation","_zClass","_avoidTerritory","_maxSpawnDistance","_return","_result"];
+
 _group =             _this select 0;
-_triggerPosition =   _this select 1;
-_minSpawnDistance =  _this select 2;
-_spawnRadius =       _this select 3;
-_vestGroup =         _this select 4;
-_lootGroup =         _this select 5;
-_zombieGroup =       _this select 6;
-_avoidTerritory =    _this select 7;
-_positions =         _this select 8;
+_position =          _this select 1;
+_vestGroup =         _this select 2;
+_lootGroup =         _this select 3;
+_zombieGroup =       _this select 4;
+_avoidTerritory =    _this select 5;
 
-// Try 5 times to get a valid position
+if (count _this == 7) then {
+	_MaxSpawnDistance =    _this select 6;	
+}
+else
+{
+	_MaxSpawnDistance = MaxSpawnDistance;
+};
+
+
+// Try 5 times to get a valid position near the given position
 for "_i" from 1 to 5 do {
-	if ((count _positions) >= 1) then
+	//Get random position
+	if !(count _position == 0) then 
 	{
-		_position = _positions call BIS_fnc_selectRandom;
-	}
-	else
-	{
-		_position = [_triggerPosition,_minSpawnDistance,_spawnRadius] call GetRandomLocation;
+		_position = [_position,MinSpawnDistance,_MaxSpawnDistance] call GetRandomLocation;
 	};
 	//Validate location
 	_validLocation = [_position,_avoidTerritory] call VerifyLocation;
@@ -59,7 +49,7 @@ GetZombieClass = {
 if !(_validLocation) then
 {
 	if (Debug) then {
-		diag_log format["ExileZ 2.0: No suitable spawn location found for a Zombie near %1 ",_triggerPosition];
+		diag_log format["ExileZ 2.0: No suitable spawn location found for a Zombie near %1 ",_position];
 	};
 }
 else
@@ -88,3 +78,5 @@ else
 	];
 };
 
+//return
+_validLocation;

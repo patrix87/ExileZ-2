@@ -11,7 +11,7 @@ while {alive _zombie} do {
 	sleep MaxTime;
 	_zombiePos = getPos _zombie;
 	//check for the absence of players
-	if ((count (nearestObjects [_zombiePos, ["Exile_Unit_Player"],MaxDistance]) == 0) && alive _zombie) then {
+	if (({isplayer _x} count (_zombiePos nearEntities MaxDistance) == 0) && alive _zombie) then {
 		_zombie setdamage 1;
 		sleep 5;
 		deleteVehicle _zombie;

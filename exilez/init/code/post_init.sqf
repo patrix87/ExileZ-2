@@ -50,7 +50,7 @@ if (UseTriggers) then
 		
 			//Weight Zombie Group
 			_currentTrigger = _x;
-			_zgroup = _currentTrigger select 18;
+			_zgroup = _currentTrigger select 13;
 			_count = 0;
 			{
 				_count = _count + (_x select 1);

@@ -4,32 +4,7 @@
 
 //Do not set value to 0, comment out the line and adjust the commas instead.
 
-Group_1 = [
-[slowCivilians,		200],
-[slowSoldiers,		100],
-[mediumCivilians,	10],
-[mediumSoldiers,	10],
-[fastCivilians,		10],
-[fastSoldiers,		5],
-[crawlers,			20],
-[spiders,			10]
-//[boss,			1]
-];
-
-
-Group_2 = [
-//[slowCivilians,	200],
-//[slowSoldiers,	100],
-[mediumCivilians,	20],
-[mediumSoldiers,	15],
-[fastCivilians,		10],
-[fastSoldiers,		5],
-[crawlers,			5],
-[spiders,			15]
-//[boss,			1]
-];
-
-Group_3 = [
+Easy = [
 [slowCivilians,		2],
 [slowSoldiers,		1]
 //[mediumCivilians,	1],
@@ -41,9 +16,57 @@ Group_3 = [
 //[boss,			1]
 ];
 
-Group_4 = [
-//[slowCivilians,		2],
-//[slowSoldiers,		2],
+MediumMix = [
+[slowCivilians,		200],
+[slowSoldiers,		100],
+[mediumCivilians,	10],
+[mediumSoldiers,	5],
+[fastCivilians,		5],
+[fastSoldiers,		3],
+[crawlers,			10],
+[spiders,			10]
+//[boss,			1]
+];
+
+MediumMil = [
+//[slowCivilians,	200],
+[slowSoldiers,		100],
+//[mediumCivilians,	10],
+[mediumSoldiers,	5],
+//[fastCivilians,	10],
+[fastSoldiers,		3],
+[crawlers,			2],
+[spiders,			2]
+//[boss,			1]
+];
+
+MediumCiv = [
+[slowCivilians,		100],
+//[slowSoldiers,	100],
+[mediumCivilians,	5],
+//[mediumSoldiers,	10],
+[fastCivilians,		2],
+//[fastSoldiers,	5],
+[crawlers,			5],
+[spiders,			5]
+//[boss,			1]
+];
+
+Hard = [
+[slowCivilians,	    100],
+[slowSoldiers,	    50],
+[mediumCivilians,	20],
+[mediumSoldiers,	15],
+[fastCivilians,		10],
+[fastSoldiers,		5],
+[crawlers,			5],
+[spiders,			15]
+//[boss,			1]
+];
+
+Hardcore = [
+//[slowCivilians,	2],
+//[slowSoldiers,	2],
 [mediumCivilians,	10],
 [mediumSoldiers,	10],
 [fastCivilians,	    15],
