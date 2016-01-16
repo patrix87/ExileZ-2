@@ -6,7 +6,7 @@ MilitaryNoB = [
 [21015,7317,300],       // Selakano Airfield
 [15452,16171,400],      // Power plant
 [23567,21113,150],      // Military Near Pefkas Bay
-[20939,19235,150]       // Military Near Sofia
+[20939,19235,150],       // Military Near Sofia
 [12722,16512,400]       // Lakka Military
 ];                      
                         
