@@ -45,7 +45,7 @@ AllCities = [
 [25635,21343,300],      // Sofia
 [9335,15866,400],       // Agios Dionysios
 [20960,16922,360],      // Paros
-[21849,20986,200]       // Ghost Hotel
+[21849,20986,200],      // Ghost Hotel
 [4549,21425,300],       // Oreokastro
 [3861,17493,300],       // Agios Konstantinos North
 [4226,16844,300],       // Agios Konstantinos South
