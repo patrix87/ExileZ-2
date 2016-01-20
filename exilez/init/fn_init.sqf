@@ -12,9 +12,9 @@ ZombieSide                   = EAST;             // zombie team side east, west 
 ZombieSideString             = "EAST";           // Same thing but in a string.
 CorpseDeleteDelay            = 300;              // delay before a zombie corpse is deleted.
 Debug                        = true;             // debug messages.
-MinSpawnDistance             = 15;               // Closest distance from any player to spawn a zombie.
-MaxSpawnDistance             = 120;              // Max distance a zombie should spawn from a player.
-MaxDistance			         = 200;              // Max distance to players before delete.
+MinSpawnDistance             = 20;               // Closest distance from any player to spawn a zombie.
+MaxSpawnDistance             = 160;              // Max distance a zombie should spawn from a player.
+MaxDistance			         = 300;              // Max distance to players before delete.
 MaxTime                      = 30;               // Max time away from a player before delete.
 RemoveZfromTerritory         = true;             // Will kill zombies when they get too close to a flag. *(the check is done every MaxTime) will only work with zombies that are configured to avoid territories
 TriggerGroupScaling          = 0.25;             // 1 player = Groupsize, 2 player in trigger = Groupsize + (GroupSize * TriggerGroupScalling * number of player in the trigger) set at 0 to disable scaling
@@ -36,30 +36,33 @@ CqbDistance                  = 10;               // Minimal ditance for close qu
 CqbBonus                     = 40;               // Respect for close quarter bonus at 1 meter
 DistanceBonusDivider         = 10;               // Distance divided by that number = respect E.G. 300m / [20] = 15 Respect
 
-//Zombie settings
-Ryanzombieshealth			 = 0.75; 	         //Health, *(initial damage level 0 is no damage 1 is dead)
-Ryanzombieshealthdemon 		 = 0.7;		         //Health, *(initial damage level 0 is no damage 1 is dead)
-Ryanzombiesattackspeed 		 = 1.5;		         //Attack speed, *(Time is seconds between attacks)
-Ryanzombiesattackdistance 	 = 2.0;		         //Attack distance, *(in meters)
-Ryanzombiesattackstrenth 	 = 2;		         //Attack strength *(not sure what this does but more is more)
-Ryanzombiesdamage 			 = 0.07;             //Attack damage *(% of players life per hit, 1 is 100%)
-Ryanzombiesdamagecar 		 = 0.1;		         //Attack damage to car *(% of car health per hit, 1 is 100%)
-Ryanzombiesdamageair 		 = 0.025;	         //Attack damage to air *(% of car health per hit, 1 is 100%)
-Ryanzombiesdamagetank        = 0.01;	         //Attack damage to tank *(% of car health per hit, 1 is 100%)
-Ryanzombiesdamagecarstrenth  = 2;		         //Car attack strength *(Not sure what this does I think it related to the power of the throw when throw is enabled)
-Ryanzombiesdamageairstrenth  = 1.5;		         //Air attack strength *(Not sure what this does I think it related to the power of the throw when throw is enabled)
-Ryanzombiesdamagetankstrenth = 0.5;		         //Tank attack strength *(Not sure what this does I think it related to the power of the throw when throw is enabled)
+//Zombie settings : SET TO 0 TO DISABLE OR USE DEFAULT
+_Ryanzombieshealth			           = 0.8; 	 //Health, *(initial damage level 0 is no damage 1 is dead)
+_Ryanzombieshealthdemon                = 0;	     //Health, *(initial damage level 0 is no damage 1 is dead)
+_Ryanzombiesattackspeed 	           = 1.5;	 //Attack speed, *(Time is seconds between attacks)
+_Ryanzombiesattackdistance 	           = 2.35;	 //Attack distance, *(in meters)
+_Ryanzombiesattackstrenth 	           = 0;		 //Attack strength *(not sure what this does but more is more)
+_Ryanzombiesdamage 			           = 0.09;   //Attack damage *(% of players life per hit, 1 is 100%)
+_Ryanzombiesdamagecar 		           = 0;		 //Attack damage to car *(% of car health per hit, 1 is 100%)
+_Ryanzombiesdamageair 		           = 0;	     //Attack damage to air *(% of car health per hit, 1 is 100%)
+_Ryanzombiesdamagetank                 = 0;	     //Attack damage to tank *(% of car health per hit, 1 is 100%)
+_Ryanzombiesdamagecarstrenth           = 0;		 //Car attack strength *(Not sure what this does I think it related to the power of the throw when throw is enabled)
+_Ryanzombiesdamageairstrenth           = 0;		 //Air attack strength *(Not sure what this does I think it related to the power of the throw when throw is enabled)
+_Ryanzombiesdamagetankstrenth          = 0;		 //Tank attack strength *(Not sure what this does I think it related to the power of the throw when throw is enabled)
+                                                     
+_Ryanzombiescanthrow 		           = 0;		 //Enable or disable Throwing for zombies
+_Ryanzombiescanthrowtank               = 0;		 //Enable or disable Throwing tank for zombies                                              
+_Ryanzombiescanthrowdistance           = 0;		 //Max throw distance
+                                                     
+_Ryanzombiescanthrowdemon              = 0;		 //Enable or disable Throwing for demons
+_Ryanzombiescanthrowtankdemon          = 0;		 //Enable or disable Throwing tank for demons
+_Ryanzombiescanthrowdistancedemon      = 0;		 //Max throw distance demon
                                                  
-//Comment these out to disable them              
-//Ryanzombiescanthrow 		 = 1;		         //Enable or disable Throwing for zombies
-//Ryanzombiescanthrowtank    = 1;		         //Enable or disable Throwing tank for zombies                                              
-Ryanzombiescanthrowdistance	 = 50;		         //Max throw distance
-
-//Demons
-Ryanzombiescanthrowdemon     = 1;		         //Enable or disable Throwing for demons
-//Ryanzombiescanthrowtankdemon = 1;		         //Enable or disable Throwing tank for demons
-Ryanzombiescanthrowdistancedemon = 100;		     //Max throw distance demon
-
+_ryanzombiesdisablemoaning             = 0;      // No idle sound
+_ryanzombiesdisableaggressive          = 0;      // No aggressive sounds
+_ryanzombiescivilianattacks            = 0;      // Attack civilians
+_Ryanzombieslogicroam                  = 1;      // Roam ***roaming can be heavy on cpu
+_Ryanzombieslogicroamdemon             = 0;      // Demon Roam
 
 //Default Altis SafeZones
 SafeZonePositions =

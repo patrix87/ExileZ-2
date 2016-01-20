@@ -1,5 +1,35 @@
-// ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
+//ExileZ2.0byPatrix87ofhttp:\\multi-jeux.quebec//
 
-private ["_return","_result","_count","_forEachIndex","_currentTrigger","_zgroup","_useThisTrigger","_triggerPositions"];
-
-
+private[
+"_return",
+"_result",
+"_count",
+"_forEachIndex",
+"_currentTrigger",
+"_zgroup",
+"_useThisTrigger",
+"_triggerPositions",
+"_Ryanzombieshealth",
+"_Ryanzombieshealthdemon",
+"_Ryanzombiesattackspeed",
+"_Ryanzombiesattackdistance",
+"_Ryanzombiesattackstrenth",
+"_Ryanzombiesdamage",
+"_Ryanzombiesdamagecar",
+"_Ryanzombiesdamageair",
+"_Ryanzombiesdamagetank",
+"_Ryanzombiesdamagecarstrenth",
+"_Ryanzombiesdamageairstrenth",
+"_Ryanzombiesdamagetankstrenth",
+"_Ryanzombiescanthrow",
+"_Ryanzombiescanthrowtank",
+"_Ryanzombiescanthrowdistance",
+"_Ryanzombiescanthrowdemon",
+"_Ryanzombiescanthrowtankdemon",
+"_Ryanzombiescanthrowdistancedemon",
+"_ryanzombiesdisablemoaning",
+"_ryanzombiesdisableaggressive",
+"_ryanzombiescivilianattacks",
+"_Ryanzombieslogicroam",
+"_Ryanzombieslogicroamdemon"
+];

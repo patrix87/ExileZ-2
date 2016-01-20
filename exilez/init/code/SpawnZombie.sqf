@@ -3,7 +3,7 @@
 // _validLocation = [_group,_position,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory] call SpawnZombie;
 // _return true or false
 
-private ["_group","_position","_vestGroup","_lootGroup","_zombieGroup","_validLocation","_zClass","_avoidTerritory","_maxSpawnDistance","_return","_result"];
+private ["_face","_group","_position","_vestGroup","_lootGroup","_zombieGroup","_validLocation","_zClass","_avoidTerritory","_maxSpawnDistance","_return","_result"];
 
 _group =             _this select 0;
 _position =          _this select 1;
@@ -60,6 +60,7 @@ else
 	if (Debug) then {
 		diag_log format["ExileZ 2.0: Spawning 1 Zombie	|	Position : %1	|	Class : %2 ",_position,_zClass];
 	};
+
 	_zClass createUnit 
 	[
 		_position,
@@ -67,16 +68,18 @@ else
 		"
 		if !(call _vestGroup=='') then {this addVest call _vestGroup};
 		if !(call _lootGroup=='' && call _vestGroup=='') then {this addItemToVest call _lootGroup};
-		this disableConversation true;
-		this setbehaviour 'CARELESS';
-		this allowFleeing 0;
-		this setunitpos 'UP';
-		this addMPEventHandler ['MPKilled', {_this spawn ZMPKilled;}];
 		doStop this;
+		this disableAI 'FSM';
+		this enableAI 'ANIM';
+		this disableConversation true;
+		this switchmove 'AmovPercMstpSnonWnonDnon_SaluteOut';
+		this addMPEventHandler ['MPKilled', {_this spawn ZMPKilled;}];
 		nul = [this,_avoidTerritory] spawn ZombieDeleter;
 		"
+		
 	];
 };
+
 
 //return
 _validLocation;
