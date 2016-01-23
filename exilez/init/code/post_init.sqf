@@ -5,140 +5,140 @@ diag_log "\\\ --- Starting ExileZ 2.0 --- ///";
 
 //Set Ryanzombies public variables
 
-if (_Ryanzombieshealth > 0) then 
+if (_Ryanzombieshealth >= 0) then 
 {
 	Ryanzombieshealth = _Ryanzombieshealth;
 	publicVariable "Ryanzombieshealth";
 };
 
-if (_Ryanzombieshealthdemon > 0) then 
+if (_Ryanzombieshealthdemon >= 0) then 
 {
 	Ryanzombieshealthdemon = _Ryanzombieshealthdemon;
 	publicVariable "Ryanzombieshealthdemon";
 };
 
-if (_Ryanzombiesattackspeed > 0) then 
+if (_Ryanzombiesattackspeed >= 0) then 
 {
 	Ryanzombiesattackspeed = _Ryanzombiesattackspeed;
 	publicVariable "Ryanzombiesattackspeed";
 };
 
-if (_Ryanzombiesattackdistance > 0) then 
+if (_Ryanzombiesattackdistance >= 0) then 
 {
 	Ryanzombiesattackdistance = _Ryanzombiesattackdistance;
 	publicVariable "Ryanzombiesattackdistance";
 };
 
-if (_Ryanzombiesattackstrenth > 0) then 
+if (_Ryanzombiesattackstrenth >= 0) then 
 {
 	Ryanzombiesattackstrenth = _Ryanzombiesattackstrenth;
 	publicVariable "Ryanzombiesattackstrenth";
 };
 
-if (_Ryanzombiesdamage > 0) then 
+if (_Ryanzombiesdamage >= 0) then 
 {
 	Ryanzombiesdamage = _Ryanzombiesdamage;
 	publicVariable "Ryanzombiesdamage";
 };
 
-if (_Ryanzombiesdamagecar > 0) then 
+if (_Ryanzombiesdamagecar >= 0) then 
 {
 	Ryanzombiesdamagecar = _Ryanzombiesdamagecar;
 	publicVariable "Ryanzombiesdamagecar";
 };
 
-if (_Ryanzombiesdamageair > 0) then 
+if (_Ryanzombiesdamageair >= 0) then 
 {
 	Ryanzombiesdamageair = _Ryanzombiesdamageair;
 	publicVariable "Ryanzombiesdamageair";
 };
 
-if (_Ryanzombiesdamagetank > 0) then 
+if (_Ryanzombiesdamagetank >= 0) then 
 {
 	Ryanzombiesdamagetank = _Ryanzombiesdamagetank;
 	publicVariable "Ryanzombiesdamagetank";
 };
 
-if (_Ryanzombiesdamagecarstrenth > 0) then 
+if (_Ryanzombiesdamagecarstrenth >= 0) then 
 {
 	Ryanzombiesdamagecarstrenth = _Ryanzombiesdamagecarstrenth;
 	publicVariable "Ryanzombiesdamagecarstrenth";
 };
 
-if (_Ryanzombiesdamageairstrenth > 0) then 
+if (_Ryanzombiesdamageairstrenth >= 0) then 
 {
 	Ryanzombiesdamageairstrenth = _Ryanzombiesdamageairstrenth;
 	publicVariable "Ryanzombiesdamageairstrenth";
 };
 
-if (_Ryanzombiesdamagetankstrenth > 0) then 
+if (_Ryanzombiesdamagetankstrenth >= 0) then 
 {
 	Ryanzombiesdamagetankstrenth = _Ryanzombiesdamagetankstrenth;
 	publicVariable "Ryanzombiesdamagetankstrenth";
 };
 
-if (_Ryanzombiescanthrow > 0) then 
+if (_Ryanzombiescanthrow >= 0) then 
 {
 	Ryanzombiescanthrow = _Ryanzombiescanthrow;
 	publicVariable "Ryanzombiescanthrow";
 };
 
-if (_Ryanzombiescanthrowtank > 0) then 
+if (_Ryanzombiescanthrowtank >= 0) then 
 {
 	Ryanzombiescanthrowtank = _Ryanzombiescanthrowtank;
 	publicVariable "Ryanzombiescanthrowtank";
 };
 
-if (_Ryanzombiescanthrowdistance > 0) then 
+if (_Ryanzombiescanthrowdistance >= 0) then 
 {
 	Ryanzombiescanthrowdistance = _Ryanzombiescanthrowdistance;
 	publicVariable "Ryanzombiescanthrowdistance";
 };
 
-if (_Ryanzombiescanthrowdemon > 0) then 
+if (_Ryanzombiescanthrowdemon >= 0) then 
 {
 	Ryanzombiescanthrowdemon = _Ryanzombiescanthrowdemon;
 	publicVariable "Ryanzombiescanthrowdemon";
 };
 
 
-if (_Ryanzombiescanthrowtankdemon > 0) then 
+if (_Ryanzombiescanthrowtankdemon >= 0) then 
 {
 	Ryanzombiescanthrowtankdemon = _Ryanzombiescanthrowtankdemon;
 	publicVariable "Ryanzombiescanthrowtankdemon";
 };
 
-if (_Ryanzombiescanthrowdistancedemon > 0) then 
+if (_Ryanzombiescanthrowdistancedemon >= 0) then 
 {
 	Ryanzombiescanthrowdistancedemon = _Ryanzombiescanthrowdistancedemon;
 	publicVariable "Ryanzombiescanthrowdistancedemon";
 };
 
-if (_ryanzombiesdisablemoaning > 0) then 
+if (_ryanzombiesdisablemoaning >= 0) then 
 {
 	ryanzombiesdisablemoaning = _ryanzombiesdisablemoaning;
 	publicVariable "ryanzombiesdisablemoaning";
 };
 
-if (_ryanzombiesdisableaggressive > 0) then 
+if (_ryanzombiesdisableaggressive >= 0) then 
 {
 	ryanzombiesdisableaggressive = _ryanzombiesdisableaggressive;
 	publicVariable "ryanzombiesdisableaggressive";
 };
 
-if (_ryanzombiescivilianattacks > 0) then 
+if (_ryanzombiescivilianattacks >= 0) then 
 {
 	ryanzombiescivilianattacks = _ryanzombiescivilianattacks;
 	publicVariable "ryanzombiescivilianattacks";
 };
 
-if (_Ryanzombieslogicroam > 0) then 
+if (_Ryanzombieslogicroam >= 0) then 
 {
 	Ryanzombieslogicroam = _Ryanzombieslogicroam;
 	publicVariable "Ryanzombieslogicroam";
 };
 
-if (_Ryanzombieslogicroamdemon > 0) then 
+if (_Ryanzombieslogicroamdemon >= 0) then 
 {
 	Ryanzombieslogicroamdemon = _Ryanzombieslogicroamdemon;
 	publicVariable "Ryanzombieslogicroamdemon";
@@ -158,6 +158,7 @@ SpawnZombie = compile preprocessFile "exilez\init\code\SpawnZombie.sqf";
 VerifyLocation = compile preprocessFile "exilez\init\code\VerifyLocation.sqf";
 HordeLoop = compile preprocessFile "exilez\init\code\HordeLoop.sqf";
 ZombieDeleter = compile preprocessFile "exilez\init\code\ZombieDeleter.sqf";
+TurnTheLightsOff = compile preprocessFile "exilez\init\code\LightsOff.sqf";
 
 //Exile vars
 MaxTerritoryRange = getNumber (missionConfigFile >> "CfgTerritories" >> "maximumRadius");
@@ -204,6 +205,9 @@ if (UseHorde) then {
 	nul = [HordeSet] spawn HordeLoop;
 };
 
+if (LightsOff) then {
+	nul = [] spawn TurnTheLightsOff;
+};
 
 
 sleep 1;

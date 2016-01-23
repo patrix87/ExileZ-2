@@ -93,6 +93,12 @@ patrix87@gmail.com
 
 Thanks
 
+
+License 
+
+Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+
+
 IMPORTANT NOTE !
 
 @Ryanzombies in combination with Arma 3 1.54 increases the occurrence of the Out of memory error.
