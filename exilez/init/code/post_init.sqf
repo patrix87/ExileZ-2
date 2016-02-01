@@ -144,6 +144,47 @@ if (_Ryanzombieslogicroamdemon >= 0) then
 	publicVariable "Ryanzombieslogicroamdemon";
 };
 
+if (_Ryanzombiescanthrowtankdistance >= 0) then 
+{
+	Ryanzombiescanthrowtankdistance = _Ryanzombiescanthrowtankdistance;
+	publicVariable "Ryanzombiescanthrowtankdistance";
+};
+
+if (_Ryanzombiescanthrowtankdistancedemon >= 0) then 
+{
+	Ryanzombiescanthrowtankdistancedemon = _Ryanzombiescanthrowtankdistancedemon;
+	publicVariable "Ryanzombiescanthrowtankdistancedemon";
+};
+
+if (_Ryanzombiesjump >= 0) then 
+{
+	Ryanzombiesjump = _Ryanzombiesjump;
+	publicVariable "Ryanzombiesjump";
+};
+
+if (_Ryanzombiesjumpdemon >= 0) then 
+{
+	Ryanzombiesjumpdemon = _Ryanzombiesjumpdemon;
+	publicVariable "Ryanzombiesjumpdemon";
+};
+
+if (_Ryanzombiesfeed >= 0) then 
+{
+	Ryanzombiesfeed = _Ryanzombiesfeed;
+	publicVariable "Ryanzombiesfeed";
+};
+
+if (_Ryanzombiesfeeddemon >= 0) then 
+{
+	Ryanzombiesfeeddemon = _Ryanzombiesfeeddemon;
+	publicVariable "Ryanzombiesfeeddemon";
+};
+
+
+
+
+
+
 
 //compile code
 CreateTriggers = compile preprocessFile "exilez\init\code\CreateTriggers.sqf";

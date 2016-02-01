@@ -13,8 +13,8 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-	class ZOM {
-		class ZOMZ {
+	class exilez {
+		class exilez {
 			file = "exilez\init";
 			class init {
 				postInit = 1;
@@ -29,11 +29,13 @@ class CfgRemoteExec
 	{
 		mode = 1;
 		jip = 0;
+		class BIS_fnc_MP {allowedTargets = 0;};
 		class fnc_RyanZombies_SwitchMove{ allowedTargets=0; };
 	};
 	class Commands
 	{
-		mode=0;
+		mode=1;
 		jip=0;
+		class switchmove {allowedTargets = 0;};
 	};
 };

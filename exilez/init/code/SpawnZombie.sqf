@@ -72,14 +72,12 @@ else
 		this disableAI 'FSM';
 		this enableAI 'ANIM';
 		this disableConversation true;
-		this switchmove 'AmovPercMstpSnonWnonDnon_SaluteOut';
 		this addMPEventHandler ['MPKilled', {_this spawn ZMPKilled;}];
 		nul = [this,_avoidTerritory] spawn ZombieDeleter;
 		"
 		
 	];
 };
-
 
 //return
 _validLocation;
