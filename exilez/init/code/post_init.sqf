@@ -180,11 +180,77 @@ if (_Ryanzombiesfeeddemon >= 0) then
 	publicVariable "Ryanzombiesfeeddemon";
 };
 
+if (_Ryanzombiesinfection >= 0) then 
+{
+	Ryanzombiesinfection = _Ryanzombiesinfection;
+	publicVariable "Ryanzombiesinfection";
+};
 
+if (_ryanzombiesinfectedchance >= 0) then 
+{
+	ryanzombiesinfectedchance = _ryanzombiesinfectedchance;
+	publicVariable "ryanzombiesinfectedchance";
+};
 
+if (_ryanzombiesinfectedrate >= 0) then 
+{
+	ryanzombiesinfectedrate = _ryanzombiesinfectedrate;
+	publicVariable "ryanzombiesinfectedrate";
+};
 
+if (_ryanzombiesinfectedsymptoms >= 0) then 
+{
+	ryanzombiesinfectedsymptoms = _ryanzombiesinfectedsymptoms;
+	publicVariable "ryanzombiesinfectedsymptoms";
+};
 
+if (_ryanzombiesinfecteddeath >= 0) then 
+{
+	ryanzombiesinfecteddeath = _ryanzombiesinfecteddeath;
+	publicVariable "ryanzombiesinfecteddeath";
+};
 
+if (_ryanzombiesantivirusduration >= 0) then 
+{
+	ryanzombiesantivirusduration = _ryanzombiesantivirusduration;
+	publicVariable "ryanzombiesantivirusduration";
+};
+
+if (_ryanzombiesmovementspeedslow >= 0) then 
+{
+	ryanzombiesmovementspeedslow = _ryanzombiesmovementspeedslow;
+	publicVariable "ryanzombiesmovementspeedslow";
+};
+
+if (_ryanzombiesmovementspeedmedium >= 0) then 
+{
+	ryanzombiesmovementspeedmedium = _ryanzombiesmovementspeedmedium;
+	publicVariable "ryanzombiesmovementspeedmedium";
+};
+
+if (_ryanzombiesmovementspeedfast >= 0) then 
+{
+	ryanzombiesmovementspeedfast = _ryanzombiesmovementspeedfast;
+	publicVariable "ryanzombiesmovementspeedfast";
+};
+
+if (_ryanzombiesmovementspeeddemon >= 0) then 
+{
+	ryanzombiesmovementspeeddemon = _ryanzombiesmovementspeeddemon;
+	publicVariable "ryanzombiesmovementspeeddemon";
+};
+
+if (_ryanzombiesmovementspeedspider >= 0) then 
+{
+	ryanzombiesmovementspeedspider = _ryanzombiesmovementspeedspider;
+	publicVariable "ryanzombiesmovementspeedspider";
+};
+
+if (_ryanzombiesmovementspeedcrawler >= 0) then 
+{
+	ryanzombiesmovementspeedcrawler = _ryanzombiesmovementspeedcrawler;
+	publicVariable "ryanzombiesmovementspeedcrawler";
+};
 
 //compile code
 CreateTriggers = compile preprocessFile "exilez\init\code\CreateTriggers.sqf";

@@ -47,32 +47,48 @@ _Ryanzombiesdamage 			           = 0.09;   //Attack damage *(% of players life p
 _Ryanzombiesdamagecar 		           = 0.05;	 //Attack damage to car *(% of car health per hit, 1 is 100%)
 _Ryanzombiesdamageair 		           = 0.01;	 //Attack damage to air *(% of car health per hit, 1 is 100%)
 _Ryanzombiesdamagetank                 = 0.005;	 //Attack damage to tank *(% of car health per hit, 1 is 100%)
-_Ryanzombiesdamagecarstrenth           = 1.5;	 //Car attack strength *(Knockback strength)
-_Ryanzombiesdamageairstrenth           = 1;	     //Air attack strength *(Knockback strength)
-_Ryanzombiesdamagetankstrenth          = 0.4;	 //Tank attack strength *(Knockback strength)
+_Ryanzombiesdamagecarstrenth           = 1.5;	 //Car attack strength *(Knockback strength in M/S)
+_Ryanzombiesdamageairstrenth           = 1;	     //Air attack strength *(Knockback strength M/S)
+_Ryanzombiesdamagetankstrenth          = 0.4;	 //Tank attack strength *(Knockback strength M/S)
                                                  
-_Ryanzombiescanthrow 		           = 1;	     //Enable or disable Throwing for zombies
-_Ryanzombiescanthrowtank               = 0;	     //Enable or disable Throwing tank for zombies                                              
+_Ryanzombiescanthrow 		           = -1;	 //Enable or disable Throwing for zombies
+_Ryanzombiescanthrowtank               = -1;	 //Enable or disable Throwing tank for zombies                                              
 _Ryanzombiescanthrowdistance           = 10;	 //Max throw distance
 _Ryanzombiescanthrowtankdistance       = 0;      //Max throw distance for tanks                         
-  
+                                                 
 _Ryanzombiescanthrowdemon              = 1;	     //Enable or disable Throwing for demons
 _Ryanzombiescanthrowtankdemon          = 1;	     //Enable or disable Throwing tank for demons
 _Ryanzombiescanthrowdistancedemon      = 50;	 //Max throw distance demon
 _Ryanzombiescanthrowtankdistancedemon  = 10;     //Max throw distance for tanks      
-                                        
+                                                 
 _ryanzombiesdisablemoaning             = -1;     // No idle sound
 _ryanzombiesdisableaggressive          = -1;     // No aggressive sounds
 _ryanzombiescivilianattacks            = -1;     // Attack civilians
 _Ryanzombieslogicroam                  = 1;      // Roam ***roaming can be heavy on cpu
 _Ryanzombieslogicroamdemon             = -1;     // Demon Roam
-
-_Ryanzombiesjump                       = -1;      //Jumping Zombies
+                                                 
+_Ryanzombiesjump                       = -1;     //Jumping Zombies
 _Ryanzombiesjumpdemon                  = 1;      //Jumping Demons
-
-_Ryanzombiesfeed                       = -1;      //Feeding Zombies
+                                                 
+_Ryanzombiesfeed                       = -1;     //Feeding Zombies
 _Ryanzombiesfeeddemon                  = 1;      //Feeding Demons
+                                                 
+_Ryanzombiesinfection                  = 1;      //Enable infections *(-1 to disable)
+_ryanzombiesinfectedchance             = 10;     //Precent chances to be infected on hit
+_ryanzombiesinfectedrate               = 0.05;   //Damage per minute when infected (+/- 30 minutes to live)
+_ryanzombiesinfectedsymptoms           = 0.9;    //Symptomes showed when infected 0.9 = Normal 0.7 = Less 0.5 = None
+_ryanzombiesinfecteddeath              = 0.9;    //0.9 = Scream on death 0.7 = Silent death
+_ryanzombiesantivirusduration          = 300;    //Antivirus duration *(5 minutes)
 
+//http://steamcommunity.com/sharedfiles/filedetails/?id=614815221 must be installed on the client for the cure to work
+//You also need to overide an Exile script, Details here : http://www.exilemod.com/topic/10999-rz-infection-for-exile/
+                                                
+_ryanzombiesmovementspeedslow          = 1;      //Animation speed for slow zombies
+_ryanzombiesmovementspeedmedium        = 1;      //Animation speed for medium zombies
+_ryanzombiesmovementspeedfast          = 1;      //Animation speed for fast zombies
+_ryanzombiesmovementspeeddemon         = 1;      //Animation speed for demons
+_ryanzombiesmovementspeedspider        = 1;      //Animation speed for spider
+_ryanzombiesmovementspeedcrawler       = 1;      //Animation speed for crawler
 
 //Default Altis SafeZones
 SafeZonePositions =
