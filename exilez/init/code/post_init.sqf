@@ -281,12 +281,18 @@ if (UseTriggers) then
 			//Weight Zombie Group
 			_currentTrigger = _x;
 			_zgroup = _currentTrigger select 13;
+			if (Debug) then {
+				Diag_log Format["ExileZ 2.0: Compounding Zombie Group Weight, Selected Group Trigger Index : %1",_forEachIndex];
+			};
 			_count = 0;
 			{
 				_count = _count + (_x select 1);
+				if (Debug) then {
+					Diag_log Format["ExileZ 2.0: Zombie Type Index : %1		Weight : %2		Compound Weight Value : 	%3",_forEachIndex,_x select 1,_count];
+				};
 				(_zgroup select _forEachIndex) set [1,_count];
 			}foreach (_zgroup);
-			
+
 			//Create triggers
 			{nul = [_x,_CurrentTrigger] spawn CreateTriggers;
 				sleep 0.01;

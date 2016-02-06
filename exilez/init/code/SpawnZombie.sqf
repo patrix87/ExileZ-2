@@ -3,7 +3,7 @@
 // _validLocation = [_group,_position,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory] call SpawnZombie;
 // _return true or false
 
-private ["_face","_group","_position","_vestGroup","_lootGroup","_zombieGroup","_validLocation","_zClass","_avoidTerritory","_maxSpawnDistance","_return","_result"];
+private ["_face","_group","_position","_vestGroup","_lootGroup","_zombieGroup","_validLocation","_zClass","_avoidTerritory","_maxSpawnDistance","_return","_result","_maxValue"];
 
 _group =             _this select 0;
 _position =          _this select 1;
@@ -36,13 +36,26 @@ for "_i" from 1 to 5 do {
 
 GetZombieClass = {
 	_return = 0;
-	_result = ceil random ((_this select ((count _this) - 1)) select 1);
+	_maxValue = (_this select ((count _this) - 1)) select 1;	//Count how many type, remove 1 because index start a 0, select the last index, select the highest value.
+	if (Debug) then {
+		diag_log format["ExileZ 2.0: Zombie Group Highest Compound Weight : %1",_MaxValue];
+	};
+	_result = ceil random (_maxValue);
+	if (Debug) then {
+		diag_log format["ExileZ 2.0: Randomly Selected Value : %1",_result];
+	};
 	{
 		if((_x select 1) >= _result) exitwith
 		{
+			if (Debug) then {
+				diag_log format["ExileZ 2.0: Selected Zombie Group : %1		Compound Weight : %2",(_x select 0),(_x select 1)];
+			};
 			_return = ((_x select 0) call BIS_fnc_selectRandom) select 0;
 		};
 	}foreach _this;
+	if (Debug) then {
+		diag_log format["ExileZ 2.0: Selected Zombie Class : %1",_return];
+	};
 	_return;
 };
 

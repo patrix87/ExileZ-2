@@ -22,20 +22,3 @@ class CfgFunctions {
 		};
 	};
 };
-
-class CfgRemoteExec
-{
-	class Functions
-	{
-		mode = 1;
-		jip = 0;
-		class BIS_fnc_MP {allowedTargets = 0;};
-		class fnc_RyanZombies_SwitchMove{ allowedTargets=0; };
-	};
-	class Commands
-	{
-		mode=1;
-		jip=0;
-		class switchmove {allowedTargets = 0;};
-	};
-};
