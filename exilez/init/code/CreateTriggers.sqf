@@ -1,7 +1,7 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
 //Variable declaration
-private ["_triggerPosition","_trigger","_nearestLocation","_groupSize","_triggerRadius","_activationDelay","_spawnDelay","_respawnDelay","_showTriggerOnMap","_zMarkerColor","_zMarkerAlpha","_vestGroup","_lootGroup","_zombiegroup","_lootBox","_avoidTerritory","_zMarkerText","_mission","_marker","_marker2","_zMarkerBrush","_missionLRadius"];
+private ["_tempTriggerPosition","_triggerPosition","_trigger","_nearestLocation","_groupSize","_triggerRadius","_activationDelay","_spawnDelay","_respawnDelay","_showTriggerOnMap","_zMarkerColor","_zMarkerAlpha","_vestGroup","_lootGroup","_zombiegroup","_lootBox","_avoidTerritory","_zMarkerText","_mission","_marker","_marker2","_zMarkerBrush","_missionLRadius"];
 
 
 //Current spawner position
@@ -32,10 +32,11 @@ _validLocation = false;
 if (_missionLRadius > 0) then {
 	while {!_validLocation} do 
 	{
-		_triggerPosition = [_triggerPosition,0,_missionLRadius] call GetRandomLocation;
-		_validLocation = [_triggerPosition,_avoidTerritory,true] call VerifyLocation;
+		_tempTriggerPosition = [_triggerPosition,0,_missionLRadius] call GetRandomLocation;
+		_validLocation = [_tempTriggerPosition,_avoidTerritory,true] call VerifyLocation;
 		sleep 0.05;
 	};
+	_triggerPosition = _tempTriggerPosition;
 };
 
 //Create trigger area

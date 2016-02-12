@@ -2,7 +2,7 @@
 
 //Give a random location around a center position.
 
-//_position = [_position,MinDistance,MaxDistance] call GetRandomLocation;
+//_NewPosition = [_position,MinDistance,MaxDistance] call GetRandomLocation;
 
 private[
 	"_xOffset",

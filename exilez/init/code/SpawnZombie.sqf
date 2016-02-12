@@ -3,7 +3,7 @@
 // _validLocation = [_group,_position,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory] call SpawnZombie;
 // _return true or false
 
-private ["_face","_group","_position","_vestGroup","_lootGroup","_zombieGroup","_validLocation","_zClass","_avoidTerritory","_maxSpawnDistance","_return","_result","_maxValue"];
+private ["_TempPosition","_face","_group","_position","_vestGroup","_lootGroup","_zombieGroup","_validLocation","_zClass","_avoidTerritory","_maxSpawnDistance","_return","_result","_maxValue"];
 
 _group =             _this select 0;
 _position =          _this select 1;
@@ -26,13 +26,14 @@ for "_i" from 1 to 5 do {
 	//Get random position
 	if !(count _position == 0) then 
 	{
-		_position = [_position,MinSpawnDistance,_MaxSpawnDistance] call GetRandomLocation;
+		_TempPosition = [_position,MinSpawnDistance,_MaxSpawnDistance] call GetRandomLocation;
 	};
 	//Validate location
-	_validLocation = [_position,_avoidTerritory] call VerifyLocation;
+	_validLocation = [_TempPosition,_avoidTerritory] call VerifyLocation;
 	if (_validLocation) exitWith {_validLocation};
 	sleep 0.05;
 };
+_position = _TempPosition;
 
 GetZombieClass = {
 	_return = 0;
