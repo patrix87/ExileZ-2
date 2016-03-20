@@ -111,20 +111,26 @@ if ((!isNull _playerObj) && {((getPlayerUID _playerObj) != "") && {_playerObj is
 	_respect = (_respect + _respectChange);
 	_money = (_money + _zombieMoney);
 	
-	// Send message
-	[_playerObj, "showFragRequest", [_killerRespectPoints]] call ExileServer_system_network_send_to;
-	[_playerObj, "moneyReceivedRequest", [str _money, "Killing Zombies"]] call ExileServer_system_network_send_to;
+	if (EnableMoneyOnKill) then 
+	{
+		[_playerObj, "moneyReceivedRequest", [str _money, "Killing Zombies"]] call ExileServer_system_network_send_to;
+		_playerObj setVariable ["ExileMoney", _money];
+	};
 	
-	// Set client's respect and money
-	_playerObj setVariable ["ExileScore", _respect];
-	_playerObj setVariable ["ExileMoney", _money];
+	if (EnableRespectOnKill) then
+	{
+		[_playerObj, "showFragRequest", [_killerRespectPoints]] call ExileServer_system_network_send_to;
+		_playerObj setVariable ["ExileScore", _respect];
+		ExileClientPlayerScore = _respect;
+		(owner _playerObj) publicVariableClient "ExileClientPlayerScore";
+		ExileClientPlayerScore = nil;
+	};
 	
-	ExileClientPlayerScore = _respect;
-	(owner _playerObj) publicVariableClient "ExileClientPlayerScore";
-	ExileClientPlayerScore = nil;
-	
-	// Update client database entry
-	format["setAccountMoneyAndRespect:%1:%2:%3", _money, _respect, (getPlayerUID _playerObj)] call ExileServer_system_database_query_fireAndForget;
+	if (EnableMoneyOnKill or EnableRespectOnKill) then 
+	{
+		// Update client database entry
+		format["setAccountMoneyAndRespect:%1:%2:%3", _money, _respect, (getPlayerUID _playerObj)] call ExileServer_system_database_query_fireAndForget;
+	};
 };
 
 if(_explode) then 

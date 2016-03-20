@@ -16,33 +16,37 @@ sleep 120; //Wait 2 minutes for the server to boot
 while {true} do 
 {
 	{
-		if (isPlayer _x) then 
-		{ 
-			if (alive _x) then 
-			{	
-				_playerObj = _x;
-				_playerName = name _playerObj;
-				_playerPosition = getPos _playerObj;
-				
-				//get group from player
-				_group = _playerObj getvariable ["group", objNull];
-				
-				//if nul create group
-				if (isNull _group) then 
-				{
-					_group = [_playerObj] call InitGroup;
-					sleep 1;
-				};
+		if ((HarassingZombieAtNightOnly AND (daytime >= NightStartTime or daytime < NightEndTime)) OR !(HarassingZombieAtNightOnly)) then 
+		{
+			if (isPlayer _x) then 
+			{ 
+				if (alive _x) then 
+				{	
+					_playerObj = _x;
+					_playerName = name _playerObj;
+					_playerPosition = getPos _playerObj;
+					
+					//get group from player
+					_group = _playerObj getvariable ["group", objNull];
+					
+					//if nul create group
+					if (isNull _group) then 
+					{
+						_group = [_playerObj] call InitGroup;
+						sleep 1;
+					};
 
-				//count number of zombie alive in the group
-				_count = {alive _x} count units _group; 	
-				
-				//Spawn 1 zombie if count is low enough
-				if (_count < _groupSize) then 
-				{
-					nul = [_group,_playerPosition,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory] spawn SpawnZombie;
-					if (Debug) then {
-						diag_log format["ExileZ 2.0: Spawning 1 Zombie for %1.",_playerName];
+					//count number of zombie alive in the group
+					_count = {alive _x} count units _group; 	
+					
+					//Spawn 1 zombie if count is low enough
+					if (_count < _groupSize) then 
+					{
+						nul = [_group,_playerPosition,_vestGroup,_lootGroup,_zombieGroup,_avoidTerritory] spawn SpawnZombie;
+						if (Debug) then 
+						{
+							diag_log format["ExileZ 2.0: Spawning 1 Zombie for %1.",_playerName];
+						};
 					};
 				};
 			};
@@ -50,14 +54,16 @@ while {true} do
 		
 		//number of real player
 		_nPlayer = count (allPlayers - entities "HeadlessClient_F");
-		if (Debug) then {
+		if (Debug) then 
+		{
 			diag_log format["ExileZ 2.0: %1 Player in game.",_nPlayer];
 		};
 		
 		//pause between spawn
 		if (_nPlayer < 1) then // to avoid division by 0
 		{
-			if (Debug) then {
+			if (Debug) then 
+			{
 				diag_log format["ExileZ 2.0: Waiting %1 seconds.",_frequency];
 			};
 			sleep _frequency;
@@ -65,7 +71,8 @@ while {true} do
 		else
 		{
 			_sTime = round (_frequency / _nPlayer);
-			if (Debug) then {
+			if (Debug) then 
+			{
 				diag_log format["ExileZ 2.0: Waiting %1 seconds.",_sTime];
 			};
 			sleep _sTime;

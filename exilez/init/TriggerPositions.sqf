@@ -1,12 +1,12 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
-MilitaryNoB = [         
+Military = [         
 [16084,16985,180],      // Telos Military
 [17432,13160,150],      // Pyrgos Military
 [21015,7317,300],       // Selakano Airfield
 [15452,16171,400],      // Power plant
 [23567,21113,150],      // Military Near Pefkas Bay
-[20939,19235,150],       // Military Near Sofia
+[20939,19235,150],      // Military Near Sofia
 [12722,16512,400]       // Lakka Military
 ];                      
                         
@@ -16,7 +16,7 @@ NoBuildings = [
 [13457,12029,600]       // Maknysinsi Island
 ];                      
                         
-Cities = [              
+MainCitiesOnly = [              
 [16804,12684,300],      // Pyrgos   
 [14016,18644,300],      // Athira
 [12524,14334,300],      // Neochori
@@ -28,7 +28,7 @@ Cities = [
 [21849,20986,200]       // Ghost Hotel
 ];                      
                         
-NoManLandNoB = [        
+NoMansLand = [        
 [11288,7743,3200]       // No man's land
 ];                      
                         
@@ -36,7 +36,7 @@ Mission = [
 [11205,8717,150]        // Mission
 ];
 
-AllCities = [              
+Cities = [              
 [16804,12684,300],      // Pyrgos   
 [14016,18644,300],      // Athira
 [12524,14334,300],      // Neochori
@@ -94,3 +94,29 @@ AllCities = [
 [26733,21213,250],      // Gatolia
 [27002,23215,300]       // Molos
 ];
+
+
+//NAMALSK
+	
+// *** Disable trigger 3 and 4 in fn_init.
+
+/*
+Military = [         
+    [4150,6650,200],
+    [3555,6662,200]
+];          
+
+Cities = [              
+    [6766,12802,300],
+    [8247,10749,300],
+    [4829,10836,200],
+    [4444,11242,200],
+    [6329,9641,200],
+    [6481,9300,200],
+    [7270,7950,300],
+    [7727,7596,300],
+    [7036,5830,200],
+    [3913,7558,300],
+    [3952,8474,200]
+];
+*/

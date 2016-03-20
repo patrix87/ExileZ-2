@@ -101,7 +101,6 @@ if (_Ryanzombiescanthrowdemon >= 0) then
 	publicVariable "Ryanzombiescanthrowdemon";
 };
 
-
 if (_Ryanzombiescanthrowtankdemon >= 0) then 
 {
 	Ryanzombiescanthrowtankdemon = _Ryanzombiescanthrowtankdemon;
@@ -154,6 +153,24 @@ if (_Ryanzombiescanthrowtankdistancedemon >= 0) then
 {
 	Ryanzombiescanthrowtankdistancedemon = _Ryanzombiescanthrowtankdistancedemon;
 	publicVariable "Ryanzombiescanthrowtankdistancedemon";
+};
+
+if (_ryanzombiesdisablebleeding >= 0) then 
+{
+	ryanzombiesdisablebleeding = _ryanzombiesdisablebleeding;
+	publicVariable "ryanzombiesdisablebleeding";
+};
+
+if (_ryanzombiesstartinganim >= 0) then 
+{
+	ryanzombiesstartinganim = _ryanzombiesstartinganim;
+	publicVariable "ryanzombiesstartinganim";
+};
+
+if (_ryanzombieslimit >= 0) then 
+{
+	ryanzombieslimit = _ryanzombieslimit;
+	publicVariable "ryanzombieslimit";
 };
 
 if (_Ryanzombiesjump >= 0) then 
@@ -214,6 +231,12 @@ if (_ryanzombiesantivirusduration >= 0) then
 {
 	ryanzombiesantivirusduration = _ryanzombiesantivirusduration;
 	publicVariable "ryanzombiesantivirusduration";
+};
+
+if (_ryanzombiesmovementspeedwalker >= 0) then 
+{
+	ryanzombiesmovementspeedwalker = _ryanzombiesmovementspeedwalker;
+	publicVariable "ryanzombiesmovementspeedwalker";
 };
 
 if (_ryanzombiesmovementspeedslow >= 0) then 
