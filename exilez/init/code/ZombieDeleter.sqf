@@ -1,6 +1,6 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
-private ["_zombie","_zombiePos","_zombieClass","_distanceDeath","_distance","_radius","_avoidTerritory","_flags"];
+private ["_device","_zombie","_zombiePos","_zombieClass","_distanceDeath","_distance","_radius","_avoidTerritory","_flags"];
 
 _zombie = _this select 0;
 _avoidTerritory = _this select 1;
@@ -32,6 +32,51 @@ while {alive _zombie} do {
 				_distanceDeath = true;
 			};
 		}forEach _flags;
+	};
+	//Check for the device
+	if (alive _zombie)then
+	{
+		_device = _zombiePos nearObjects ["Land_Device_assembled_F", 30];
+		{
+			_distance = (getPosATL _x) distance _zombiePos;
+			if (_distance <= 30) exitWith 
+			{
+				_zombie setdamage 1;
+				sleep 10;
+				deleteVehicle _zombie;
+				_distanceDeath = true;
+			};
+		}forEach _device;
+	};
+	//Check for the Donkey punched device
+	if (alive _zombie)then
+	{
+		_device = _zombiePos nearObjects ["DP_Land_Device_assembled_F", 30];
+		{
+			_distance = (getPosATL _x) distance _zombiePos;
+			if (_distance <= 30) exitWith 
+			{
+				_zombie setdamage 1;
+				sleep 10;
+				deleteVehicle _zombie;
+				_distanceDeath = true;
+			};
+		}forEach _device;
+	};
+	//Check for the mobile device
+	if (alive _zombie)then
+	{
+		_device = _zombiePos nearObjects ["O_Truck_03_device_F", 30];
+		{
+			_distance = (getPosATL _x) distance _zombiePos;
+			if (_distance <= 30) exitWith 
+			{
+				_zombie setdamage 1;
+				sleep 10;
+				deleteVehicle _zombie;
+				_distanceDeath = true;
+			};
+		}forEach _device;
 	};
 };
 
