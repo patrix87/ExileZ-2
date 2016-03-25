@@ -98,7 +98,7 @@ Cities = [
 
 //NAMALSK
 	
-// *** Disable trigger 3 and 4 in fn_init.
+// *** REMOVE trigger 3,4,5 in fn_init. *Do not forget to remove them from the trigger array *Line 184 to 250
 
 /*
 Military = [         
