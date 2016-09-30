@@ -43,6 +43,7 @@ _cqbDistance			= CqbDistance;				//default = 10;	// Minimal ditance for close qu
 _cqbBonus				= CqbBonus;					//default = 40;	// Respect for close quarter bonus at 1 meter
 _distanceBonusDivider 	= DistanceBonusDivider;		//default = 10;	// Distance divided by that number = respect E.G. 300m / [20] = 15 Respect
 //
+_maxMoneyOnZed			= ZombieMaxMoney;		//default = 15; // Max Money per zombie kill will be random
 
 _killMsg = ["ZOMBIE WACKED","ZOMBIE CLIPPED","ZOMBIE DISABLED","ZOMBIE DISQUALIFIED","ZOMBIE WIPED","ZOMBIE WIPED","ZOMBIE ERASED","ZOMBIE LYNCHED","ZOMBIE WRECKED","ZOMBIE NEUTRALIZED","ZOMBIE SNUFFED","ZOMBIE WASTED","ZOMBIE ZAPPED"] call BIS_fnc_selectRandom;
 _killMsgRoad = ["ZOMBIE ROADKILL","ZOMBIE SMASHED","ERMAHGERD ROADKILL"] call BIS_fnc_selectRandom;
@@ -111,10 +112,16 @@ if ((!isNull _playerObj) && {((getPlayerUID _playerObj) != "") && {_playerObj is
 	_respect = (_respect + _respectChange);
 	_money = (_money + _zombieMoney);
 	
-	if (EnableMoneyOnKill) then 
+	if (EnableMoneyOnPlayer) then 
 	{
 		[_playerObj, "moneyReceivedRequest", [str _money, "Killing Zombies"]] call ExileServer_system_network_send_to;
-		_playerObj setVariable ["ExileMoney", _money];
+		_playerObj setVariable ["ExileMoney", _money, true];
+	};
+	
+	if (EnableMoneyOnCorpse) then 
+	{
+		_zedMoney = random(_maxMoneyOnZed);
+		_unit setVariable ["ExileMoney", round(_zedMoney), true];
 	};
 	
 	if (EnableRespectOnKill) then
@@ -122,14 +129,51 @@ if ((!isNull _playerObj) && {((getPlayerUID _playerObj) != "") && {_playerObj is
 		[_playerObj, "showFragRequest", [_killerRespectPoints]] call ExileServer_system_network_send_to;
 		_playerObj setVariable ["ExileScore", _respect];
 		ExileClientPlayerScore = _respect;
+		format["setAccountScore:%1:%2", _respect, (getPlayerUID _playerObj)] call ExileServer_system_database_query_fireAndForget;
 		(owner _playerObj) publicVariableClient "ExileClientPlayerScore";
 		ExileClientPlayerScore = nil;
 	};
 	
-	if (EnableMoneyOnKill or EnableRespectOnKill) then 
+	if (EnableZombieStatKill) then
 	{
-		// Update client database entry
-		format["setAccountMoneyAndRespect:%1:%2:%3", _money, _respect, (getPlayerUID _playerObj)] call ExileServer_system_database_query_fireAndForget;
+		_newKillerFrags = _killer getVariable ["ExileZedKills", 0];
+		_newKillerFrags = _newKillerFrags + 1;
+		_killer setVariable ["ExileZedKills", _newKillerFrags];
+		format["addAccountZombieKill:%1", getPlayerUID _killer] call ExileServer_system_database_query_fireAndForget;
+		ExileClientPlayerZedKills = _newKillerFrags;
+		(owner _playerObj) publicVariableClient "ExileClientPlayerZedKills";
+		ExileClientPlayerZedKills = nil;
+	};
+	
+	if (EnableStatKill) then
+	{			
+		_newKillerFrags = _killer getVariable ["ExileKills", 0];
+		_newKillerFrags = _newKillerFrags + 1;
+		_killer setVariable ["ExileKills", _newKillerFrags];
+		format["addAccountKill:%1", getPlayerUID _killer] call ExileServer_system_database_query_fireAndForget;
+		ExileClientPlayerKills = _newKillerFrags;
+		(owner _playerObj) publicVariableClient "ExileClientPlayerKills";
+		ExileClientPlayerKills = nil;
+	};
+
+	if (EnableRankChange) then
+	{
+		_newKillerRank = _killer getVariable ["ExileRank", 0];
+		_killer setVariable ["ExileRank", (_newKillerRank+_zombieRankChange)];
+		format["modifyAccountRank:%1:%2",_zombieRankChange,getPlayerUID _killer] call ExileServer_system_database_query_fireAndForget;
+		ExileClientPlayerRank = (_newKillerRank+_zombieRankChange);
+		(owner _playerObj) publicVariableClient "ExileClientPlayerRank";
+		ExileClientPlayerRank = nil;
+	};
+	
+	if (EnableHumanityChange) then
+	{
+		_newKillerRank = _killer getVariable ["ExileHumanity", 0];
+		_killer setVariable ["ExileHumanity", (_newKillerRank+_zombieRankChange)];
+		format["modifyAccountHumanity:%1:%2",_zombieRankChange,getPlayerUID _killer] call ExileServer_system_database_query_fireAndForget;
+		ExileClientPlayerHumanity = (_newKillerRank+_zombieRankChange);
+		(owner _playerObj) publicVariableClient "ExileClientPlayerHumanity";
+		ExileClientPlayerHumanity = nil;
 	};
 };
 

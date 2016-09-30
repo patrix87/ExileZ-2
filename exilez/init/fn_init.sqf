@@ -32,10 +32,21 @@ ExplosiveType                = "Grenade" ;       // "mini_Grenade" for small alm
 ExplosiveRespect             = 100;              // Bonus respect for Exploding zombies
 
 //Killing zombies settings
-EnableMoneyOnKill            = true;             // Self Explanatory
-EnableRespectOnKill          = true;             // Self Explanatory
+EnableMoneyOnPlayer          = false;            // Money goes directly on killer
+EnableMoneyOnCorpse          = true;             // Money stays on corpse for looting
 ZombieMoney                  = 5;                // Money per zombie kill
+ZombieMaxMoney               = 15;                // Max Money per zombie kill-random amount put on corpses
+
+EnableStatKill				 = true;			//Enable stat tracking for Kills DB entry
+EnableZombieStatKill         = false;			// Enable stat tracking for ZedKills DB entry
+
+EnableRankChange			 = false;			//Enable Rank change
+EnableHumanityChange		 = false;			//Enable GR8's Humanity change
+ExileZombieKillRankChange	 = 5;				// Both Rank and Humanity are dependant on this config
+
+EnableRespectOnKill          = true;             // Self Explanatory
 ZombieRespect                = 10;               // Respect per zombie kill
+
 RoadKillBonus                = 10;               // Bonus Respect if roadkill
 MinDistance                  = 50;               // Minimal distance for range bonus
 CqbDistance                  = 10;               // Minimal ditance for close quarter bonus
