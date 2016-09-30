@@ -115,12 +115,13 @@ if ((!isNull _playerObj) && {((getPlayerUID _playerObj) != "") && {_playerObj is
 	if (EnableMoneyOnPlayer) then 
 	{
 		[_playerObj, "moneyReceivedRequest", [str _money, "Killing Zombies"]] call ExileServer_system_network_send_to;
-		_playerObj setVariable ["ExileMoney", _money];
+		_playerObj setVariable ["ExileMoney", _money, true];
 	};
 	
 	if (EnableMoneyOnCorpse) then 
 	{
-		_unit setVariable ["ExileMoney",random(_maxMoneyOnZed),true];
+		_zedMoney = random(_maxMoneyOnZed);
+		_unit setVariable ["ExileMoney", round(_zedMoney), true];
 	};
 	
 	if (EnableRespectOnKill) then
