@@ -1,0 +1,8 @@
+
+tmarkers = [];mpos = []; msize = []; mname = [];
+{mpos = getMarkerPos _x;
+msize = getMarkerSize _x;
+mname = text _x;
+tmarkers = tmarkers + [[mpos select 0, mpos select 1,msize select 0],mname];
+}foreach allMapMarkers;
+copyToClipboard str tmarkers;
