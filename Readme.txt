@@ -1,6 +1,6 @@
-ExileZ 2 (v2.5)
+ExileZ 2 (v2.7)
 
-by Patrix87 of http://multi-jeux.quebec
+by Patrix87
 
 Forked from Original project named EXILE-Z created by SAM, Otto and CaptionJack of RelentlessServers.com based on Civilian Life by code34
 
@@ -36,7 +36,8 @@ Cure support only available when the client install : http://steamcommunity.com/
 
 Requirement
 
-Zombies & Demons 3.6 by ryandombrowsky,
+Zombies & Demons 4.6 by ryandombrowsky,
+ExileServer 1.0.2
 
 https://forums.bistudio.com/topic/182412-zombies-demons-36/
 
@@ -63,9 +64,18 @@ class Mission
 		"a3_map_altis",
 		"A3_Characters_F"
 	};
- 
 
- 
+
+How to export Triggers positions:
+
+0. Open arma with NO MODS other than the map you are using
+1. Open Eden Editor and DO NOT load a mission file.
+2. Place an Elliptic Marker *(not a trigger) on every region you want a spawner and set its radius.
+3. Copy Paste the code from GetMarkerCmd.txt inside the debug console
+4. Execute the code
+5. Open Notepad, CTRL+V  *(Paste)
+6. ???
+7. Profit !
 
 PS: This is an @ExileServer Add-on for dedicated server only, NOT a mission script. No other script are required on the mission side for it to work.
 
@@ -80,12 +90,11 @@ Please read it.
 BEfilters
 
 
-
  
 
 Special Thanks
 
-MusTanG for the infection plugin
+MusTanG for the infection plugin and a bunch a nice code.
 
 JASONonSTEAM for providing feedback and the Chernarus town locations.
 
@@ -100,9 +109,7 @@ And to all of you for your feedback, it is greatly appreciated.
 
 Donations
 
-http://multi-jeux.quebec/dons/
-
-or paypal at
+via paypal at
 
 patrix87@gmail.com
 
@@ -114,12 +121,10 @@ Thanks
 
 IMPORTANT NOTE !
 
-@Ryanzombies in combination with Arma 3 1.54 increases the occurrence of the Out of memory error.
-This is not an issue I can solve neither can Ryan.
-This is something the ARMA 3 Dev team have to fix.
-Please upvote this : http://feedback.arma3.com/view.php?id=26863
+Do not create to many triggers, one per town is enough. 
+Many trigger per town is pointless as zombies only spawn near players anyway.
 
-Apparently, using the performance build resolve the crashing issue!
+Use the performance build to get better performances
 
 --> https://forums.bistudio.com/topic/160288-arma-3-stable-server-154-performance-binary-feedback/ <--
 
