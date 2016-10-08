@@ -38,13 +38,13 @@ while {true} do
 			_playerObj = _playerObjs call BIS_fnc_selectRandom;
 			//Check if player is in a valid location
 			_playerPosition = getPos _playerObj;
-			_validLocation = [_playerPosition,_avoidTerritory] call VerifyLocation;
-			//if player is valid try to find a valid location 5 times
+			_validLocation = [_playerPosition,_avoidTerritory,true] call VerifyLocation;
+			//if player is valid try to find a valid location 10 times
 			if (isPlayer _playerObj && alive _playerObj && _validLocation) then 
 			{
-				for "_i" from 1 to 5 do 
+				for "_i" from 1 to 10 do 
 				{
-                    _playerPosition = getPos _playerObj;
+					_playerPosition = getPos _playerObj;
 					_position = [_playerPosition,(MinSpawnDistance+_hordeDensity),(MaxSpawnDistance+_hordeDensity)] call GetRandomLocation;
 					//Validate location
 					_validLocation = [_position,_avoidTerritory] call VerifyLocation;
