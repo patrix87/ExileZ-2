@@ -1,4 +1,4 @@
-ExileZ 2 (v2.7)
+ExileZ 2 (v2.8)
 
 by Patrix87
 
