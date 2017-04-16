@@ -180,8 +180,8 @@ if ((!isNull _playerObj) && {((getPlayerUID _playerObj) != "") && {_playerObj is
 if(_explode) then 
 {
 	{
-		if (((_x select 0) distance (position _unit)) < (_x select 1)) exitwith {_safetoblow = false};
-	}Foreach SafeZonePositions;
+	if ((getPosATL _unit) call ExileClient_util_world_isInTraderZone) exitwith {_safetoblow = false};
+	};
 	if (_safetoblow) then 
 	{
 		sleep ExplosionDelay;

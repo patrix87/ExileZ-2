@@ -20,6 +20,8 @@ _validLocation = true;
 // Check if empty
 if ((count _position) == 0) then {_validLocation = false};
 
+//No need to define SafeZones anymore..
+/*
 // Check for safezones
 if (_validLocation) then 
 {
@@ -27,6 +29,7 @@ if (_validLocation) then
 		if (_position distance (_x select 0) <= _x select 1) exitWith {_validLocation = false};
 	}forEach SafeZonePositions;
 };
+*/
 
 // Check for water
 if (_validLocation) then 
