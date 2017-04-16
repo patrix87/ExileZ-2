@@ -112,14 +112,14 @@ _ryanzombiesmovementspeeddemon         = 1;      // Animation speed for demons
 _ryanzombiesmovementspeedspider        = 1;      // Animation speed for spider
 _ryanzombiesmovementspeedcrawler       = 1;      // Animation speed for crawler
 
-
+//No need to define SafeZones anymore..
 //Default Altis SafeZones
-SafeZonePositions =
+/*SafeZonePositions =
 [//  [[Coordinates],Radius]  // You can Get the safezone information directly from your mission.sqm under class Markers
   [[14599,16797],175],
   [[23334,24188],175],
   [[2998,18175],175]
-];
+];*/
 
 UseHarassingZombies          = true;             //
 
