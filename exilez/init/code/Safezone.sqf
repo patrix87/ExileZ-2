@@ -1,7 +1,7 @@
 // ExileZ 2.0 by Patrix87 of http:\\multi-jeux.quebec //
 
 //Variable declaration
-private [
+/*private [
 	"_position",
 	"_trigger",
 	"_nearestLocation",
@@ -21,4 +21,4 @@ _trigger setTriggerStatements["this && {vehicle _x isKindOf 'Man'} count thislis
 
 if (Debug) then {
 	diag_log format["ExileZ 2.0: Creating Safezone Trigger		|	Position : %1 	|	Radius : %2m	|	Near : %3 ",_position,_radius,_nearestLocation];
-};
+};*/

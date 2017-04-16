@@ -282,7 +282,7 @@ HarassingZombiesLoop = compile preprocessFile "exilez\init\code\HarassingZombies
 InitGroup = compile preprocessFile "exilez\init\code\InitGroup.sqf";
 SpawnZombie = compile preprocessFile "exilez\init\code\SpawnZombie.sqf";
 ZMPKilled = compile preprocessFile "exilez\init\code\MPKilled.sqf";
-Safezone = compile preprocessFile "exilez\init\code\Safezone.sqf";
+//Safezone = compile preprocessFile "exilez\init\code\Safezone.sqf";
 GetRandomLocation = compile preprocessFile "exilez\init\code\GetRandomLocation.sqf";
 SpawnZombie = compile preprocessFile "exilez\init\code\SpawnZombie.sqf";
 VerifyLocation = compile preprocessFile "exilez\init\code\VerifyLocation.sqf";
@@ -323,11 +323,13 @@ if (UseTriggers) then
 		};
 	}foreach Triggers;
 };
-
+//No need to define SafeZones anymore..
 //Create Triggers for safezones
+/*
 {nul = [_x] spawn Safezone;
 	sleep 0.01;
 }foreach SafeZonePositions;
+*/
 
 
 //Enable the HarassingZombies

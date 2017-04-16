@@ -16,6 +16,7 @@ MinSpawnDistance             = 20;               // Closest distance from any pl
 MaxSpawnDistance             = 160;              // Max distance a zombie should spawn from a player.
 MaxDistance			         = 300;              // Max distance to players before delete.
 MaxTime                      = 30;               // Max time away from a player before delete.
+RemoveZfromTraders			= true;             // Will kill zombies when they get too close to a safezone. *(the check is done every MaxTime) will only work with zombies that are configured to avoid territories
 RemoveZfromTerritory         = true;             // Will kill zombies when they get too close to a flag. *(the check is done every MaxTime) will only work with zombies that are configured to avoid territories
 TriggerGroupScaling          = 0.25;             // 1 player = Groupsize, 2 player in trigger = Groupsize + (GroupSize * TriggerGroupScalling * number of player in the trigger) set at 0 to disable scaling
 LightsOff                    = true;             // Kill all the light on map except the player lights.
@@ -111,14 +112,14 @@ _ryanzombiesmovementspeeddemon         = 1;      // Animation speed for demons
 _ryanzombiesmovementspeedspider        = 1;      // Animation speed for spider
 _ryanzombiesmovementspeedcrawler       = 1;      // Animation speed for crawler
 
-
+//No need to define SafeZones anymore..
 //Default Altis SafeZones
-SafeZonePositions =
+/*SafeZonePositions =
 [//  [[Coordinates],Radius]  // You can Get the safezone information directly from your mission.sqm under class Markers
   [[14599,16797],175],
   [[23334,24188],175],
   [[2998,18175],175]
-];
+];*/
 
 UseHarassingZombies          = true;             //
 

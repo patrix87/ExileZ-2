@@ -1,6 +1,6 @@
-ExileZ 2 (v2.7)
+ExileZ 2 (v2.8)
 
-by Patrix87
+by Patrix87 - Modified and updated by [FPS]kuplion
 
 Forked from Original project named EXILE-Z created by SAM, Otto and CaptionJack of RelentlessServers.com based on Civilian Life by code34
 

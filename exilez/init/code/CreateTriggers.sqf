@@ -58,9 +58,17 @@ if (_showTriggerOnMap) then {
 	if !(_zMarkerText == "") then 
 	{
 		_marker2 = createmarker [format["Zombies-pos-%1,%2-2",(_triggerPosition select 0),(_triggerPosition select 1)], _triggerPosition];
-		_marker2 setMarkerShape "ICON";
-		_marker2 setMarkerType "mil_dot";
-		_marker2 setMarkerText _zMarkerText;
+		_marker2 setMarkerShape "ELLIPSE";
+
+		_marker2 setMarkerSize [_triggerRadius, _triggerRadius];
+		_marker2 setMarkerColor "ColorBlack";
+		_marker2 setMarkerBrush "Border";
+		
+		_marker3 = createmarker [format["Zombies-pos-%1,%2-3",(_triggerPosition select 0),(_triggerPosition select 1)], _triggerPosition];
+		_marker3 setMarkerShape "ICON";
+		_marker3 setMarkerColor "ColorWhite";
+		_marker3 setMarkerType "KIA";
+		_marker3 setMarkerText _zMarkerText;
 	};
 };
 
